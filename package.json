@@ -1,0 +1,24 @@
+{
+  "name": "replicante-webui",
+  "version": "0.1.0",
+  "description": "Replicante WebUI package",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development",
+    "server": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Stefano Pogliani <stefano@spogliani.net> (http://spogliani.net/)",
+  "license": "MIT",
+  "devDependencies": {
+    "ejs-loader": "^0.3.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
