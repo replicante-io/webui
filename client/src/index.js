@@ -1,3 +1,5 @@
+'use strict';
+
 import 'bootstrap';
 import url from '../assets/main.scss';
 
