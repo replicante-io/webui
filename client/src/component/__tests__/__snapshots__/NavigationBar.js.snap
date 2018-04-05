@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationBar renders correctly 1`] = `
+<nav
+  className="navbar sticky-top navbar-expand-sm navbar-dark bg-dark"
+>
+  <button
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    className="navbar-toggler"
+    data-target="#navbarNavAltMarkup"
+    data-toggle="collapse"
+    type="button"
+  >
+    <span
+      className="navbar-toggler-icon"
+    />
+  </button>
+  <div
+    className="collapse navbar-collapse justify-content-center"
+    id="navbarNavAltMarkup"
+  >
+    <div
+      className="navbar-nav"
+    >
+      <a
+        aria-current={false}
+        className="nav-item nav-link"
+        href="/clusters"
+        onClick={[Function]}
+        style={undefined}
+      >
+        Clusters
+      </a>
+      <a
+        aria-current={false}
+        className="nav-item nav-link"
+        href="/events"
+        onClick={[Function]}
+        style={undefined}
+      >
+        Events
+      </a>
+      <a
+        aria-current={false}
+        className="nav-item nav-link"
+        href="/"
+        onClick={[Function]}
+        style={undefined}
+      >
+        Overview
+      </a>
+      <a
+        aria-current={false}
+        className="nav-item nav-link"
+        href="/automations"
+        onClick={[Function]}
+        style={undefined}
+      >
+        Automations
+      </a>
+      <a
+        aria-current={false}
+        className="nav-item nav-link"
+        href="/admin"
+        onClick={[Function]}
+        style={undefined}
+      >
+        Admin
+      </a>
+    </div>
+  </div>
+</nav>
+`;
