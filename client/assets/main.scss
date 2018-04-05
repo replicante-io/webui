@@ -1,1 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
+
+
+body div#app div.container {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+body div#app div.container .large-icon {
+  font-size: 6em;
+}

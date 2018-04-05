@@ -2,6 +2,7 @@
 //@flow
 
 import 'bootstrap';
+import '../assets/fontawesome-all';
 import '../assets/main.scss';
 
 import { Component } from 'react';
@@ -13,14 +14,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
 import NavigationBar from './component/NavigationBar';
+import WorkInProgress from './component/WorkInProgress';
 import store from './store';
-
-
-class TODO extends Component<{}> {
-  render() {
-    return (<div>TODO</div>);
-  }
-}
 
 
 class App extends Component<{}> {
@@ -30,9 +25,13 @@ class App extends Component<{}> {
         <BrowserRouter>
           <div>
             <NavigationBar />
-            <Route exact path="/" component={TODO} />
-            <Route path="/clusters" component={TODO} />
-            <Route path="/events" component={TODO} />
+            <div className="container">
+              <Route exact path="/" component={WorkInProgress} />
+              <Route path="/admin" component={WorkInProgress} />
+              <Route path="/automations" component={WorkInProgress} />
+              <Route path="/clusters" component={WorkInProgress} />
+              <Route path="/events" component={WorkInProgress} />
+            </div>
           </div>
         </BrowserRouter>
       </Provider>
