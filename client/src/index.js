@@ -1,13 +1,25 @@
 'use strict';
 
 import 'bootstrap';
-import url from '../assets/main.scss';
+import '../assets/main.scss';
+
+import { Component } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 
-function component() {
-  var element = document.createElement('div');
-  element.innerHTML = 'Hello webpack';
-  return element;
+class AppContainer extends Component {
+  render() {
+    return (
+      <div>Adding React</div>
+    );
+  }
 }
 
-document.body.appendChild(component());
+
+const wrapper = document.getElementById("app");
+if (wrapper) {
+  ReactDOM.render(<AppContainer />, wrapper);
+} else {
+  console.error("Failed to locate application wrapper element");
+}
