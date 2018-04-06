@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FetchButton renders correctly 1`] = `
+<button
+  className="btn btn-outline-secondary fetch-button"
+  type="button"
+>
+  <i
+    className="fas fa-redo-alt"
+  />
+</button>
+`;

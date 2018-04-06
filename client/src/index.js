@@ -13,6 +13,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 
+import Dashboard from './component/dashboard';
 import NavigationBar from './component/NavigationBar';
 import WorkInProgress from './component/WorkInProgress';
 import store from './store';
@@ -26,7 +27,7 @@ class App extends Component<{}> {
           <div>
             <NavigationBar />
             <div className="container">
-              <Route exact path="/" component={WorkInProgress} />
+              <Route exact path="/" component={Dashboard} />
               <Route path="/admin" component={WorkInProgress} />
               <Route path="/automations" component={WorkInProgress} />
               <Route path="/clusters" component={WorkInProgress} />

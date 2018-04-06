@@ -1,0 +1,14 @@
+body div#app div.overview-container {
+  div.row.space-below {
+    margin-bottom: 2em;
+  }
+
+  p.large-icon {
+    color: rgb(218, 218, 218);
+    font-size: 4em;
+  }
+
+  div.card-header .fetch-button {
+    float: right;
+  }
+}
