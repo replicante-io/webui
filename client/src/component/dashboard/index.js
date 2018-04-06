@@ -4,7 +4,7 @@
 import { Component } from 'react';
 import React from 'react';
 
-import FetchButton from '../FetchButton';
+import { FetchButton } from '../datafetch';
 
 
 class Dashboard extends React.Component<{}> {
