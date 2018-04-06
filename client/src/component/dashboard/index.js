@@ -15,7 +15,7 @@ class Dashboard extends React.Component<{}> {
           <div className="card text-center">
             <div className="card-header">
               Largest clusters
-              <FetchButton />
+              <FetchButton id="top-clusters" />
             </div>
             <div className="card-body">
               <p className="card-text large-icon"><i className="fas fa-chart-area"></i></p>
@@ -34,7 +34,7 @@ class Dashboard extends React.Component<{}> {
           <div className="card text-center">
             <div className="card-header">
               Latest events
-              <FetchButton />
+              <FetchButton id="recent-events" />
             </div>
             <div className="card-body">
               <p className="card-text large-icon"><i className="fas fa-chart-area"></i></p>
@@ -53,7 +53,7 @@ class Dashboard extends React.Component<{}> {
           <div className="card text-center">
             <div className="card-header">
               Overview of your systems
-              <FetchButton />
+              <FetchButton id="overview" />
             </div>
             <div className="card-body">
               <p className="card-text large-icon"><i className="fas fa-chart-area"></i></p>
