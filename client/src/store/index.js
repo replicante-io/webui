@@ -1,12 +1,17 @@
 'use strict';
 //@flow
 
+import { applyMiddleware } from 'redux';
 import { combineReducers } from 'redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import { all } from 'redux-saga/effects';
+import createSagaMiddleware from 'redux-saga';
+
 import { defaultState as datafetchDefault } from '../component/datafetch';
 import { reducer as datafetch } from '../component/datafetch';
+import { saga as datafetchSaga } from '../component/datafetch';
 import type { FetchStore as DatafetchStore } from '../component/datafetch';
 
 
@@ -28,8 +33,18 @@ const mainReducer = combineReducers({
 });
 
 
+/** Main saga function. */
+function* mainSaga() {
+  yield all([
+    datafetchSaga(),
+  ]);
+}
+
+
 /** Create and export the store. */
+const sagaMiddleware = createSagaMiddleware();
 const store = createStore(mainReducer, defaultState, composeWithDevTools(
-  // TODO
+  applyMiddleware(sagaMiddleware)
 ));
+sagaMiddleware.run(mainSaga);
 export default store;

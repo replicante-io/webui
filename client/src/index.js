@@ -1,6 +1,7 @@
 'use strict';
 //@flow
 
+import 'babel-polyfill';
 import 'bootstrap';
 import '../assets/fontawesome-all';
 import '../assets/main.scss';

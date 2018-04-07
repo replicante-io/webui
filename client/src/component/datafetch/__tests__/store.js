@@ -1,5 +1,5 @@
 import { FETCH_COMPLETE } from '../action';
-import { FETCH_DATA } from '../action';
+import { FETCH_START } from '../action';
 
 import { defaultState } from '../store';
 import { reducer } from '../store';
@@ -7,6 +7,7 @@ import { reducer } from '../store';
 
 describe('datafetch', () => {
   describe('store', () => {
+
     test('defaultState is empty', () => {
       expect(defaultState.size).toBe(0);
     });
@@ -18,7 +19,7 @@ describe('datafetch', () => {
     });
 
     test('FETCH_COMPLETE stops fetching', () => {
-      let action = {type: FETCH_DATA, id: 'test'};
+      let action = {type: FETCH_START, id: 'test'};
       let state = reducer(defaultState, action);
       expect(state.get('test')).toEqual({
         active: true,
@@ -30,13 +31,14 @@ describe('datafetch', () => {
       expect(state.get('test')).toEqual(undefined);
     });
 
-    test('FETCH_DATA starts fetching', () => {
-      let action = {type: FETCH_DATA, id: 'test'};
+    test('FETCH_START starts fetching', () => {
+      let action = {type: FETCH_START, id: 'test'};
       let state = reducer(defaultState, action);
       expect(state.get('test')).toEqual({
         active: true,
         id: 'test'
       });
     });
+
   });
 });
