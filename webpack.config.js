@@ -62,6 +62,15 @@ const style_rule = {
 };
 
 
+// Configure the url rule to process images.
+const url_rule = {
+  test: /\.(png)$/,
+  use: {
+    loader: 'url-loader',
+  }
+};
+
+
 // Configure the generation of `bundle.js`.
 module.exports = {
   context: path.resolve(__dirname, 'client', 'src'),
@@ -72,7 +81,8 @@ module.exports = {
   module: {
     rules: [
       babel_rule,
-      style_rule
+      url_rule,
+      style_rule,
     ]
   },
   output: {

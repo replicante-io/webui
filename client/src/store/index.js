@@ -14,9 +14,14 @@ import { reducer as datafetch } from '../component/datafetch';
 import { saga as datafetchSaga } from '../component/datafetch';
 import type { FetchStore as DatafetchStore } from '../component/datafetch';
 
+import { defaultState as dashboardDefault } from '../component/dashboard';
+import { reducer as dashboard } from '../component/dashboard';
+import type { DashboardStore as DashboardStore } from '../component/dashboard';
+
 
 /** Type for the full application state. */
 type Store = {
+  dashboard: DashboardStore,
   datafetch: DatafetchStore,
 };
 
@@ -24,12 +29,14 @@ type Store = {
 /** Default state for the full application. */
 const defaultState: Store = {
   datafetch: datafetchDefault,
+  dashboard: dashboardDefault,
 };
 
 
 /** Main reducer function. */
 const mainReducer = combineReducers({
   datafetch,
+  dashboard,
 });
 
 

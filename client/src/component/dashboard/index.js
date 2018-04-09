@@ -7,6 +7,10 @@ import React from 'react';
 import { FetchButton } from '../datafetch';
 import Clusters from './clusters';
 
+// Re-export actions and store values.
+export { defaultState, reducer } from './store';
+export type { DashboardStore } from './store';
+
 
 export function REPLACE_ME(): Promise<void> {
   return new Promise((resolve) => {

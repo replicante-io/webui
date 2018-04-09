@@ -20,6 +20,7 @@
     "@fortawesome/react-fontawesome": "0.0.18",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -51,10 +52,13 @@
     "redux-saga": "^0.16.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5"
   }
 }

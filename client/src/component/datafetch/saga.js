@@ -2,11 +2,14 @@
 //@flow
 
 import { call, put } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import { takeEvery } from 'redux-saga/effects';
 
 import { FETCH_COMPLETE } from './action';
 import { FETCH_DATA } from './action';
+import { FETCH_ERROR } from './action';
 import { FETCH_START } from './action';
+import { FETCH_SUCCESS } from './action';
 import type { FetchData } from './action';
 
 
@@ -20,7 +23,13 @@ export function* fetchData(action: FetchData): any {
   try {
     yield put({type: FETCH_START, id: action.id});
     yield call(action.start);
+    yield put({type: FETCH_SUCCESS, id: action.id});
+
+  } catch (error) {
+    yield put({type: FETCH_ERROR, id: action.id, error: error});
+
   } finally {
+    yield call(delay, 1500);
     yield put({type: FETCH_COMPLETE, id: action.id});
   }
 }

@@ -1,15 +1,18 @@
 'use strict';
 
 const path = require('path');
-
 const express = require('express');
-const app = express();
+
+const proxy = require('./proxy');
 
 
 const DIST_ROOT = path.join(__dirname, '..', 'dist');
 const STATIC_ROOT = path.join(DIST_ROOT, 'static');
 
 
+const app = express();
+
+app.use('/webui', proxy);
 app.use('/static', express.static(STATIC_ROOT));
 app.use((_, res) => res.sendFile(path.join(DIST_ROOT, 'index.html')));
 

@@ -16,9 +16,27 @@ describe('datafetch', () => {
       expect(tree).toMatchSnapshot();
     });
 
+    test('renders error', () => {
+      let store = new Map();
+      store.set('test', {id: 'test', active: true, error: 'error'});
+      const tree = renderer.create(
+        <Button id="test" store={store} />
+      ).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
     test('renders fetching', () => {
       let store = new Map();
       store.set('test', {id: 'test', active: true});
+      const tree = renderer.create(
+        <Button id="test" store={store} />
+      ).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    test('renders success', () => {
+      let store = new Map();
+      store.set('test', {id: 'test', active: true, success: true});
       const tree = renderer.create(
         <Button id="test" store={store} />
       ).toJSON();

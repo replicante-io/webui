@@ -1,4 +1,4 @@
 {
-  "plugins": ["transform-regenerator"],
+  "plugins": ["transform-regenerator", "transform-object-rest-spread"],
   "presets": ["env", "es2015", "flow", "react"]
 }
