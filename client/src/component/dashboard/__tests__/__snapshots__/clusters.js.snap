@@ -8,7 +8,7 @@ exports[`Dashboard clusters renders with clusters 1`] = `
     className="col"
   >
     <div
-      className="card text-center"
+      className="card"
     >
       <div
         className="card-header"
@@ -39,7 +39,7 @@ exports[`Dashboard clusters renders with clusters 1`] = `
         </button>
       </div>
       <div
-        className="card-body"
+        className="card-body text-center"
       >
         <div
           className="card-text"
@@ -154,7 +154,7 @@ exports[`Dashboard clusters renders with no clusters 1`] = `
     className="col"
   >
     <div
-      className="card text-center"
+      className="card"
     >
       <div
         className="card-header"
@@ -185,7 +185,7 @@ exports[`Dashboard clusters renders with no clusters 1`] = `
         </button>
       </div>
       <div
-        className="card-body"
+        className="card-body text-center"
       >
         <p
           className="card-text large-icon"

@@ -44,7 +44,9 @@ type Props = {
 
 export class InnerClusters extends React.Component<Props> {
   componentDidMount() {
-    this.props.dispatch(fetchData(FETCH_ID, fetchClusters(this.props.dispatch)));
+    if (!this.props.clusters.length) {
+      this.props.dispatch(fetchData(FETCH_ID, fetchClusters(this.props.dispatch)));
+    }
   }
 
   renderClusterItem(cluster: ClusterItem) {
@@ -70,7 +72,7 @@ export class InnerClusters extends React.Component<Props> {
   renderClusters() {
     let rows = this.props.clusters.map((cluster) => this.renderClusterItem(cluster));
     return (
-      <div className="card-body">
+      <div className="card-body text-center">
         <div className="card-text">
           {rows}
         </div>
@@ -80,7 +82,7 @@ export class InnerClusters extends React.Component<Props> {
 
   renderNoData() {
     return (
-      <div className="card-body">
+      <div className="card-body text-center">
         <p className="card-text large-icon"><FontAwesomeIcon icon={fasChartArea} /></p>
         <p className="card-text">No data available</p>
       </div>
@@ -92,7 +94,7 @@ export class InnerClusters extends React.Component<Props> {
     return (
       <div className="row">
         <div className="col">
-          <div className="card text-center">
+          <div className="card">
             <div className="card-header">
               Largest clusters
               <FetchButton id={FETCH_ID} request={fetchClusters(this.props.dispatch)} />

@@ -11,7 +11,7 @@ exports[`Dashboard index renders correctly 1`] = `
       className="col"
     >
       <div
-        className="card text-center"
+        className="card"
       >
         <div
           className="card-header"
@@ -42,7 +42,7 @@ exports[`Dashboard index renders correctly 1`] = `
           </button>
         </div>
         <div
-          className="card-body"
+          className="card-body text-center"
         >
           <p
             className="card-text large-icon"
@@ -67,7 +67,7 @@ exports[`Dashboard index renders correctly 1`] = `
       className="col"
     >
       <div
-        className="card text-center"
+        className="card"
       >
         <div
           className="card-header"
@@ -98,7 +98,7 @@ exports[`Dashboard index renders correctly 1`] = `
           </button>
         </div>
         <div
-          className="card-body"
+          className="card-body text-center"
         >
           <p
             className="card-text large-icon"
@@ -123,7 +123,7 @@ exports[`Dashboard index renders correctly 1`] = `
       className="col"
     >
       <div
-        className="card text-center"
+        className="card"
       >
         <div
           className="card-header"
@@ -154,7 +154,7 @@ exports[`Dashboard index renders correctly 1`] = `
           </button>
         </div>
         <div
-          className="card-body"
+          className="card-body text-center"
         >
           <p
             className="card-text large-icon"
