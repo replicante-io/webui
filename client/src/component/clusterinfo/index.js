@@ -9,6 +9,18 @@ import Discovery from './discovery';
 import Overview from './overview';
 
 
+class OverviewRedirect extends React.Component<{match: any}> {
+  render() {
+    let root = `${this.props.match.url}`;
+    if (root.endsWith('/')) {
+      root = root.substring(0, root.length - 1);
+    }
+    const overview = `${root}/overview`;
+    return <Redirect from={root} to={overview} />;
+  }
+}
+
+
 type Props = {
   match: any
 };
@@ -28,7 +40,7 @@ export class Cluster extends React.Component<Props> {
           <NavLink className="tab" to={discovery}>Discovery</NavLink>
         </div>
         <div>
-          <Redirect from={root} to={overview} />
+          <Route exact path={root} component={OverviewRedirect} />
           <Route path={overview} component={Overview} />
           <Route path={discovery} component={Discovery} />
         </div>
