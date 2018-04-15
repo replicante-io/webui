@@ -12,7 +12,9 @@ import fasChartArea from '@fortawesome/fontawesome-free-solid/faChartArea';
 
 import { FetchButton } from '../datafetch';
 import { fetchData } from '../datafetch';
+
 import ClusterKinds from '../ClusterKinds';
+import ClusterRow from '../ClusterRow';
 
 import { storeClusters } from './action';
 
@@ -49,28 +51,10 @@ export class InnerClusters extends React.Component<Props> {
     }
   }
 
-  renderClusterItem(cluster: ClusterItem) {
-    const link = `/clusters/${cluster.name}`;
-    return (
-      <div key={cluster.name} className="row cluster-item">
-        <div className="col">
-          <p><Link to={link}>{cluster.name}</Link></p>
-          <small>Name</small>
-        </div>
-        <div className="col">
-          <p>{cluster.nodes}</p>
-          <small>Nodes</small>
-        </div>
-        <div className="col">
-          <p><ClusterKinds kinds={cluster.kinds} /></p>
-          <small>{cluster.kinds.join(', ')}</small>
-        </div>
-      </div>
-    );
-  }
-
   renderClusters() {
-    let rows = this.props.clusters.map((cluster) => this.renderClusterItem(cluster));
+    let rows = this.props.clusters.map((cluster) => {
+      return <ClusterRow key={cluster.name} {...cluster} />;
+    });
     return (
       <div className="card-body text-center">
         <div className="card-text">

@@ -7,8 +7,12 @@ import { connect } from 'react-redux';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import fasSearch from '@fortawesome/fontawesome-free-solid/faSearch';
 
+import ClusterRow from '../ClusterRow';
+
 import { CLUSTERS_SEARCH } from './action';
 import { searchClusters } from './action';
+
+import type { ClusterItem } from '../dashboard/action';
 import type { ClustersStore } from './store';
 
 // Re-export actions and store values.
@@ -21,6 +25,7 @@ const SEARCH_TIMEOUT = 500;  // ms
 
 
 type Props = {
+  clusters: Array<ClusterItem>,
   dispatch: any,
   search: string,
 };
@@ -40,6 +45,12 @@ export class InnerClusters extends React.Component<Props, State> {
     };
   };
 
+  componentDidMount() {
+    if (!this.props.clusters.length && !this.props.search) {
+      this.props.dispatch(searchClusters(''));
+    }
+  }
+
   handleChange(e: SyntheticInputEvent<HTMLInputElement>) {
     let search = e.currentTarget.value;
     if (this.state.searchTimeoutHandle) {
@@ -51,6 +62,17 @@ export class InnerClusters extends React.Component<Props, State> {
     }, SEARCH_TIMEOUT);
     this.setState({searchTimeoutHandle: timeoutHandle});
   };
+
+  renderList() {
+    let rows = this.props.clusters.map((cluster) => {
+      return <ClusterRow key={cluster.name} {...cluster} />;
+    });
+    return (
+      <div className="card-body text-center">
+        {rows}
+      </div>
+    );
+  }
 
   renderNoResults() {
     return (
@@ -65,7 +87,7 @@ export class InnerClusters extends React.Component<Props, State> {
   };
 
   render() {
-    let body = this.renderNoResults();
+    const body = this.props.clusters.length ? this.renderList() : this.renderNoResults();
     return (
       <div className="row">
         <div className="col">
@@ -94,6 +116,7 @@ type PartialState = {
 }
 export function mapStateToProps(state: PartialState) {
   return {
+    clusters: state.clusters.clusters,
     search: state.clusters.search,
   };
 }

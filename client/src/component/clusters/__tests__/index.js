@@ -1,5 +1,6 @@
 'use strict';
 
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import React from 'react';
@@ -14,6 +15,15 @@ import Clusters from '../index';
 
 
 const mockStore = configureStore([]);
+const CLUSTERS = [{
+  kinds: ['MongoDB'],
+  name: 'test1',
+  nodes: 1
+}, {
+  kinds: ['Kafka'],
+  name: 'test2',
+  nodes: 4
+}];
 
 
 describe('Clusters', () => {
@@ -23,6 +33,7 @@ describe('Clusters', () => {
     beforeEach(() => {
       store = mockStore({
         clusters: {
+          clusters: [],
           search: '',
         }
       });
@@ -37,10 +48,27 @@ describe('Clusters', () => {
       expect(tree).toMatchSnapshot();
     });
 
+    test('renders with clusters', () => {
+      let store = mockStore({
+        clusters: {
+          clusters: CLUSTERS,
+          search: '',
+        }
+      });
+      const tree = renderer.create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Clusters />
+          </Provider>
+        </BrowserRouter>
+      ).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
     test('search clusters', () => {
       jest.useFakeTimers();
       let component = ReactTestUtils.renderIntoDocument(
-        <InnerClusters dispatch={store.dispatch} search={''} />
+        <InnerClusters clusters={[]} dispatch={store.dispatch} search={''} />
       );
       let node = component.input;
       node.value = 'test';
@@ -50,6 +78,9 @@ describe('Clusters', () => {
       const actions = store.getActions();
       expect(actions).toEqual([{
         type: CLUSTERS_SEARCH,
+        search: '',
+      }, {
+        type: CLUSTERS_SEARCH,
         search: 'test',
       }]);
     });
@@ -57,7 +88,7 @@ describe('Clusters', () => {
     test('search clusters only once', () => {
       jest.useFakeTimers();
       let component = ReactTestUtils.renderIntoDocument(
-        <InnerClusters dispatch={store.dispatch} search={''} />
+        <InnerClusters clusters={[]} dispatch={store.dispatch} search={''} />
       );
       let node = component.input;
       node.value = 'te';
@@ -68,6 +99,9 @@ describe('Clusters', () => {
 
       const actions = store.getActions();
       expect(actions).toEqual([{
+        type: CLUSTERS_SEARCH,
+        search: '',
+      }, {
         type: CLUSTERS_SEARCH,
         search: 'test',
       }]);
