@@ -1,3 +1,5 @@
+'use strict';
+
 import { CLUSTERS_SEARCH } from '../action';
 import { searchClusters } from '../action';
 

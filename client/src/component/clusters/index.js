@@ -13,6 +13,7 @@ import type { ClustersStore } from './store';
 
 // Re-export actions and store values.
 export { defaultState, reducer } from './store';
+export { saga } from './saga';
 export type { ClustersStore } from './store';
 
 

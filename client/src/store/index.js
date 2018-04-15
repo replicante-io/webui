@@ -20,6 +20,7 @@ import type { DashboardStore } from '../component/dashboard';
 
 import { defaultState as clustersDefault } from '../component/clusters';
 import { reducer as clusters } from '../component/clusters';
+import { saga as clustersSaga } from '../component/clusters';
 import type { ClustersStore } from '../component/clusters';
 
 
@@ -49,6 +50,7 @@ const mainReducer = combineReducers({
 /** Main saga function. */
 function* mainSaga() {
   yield all([
+    clustersSaga(),
     datafetchSaga(),
   ]);
 }

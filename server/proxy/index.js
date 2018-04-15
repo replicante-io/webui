@@ -3,7 +3,7 @@ const request = require('request-promise-native');
 
 const proxy = express.Router();
 
-const BACKEND_ROOT = process.env.REPLI_BACKEND_ROOT || 'http://localhost:16016/';
+const BACKEND_ROOT = process.env.REPLI_BACKEND_ROOT || 'http://localhost:16016';
 
 
 proxy.post('/clusters/search', express.json(), (req, res) => {
