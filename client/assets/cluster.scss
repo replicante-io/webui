@@ -35,3 +35,23 @@ div.cluster-item {
     }
   }
 }
+
+
+div.cluster-tabs {
+  font-size: small;
+  margin-bottom: 1em;
+
+  a {
+    color: black;
+    margin-right: 1em;
+
+    &:hover {
+      text-decoration: none;
+      border-bottom: 2px solid rgb(146, 195, 247);
+    }
+
+    &.active {
+      border-bottom: 2px solid rgb(146, 195, 247);
+    }
+  }
+}

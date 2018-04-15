@@ -18,6 +18,7 @@ import NavigationBar from './component/NavigationBar';
 import WorkInProgress from './component/WorkInProgress';
 import store from './store';
 
+import ClusterInfo from './component/clusterinfo';
 import Clusters from './component/clusters';
 import Dashboard from './component/dashboard';
 
@@ -33,7 +34,8 @@ class App extends Component<{}> {
               <Route exact path="/" component={Dashboard} />
               <Route path="/admin" component={WorkInProgress} />
               <Route path="/automations" component={WorkInProgress} />
-              <Route path="/clusters" component={Clusters} />
+              <Route exact path="/clusters" component={Clusters} />
+              <Route path="/clusters/:name" component={ClusterInfo} />
               <Route path="/events" component={WorkInProgress} />
             </div>
           </div>
