@@ -7,6 +7,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 // Re-export actions and store values.
 export { defaultState, reducer } from './store';
+export { saga } from './saga';
 export type { ClusterInfoStore } from './store';
 
 import Discovery from './discovery';

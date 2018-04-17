@@ -12,10 +12,7 @@ import type { SearchClustersAction } from './action';
 
 
 /**
- * Fetches data asyncronusly.
- *
- * The fetching process is actually perforemed by the
- * `action.start` function that must return a promise.
+ * Searches for clusters matching the given name.
  */
 export function* searchClusters(action: SearchClustersAction): any {
   let clusters = yield call(searchClustersApi, action.search);

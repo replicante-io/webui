@@ -6,15 +6,24 @@ import { connect } from 'react-redux';
 
 import { NoDataIcon } from '../icons';
 
+import { fetchMeta } from './action';
+
 import type { ClusterMeta } from '../dashboard/action';
 import type { ClusterInfoStore } from './store';
 
 
 type Props = {
   cluster: ClusterMeta,
+  dispatch: any,
   id: string,
 };
 export class InnerOverview extends React.Component<Props> {
+  componentDidMount() {
+    if (!this.props.cluster) {
+      this.props.dispatch(fetchMeta(this.props.id));
+    }
+  }
+
   renderData() {
     return (
         <div>
@@ -43,9 +52,10 @@ type PartialState = {
   clusterinfo: ClusterInfoStore,
 }
 export function mapStateToProps(state: PartialState, props: {match: any}) {
+  const id = props.match.params.name;
   return {
-    cluster: null,
-    id: props.match.params.name,
+    cluster: state.clusterinfo.meta[id] || null,
+    id: id,
   };
 }
 
