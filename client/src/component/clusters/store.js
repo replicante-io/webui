@@ -7,11 +7,11 @@ import { CLUSTERS_SEARCH } from './action';
 import type { ClustersAction } from './action';
 import type { ListClustersAction } from './action';
 import type { SearchClustersAction } from './action';
-import type { ClusterItem } from '../dashboard/action';
+import type { ClusterMeta } from '../dashboard/action';
 
 
 export type ClustersStore = {
-  clusters: Array<ClusterItem>,
+  clusters: Array<ClusterMeta>,
   search: string,
 };
 

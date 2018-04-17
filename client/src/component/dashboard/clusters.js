@@ -18,7 +18,7 @@ import ClusterRow from '../ClusterRow';
 
 import { storeClusters } from './action';
 
-import type { ClusterItem } from './action';
+import type { ClusterMeta } from './action';
 import type { DashboardStore } from './store';
 
 
@@ -40,7 +40,7 @@ export function fetchClusters(dispatch: any): () => Promise<void> {
 
 
 type Props = {
-  clusters: Array<ClusterItem>,
+  clusters: Array<ClusterMeta>,
   dispatch: any,
 }
 

@@ -3,12 +3,17 @@
 
 import React from 'react';
 
+import { NoDataIcon } from '../icons';
+
 
 export class Discovery extends React.Component<{}> {
   render() {
     return (
       <div>
-        TODO: discovery
+        <div className="text-center">
+          <NoDataIcon />
+          TODO: discovery
+        </div>
       </div>
     );
   }

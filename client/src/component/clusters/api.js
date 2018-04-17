@@ -1,10 +1,10 @@
 'use strict';
 //@flow
 
-import type { ClusterItem } from '../dashboard/action';
+import type { ClusterMeta } from '../dashboard/action';
 
 
-export function searchClusters(search: string): Promise<Array<ClusterItem>> {
+export function searchClusters(search: string): Promise<Array<ClusterMeta>> {
   let url = '/webui/clusters/search';
   let options = {
     headers: {

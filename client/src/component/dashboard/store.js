@@ -4,12 +4,12 @@
 import { DASHBOARD_CLUSTERS_SET } from './action';
 
 import type { StoreClustersAction } from './action';
-import type { ClusterItem } from './action';
+import type { ClusterMeta } from './action';
 import type { DashboardAction } from './action';
 
 
 export type DashboardStore = {
-  clusters: Array<ClusterItem>,
+  clusters: Array<ClusterMeta>,
 };
 
 

@@ -12,7 +12,7 @@ import ClusterRow from '../ClusterRow';
 import { CLUSTERS_SEARCH } from './action';
 import { searchClusters } from './action';
 
-import type { ClusterItem } from '../dashboard/action';
+import type { ClusterMeta } from '../dashboard/action';
 import type { ClustersStore } from './store';
 
 // Re-export actions and store values.
@@ -25,7 +25,7 @@ const SEARCH_TIMEOUT = 500;  // ms
 
 
 type Props = {
-  clusters: Array<ClusterItem>,
+  clusters: Array<ClusterMeta>,
   dispatch: any,
   search: string,
 };

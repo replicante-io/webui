@@ -6,11 +6,7 @@ body div#app div.container {
   margin-top: 2em;
 }
 
-body div#app div.container .large-icon {
-  color: rgb(218, 218, 218);
-  font-size: 4em;
-}
-
 
 @import "./overview";
 @import "./cluster";
+@import "./icons";

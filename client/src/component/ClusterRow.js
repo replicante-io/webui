@@ -5,10 +5,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import ClusterKinds from './ClusterKinds';
-import type { ClusterItem } from './dashboard/action';
+import type { ClusterMeta } from './dashboard/action';
 
 
-class ClusterRow extends React.Component<ClusterItem> {
+class ClusterRow extends React.Component<ClusterMeta> {
   render() {
     const link = `/clusters/${this.props.name}`;
     return (

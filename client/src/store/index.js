@@ -18,6 +18,10 @@ import { defaultState as dashboardDefault } from '../component/dashboard';
 import { reducer as dashboard } from '../component/dashboard';
 import type { DashboardStore } from '../component/dashboard';
 
+import { defaultState as clusterinfoDefault } from '../component/clusterinfo';
+import { reducer as clusterinfo } from '../component/clusterinfo';
+import type { ClusterInfoStore } from '../component/clusterinfo';
+
 import { defaultState as clustersDefault } from '../component/clusters';
 import { reducer as clusters } from '../component/clusters';
 import { saga as clustersSaga } from '../component/clusters';
@@ -26,6 +30,8 @@ import type { ClustersStore } from '../component/clusters';
 
 /** Type for the full application state. */
 type Store = {
+  clusterinfo: ClusterInfoStore,
+  clusters: ClustersStore,
   dashboard: DashboardStore,
   datafetch: DatafetchStore,
 };
@@ -33,6 +39,7 @@ type Store = {
 
 /** Default state for the full application. */
 const defaultState: Store = {
+  clusterinfo: clusterinfoDefault,
   clusters: clustersDefault,
   datafetch: datafetchDefault,
   dashboard: dashboardDefault,
@@ -41,6 +48,7 @@ const defaultState: Store = {
 
 /** Main reducer function. */
 const mainReducer = combineReducers({
+  clusterinfo,
   clusters,
   datafetch,
   dashboard,
