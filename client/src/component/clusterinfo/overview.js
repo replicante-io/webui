@@ -4,6 +4,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import ClusterKinds from '../ClusterKinds';
 import { NoDataIcon } from '../icons';
 
 import { fetchMeta } from './action';
@@ -27,7 +28,10 @@ export class InnerOverview extends React.Component<Props> {
   renderData() {
     return (
         <div>
-          TODO: data overview for {this.props.id}
+          <div>Cluster nodes: {this.props.cluster.nodes}</div>
+          <div>
+            Cluster type: <ClusterKinds kinds={this.props.cluster.kinds} />
+          </div>
         </div>
     );
   }

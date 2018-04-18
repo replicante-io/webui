@@ -9,9 +9,9 @@ import fasDatabase from '@fortawesome/fontawesome-free-solid/faDatabase';
 
 
 /** Map known DB kinds to the correct icons. */
-const GENERIC_ICON = (key) => <FontAwesomeIcon key={key} icon={fasDatabase} />;
+const GENERIC_ICON = (key, kind) => <FontAwesomeIcon key={key} icon={fasDatabase} title={kind} />;
 const KNOWN_ICONS = {
-  'MongoDB': (key) => <span key={key} className="db-icon mongodb" />,
+  'MongoDB': (key, _) => <span key={key} className="db-icon mongodb" title="MongoDB" />,
 };
 
 
@@ -24,7 +24,7 @@ class ClusterKinds extends Component<Props> {
   render() {
     return this.props.kinds.map((kind, idx) => {
       const icon = KNOWN_ICONS[kind] || GENERIC_ICON;
-      return icon(idx);
+      return icon(idx, kind);
     });
   }
 }

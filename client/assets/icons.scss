@@ -8,3 +8,20 @@ p.large-icon.nodata {
     color: rgb(142, 142, 142);
   }
 }
+
+
+/** Style DB icons not provided by FontAwsome */
+span.db-icon {
+  background-size: cover;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+
+  &.mongodb {
+    /**
+     * MongoDB icon from https://github.com/mongodb-js/leaf
+     * (exact link: https://mongodb-js.github.io/leaf/mongodb-leaf_32x32@2x.png)
+     */
+    background-image: url('./mongodb-leaf.png');
+  }
+}

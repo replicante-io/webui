@@ -117,6 +117,7 @@ exports[`Clusters index renders with clusters 1`] = `
             <p>
               <span
                 className="db-icon mongodb"
+                title="MongoDB"
               />
             </p>
             <small>
@@ -163,6 +164,7 @@ exports[`Clusters index renders with clusters 1`] = `
                 data-prefix="fas"
                 role="img"
                 style={Object {}}
+                title="Kafka"
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
