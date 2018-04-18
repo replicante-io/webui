@@ -6,6 +6,17 @@ const proxy = express.Router();
 const BACKEND_ROOT = process.env.REPLI_BACKEND_ROOT || 'http://localhost:16016';
 
 
+proxy.get('/cluster/:cluster/discovery', (req, res) => {
+  let cluster = req.params.cluster;
+  request.get(`${BACKEND_ROOT}/webui/cluster/${cluster}/discovery`).then((response) => {
+    res.json(JSON.parse(response));
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster meta: %s", error);
+    res.status(500).json({error: "failed to fetch cluster meta"});
+  });
+});
+
 proxy.get('/cluster/:cluster/meta', (req, res) => {
   let cluster = req.params.cluster;
   request.get(`${BACKEND_ROOT}/webui/cluster/${cluster}/meta`).then((response) => {
