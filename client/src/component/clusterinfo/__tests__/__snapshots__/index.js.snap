@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClusterInfo index renders index 1`] = `
+<div>
+  <h1>
+    test
+  </h1>
+  <div
+    className="cluster-tabs"
+  >
+    <a
+      aria-current={false}
+      className="tab"
+      href="about:black/clusters/:name/overview"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Overview
+    </a>
+    <a
+      aria-current={false}
+      className="tab"
+      href="about:black/clusters/:name/discovery"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Discovery
+    </a>
+  </div>
+  <div />
+</div>
+`;
+
+exports[`ClusterInfo index renders redirect 1`] = `null`;

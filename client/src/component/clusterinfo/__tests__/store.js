@@ -1,47 +1,50 @@
 'use strict';
 
-import { CLUSTERS_LIST } from '../action';
-import { CLUSTERS_SEARCH } from '../action';
+import { CLUSTER_STORE_DISCOVERY } from '../action';
+import { CLUSTER_STORE_META } from '../action';
 
 import { defaultState } from '../store';
 import { reducer } from '../store';
 
 
-const CLUSTERS = [{
-  kinds: ['MongoDB'],
-  name: 'test1',
-  nodes: 1
-}, {
-  kinds: ['Kafka'],
-  name: 'test2',
-  nodes: 4
-}];
+const DISCOVERY = {
+  name: 'test',
+  nodes: [
+    'http://node1/',
+    'http://node2/'
+  ]
+};
+const META = {
+  name: 'test',
+  nodes: 3,
+  kinds: []
+};
 
 
 describe('Clusters', () => {
   describe('store', () => {
 
-    test('CLUSTERS_LIST', () => {
+    test('CLUSTER_STORE_DISCOVERY', () => {
       let action = {
-        type: CLUSTERS_LIST,
-        clusters: CLUSTERS,
+        type: CLUSTER_STORE_DISCOVERY,
+        discovery: DISCOVERY
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
-        clusters: CLUSTERS,
-        search: '',
+        discovery: {'test': DISCOVERY},
+        meta: {},
       });
     });
 
-    test('CLUSTERS_SEARCH', () => {
+    test('CLUSTER_STORE_META', () => {
       let action = {
-        type: CLUSTERS_SEARCH,
-        search: 'test'
+        type: CLUSTER_STORE_META,
+        meta: META
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
-        clusters: [],
-        search: 'test',
+        discovery:{},
+        meta: {'test': META},
       });
     });
 

@@ -14,7 +14,7 @@ import Discovery from './discovery';
 import Overview from './overview';
 
 
-class OverviewRedirect extends React.Component<{match: any}> {
+export class OverviewRedirect extends React.Component<{match: any}> {
   render() {
     let root = `${this.props.match.url}`;
     if (root.endsWith('/')) {
