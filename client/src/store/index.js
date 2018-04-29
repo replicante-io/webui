@@ -28,6 +28,11 @@ import { reducer as clusters } from '../component/clusters';
 import { saga as clustersSaga } from '../component/clusters';
 import type { ClustersStore } from '../component/clusters';
 
+import { defaultState as eventsDefault } from '../component/events';
+import { reducer as events } from '../component/events';
+import { saga as eventsSaga } from '../component/events';
+import type { EventsStore } from '../component/events';
+
 
 /** Type for the full application state. */
 type Store = {
@@ -35,6 +40,7 @@ type Store = {
   clusters: ClustersStore,
   dashboard: DashboardStore,
   datafetch: DatafetchStore,
+  events: EventsStore,
 };
 
 
@@ -44,6 +50,7 @@ const defaultState: Store = {
   clusters: clustersDefault,
   datafetch: datafetchDefault,
   dashboard: dashboardDefault,
+  events: eventsDefault,
 };
 
 
@@ -53,6 +60,7 @@ const mainReducer = combineReducers({
   clusters,
   datafetch,
   dashboard,
+  events,
 });
 
 
@@ -62,6 +70,7 @@ function* mainSaga() {
     clusterinfoSaga(),
     clustersSaga(),
     datafetchSaga(),
+    eventsSaga(),
   ]);
 }
 

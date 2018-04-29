@@ -18,6 +18,9 @@ describe('Dashboard', () => {
         datafetch: new Map(),
         dashboard: {
           clusters: []
+        },
+        events: {
+          events: []
         }
       });
       const tree = renderer.create(

@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - Cluster overview and discovery information
+- Events list and overview
 - List and search clusters
 - List largest clusters
 - Main navigation

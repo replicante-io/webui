@@ -55,4 +55,15 @@ proxy.get('/clusters/top', (req, res) => {
 });
 
 
+proxy.get('/events', (req, res) => {
+  request.get(BACKEND_ROOT + '/webui/events').then((response) => {
+    res.json(JSON.parse(response));
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch recent events: %s", error);
+    res.status(500).json({error: "failed to fetch recent events"});
+  });
+});
+
+
 module.exports = proxy;

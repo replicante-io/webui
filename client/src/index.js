@@ -21,6 +21,7 @@ import store from './store';
 import ClusterInfo from './component/clusterinfo';
 import Clusters from './component/clusters';
 import Dashboard from './component/dashboard';
+import Events from './component/events';
 
 
 class App extends Component<{}> {
@@ -36,7 +37,7 @@ class App extends Component<{}> {
               <Route path="/automations" component={WorkInProgress} />
               <Route exact path="/clusters" component={Clusters} />
               <Route path="/clusters/:name" component={ClusterInfo} />
-              <Route path="/events" component={WorkInProgress} />
+              <Route path="/events" component={Events} />
             </div>
           </div>
         </BrowserRouter>
