@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Events index renders index 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="card-header"
+      >
+        Events
+      </div>
+      <div
+        className="card-body text-center"
+      >
+        <p
+          className="card-text large-icon"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-chart-area fa-w-16 "
+            data-icon="chart-area"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M500 384c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v308h436zM372.7 159.5L288 216l-85.3-113.7c-5.1-6.8-15.5-6.3-19.9 1L96 248v104h384l-89.9-187.8c-3.2-6.5-11.4-8.7-17.4-4.7z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </p>
+        <p
+          className="card-text"
+        >
+          No data available
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Events index renders with data 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="card-header"
+      >
+        Events
+      </div>
+      <div
+        className="card-body text-center"
+      >
+        <div
+          className="row event-item"
+        >
+          <div
+            className="col"
+          >
+            2018-04-28T17:57:24.540480643Z
+          </div>
+          <div
+            className="col"
+          >
+            AGENT_DOWN
+          </div>
+          <div
+            className="col-6"
+          >
+            <pre
+              className="verbatim"
+            >
+              <code>
+                "SOME DATA"
+              </code>
+            </pre>
+          </div>
+        </div>
+        <div
+          className="row event-item"
+        >
+          <div
+            className="col"
+          >
+            2018-04-28T17:50:15.170187929Z
+          </div>
+          <div
+            className="col"
+          >
+            AGENT_RECOVER
+          </div>
+          <div
+            className="col-6"
+          >
+            <pre
+              className="verbatim"
+            >
+              <code>
+                "SOME DATA"
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
