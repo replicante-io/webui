@@ -25,47 +25,42 @@ exports[`NavigationBar renders correctly 1`] = `
       className="navbar-nav"
     >
       <a
-        aria-current={false}
+        aria-current={null}
         className="nav-item nav-link"
         href="/clusters"
         onClick={[Function]}
-        style={undefined}
       >
         Clusters
       </a>
       <a
-        aria-current={false}
+        aria-current={null}
         className="nav-item nav-link"
         href="/events"
         onClick={[Function]}
-        style={undefined}
       >
         Events
       </a>
       <a
-        aria-current={false}
+        aria-current={null}
         className="nav-item nav-link"
         href="/"
         onClick={[Function]}
-        style={undefined}
       >
         Overview
       </a>
       <a
-        aria-current={false}
+        aria-current={null}
         className="nav-item nav-link"
         href="/automations"
         onClick={[Function]}
-        style={undefined}
       >
         Automations
       </a>
       <a
-        aria-current={false}
+        aria-current={null}
         className="nav-item nav-link"
         href="/admin"
         onClick={[Function]}
-        style={undefined}
       >
         Admin
       </a>

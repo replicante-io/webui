@@ -9,20 +9,18 @@ exports[`ClusterInfo index renders index 1`] = `
     className="cluster-tabs"
   >
     <a
-      aria-current={false}
+      aria-current={null}
       className="tab"
       href="about:black/clusters/:name/overview"
       onClick={[Function]}
-      style={undefined}
     >
       Overview
     </a>
     <a
-      aria-current={false}
+      aria-current={null}
       className="tab"
       href="about:black/clusters/:name/discovery"
       onClick={[Function]}
-      style={undefined}
     >
       Discovery
     </a>
