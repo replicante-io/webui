@@ -40,7 +40,7 @@ describe('ClusterInfo', () => {
     test('renders with data', () => {
       store = mockStore({ clusterinfo: { discovery: {
         'test': {
-          name: 'test',
+          cluster: 'test',
           nodes: [
             'http://node1',
             'http://node2'

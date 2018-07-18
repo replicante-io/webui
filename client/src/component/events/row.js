@@ -9,14 +9,14 @@ import type { Event } from './action';
 
 class EventRow extends React.Component<Event> {
   render() {
-    let payload = JSON.stringify(this.props.event.payload);
+    let payload = JSON.stringify(this.props.payload.data);
     return (
       <div className="row event-item">
         <div className="col">
           {this.props.timestamp}
         </div>
         <div className="col">
-          {this.props.event.event}
+          {this.props.payload.event}
         </div>
         <div className="col-6">
           <pre className="verbatim">

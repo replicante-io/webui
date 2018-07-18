@@ -36,15 +36,15 @@ describe('Dashboard', () => {
 
     test('renders with events', () => {
       let events = [{
-        event: {
+        payload: {
           event: "AGENT_DOWN",
-          payload: "SOME DATA"
+          data: "SOME DATA"
         },
         timestamp: "2018-04-28T17:57:24.540480643Z"
       }, {
-        event: {
+        payload: {
           event: "AGENT_RECOVER",
-          payload: "SOME DATA"
+          data: "SOME DATA"
         },
         timestamp: "2018-04-28T17:50:15.170187929Z"
       }];
@@ -68,15 +68,15 @@ describe('Dashboard', () => {
       test('fulfill', () => {
         let fetcher = fetchEvents(jest.fn());
         fetch.mockResponse(JSON.stringify([{
-          event: {
+          payload: {
             event: "AGENT_DOWN",
-            payload: "SOME DATA"
+            data: "SOME DATA"
           },
           timestamp: "2018-04-28T17:57:24.540480643Z"
         }, {
-          event: {
+          payload: {
             event: "AGENT_RECOVER",
-            payload: "SOME DATA"
+            data: "SOME DATA"
           },
           timestamp: "2018-04-28T17:50:15.170187929Z"
         }]));

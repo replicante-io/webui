@@ -8,7 +8,7 @@ import { reducer } from '../store';
 
 
 const DISCOVERY = {
-  name: 'test',
+  cluster: 'test',
   nodes: [
     'http://node1/',
     'http://node2/'

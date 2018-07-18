@@ -5,7 +5,7 @@ import type { ClusterMeta } from '../dashboard/action';
 
 
 export type ClusterDiscovery = {
-  name: string,
+  cluster: string,
   nodes: Array<string>,
 }
 

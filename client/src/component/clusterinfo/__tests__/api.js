@@ -8,7 +8,7 @@ import { fetchMeta } from '../api';
 
 
 const DISCOVERY = {
-  name: 'test',
+  cluster: 'test',
   nodes: [
     'http://node1/',
     'http://node2/'

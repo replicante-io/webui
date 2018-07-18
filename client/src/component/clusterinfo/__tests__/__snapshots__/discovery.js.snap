@@ -57,7 +57,7 @@ exports[`ClusterInfo discovery renders with data 1`] = `
   >
     <code>
       {
-    "name": "test",
+    "cluster": "test",
     "nodes": [
         "http://node1",
         "http://node2"
