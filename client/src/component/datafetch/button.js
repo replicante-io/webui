@@ -5,11 +5,11 @@
 import { Component } from 'react';
 import React from 'react';
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import fasActive from '@fortawesome/fontawesome-free-solid/faCircleNotch';
-import fasCheck from '@fortawesome/fontawesome-free-solid/faCheck';
-import fasRefresh from '@fortawesome/fontawesome-free-solid/faRedoAlt';
-import fasTimes from '@fortawesome/fontawesome-free-solid/faTimes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch as faActive } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faRedoAlt as faRefresh } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchData } from './action';
 import type { FetchStore } from './store';
@@ -42,17 +42,17 @@ class FetchButton extends React.Component<Props> {
 
   render() {
     let fetchstate = this.fetchstate();
-    let icon = fetchstate.active ? fasActive : fasRefresh;
+    let icon = fetchstate.active ? faActive : faRefresh;
     let style = 'secondary';
     let spin = fetchstate.active;
     if (fetchstate.active && fetchstate.success) {
       style = 'success';
-      icon = fasCheck;
+      icon = faCheck;
       spin = false;
     }
     if (fetchstate.active && fetchstate.error) {
       style = 'danger';
-      icon = fasTimes;
+      icon = faTimes;
       spin = false;
     }
 

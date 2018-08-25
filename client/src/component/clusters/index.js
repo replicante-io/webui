@@ -4,8 +4,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import fasSearch from '@fortawesome/fontawesome-free-solid/faSearch';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import ClusterRow from '../ClusterRow';
 
@@ -77,7 +77,7 @@ export class InnerClusters extends React.Component<Props, State> {
   renderNoResults() {
     return (
       <div className="card-body text-center">
-        <p className="card-text large-icon"><FontAwesomeIcon icon={fasSearch} /></p>
+        <p className="card-text large-icon"><FontAwesomeIcon icon={faSearch} /></p>
         <p className="card-text">
           No clusters were found.<br />
           Try searching something else.

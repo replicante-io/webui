@@ -4,8 +4,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import fasChartArea from '@fortawesome/fontawesome-free-solid/faChartArea';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartArea } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchEvents } from './action';
 import EventRow from './row';
@@ -44,7 +44,7 @@ export class InnerEvents extends React.Component<Props> {
   renderNoResults() {
     return (
       <div className="card-body text-center">
-        <p className="card-text large-icon"><FontAwesomeIcon icon={fasChartArea} /></p>
+        <p className="card-text large-icon"><FontAwesomeIcon icon={faChartArea} /></p>
         <p className="card-text">No data available</p>
       </div>
     );

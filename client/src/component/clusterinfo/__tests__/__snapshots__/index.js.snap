@@ -11,7 +11,7 @@ exports[`ClusterInfo index renders index 1`] = `
     <a
       aria-current={null}
       className="tab"
-      href="about:black/clusters/:name/overview"
+      href="/about:black/clusters/:name/overview"
       onClick={[Function]}
     >
       Overview
@@ -19,7 +19,7 @@ exports[`ClusterInfo index renders index 1`] = `
     <a
       aria-current={null}
       className="tab"
-      href="about:black/clusters/:name/discovery"
+      href="/about:black/clusters/:name/discovery"
       onClick={[Function]}
     >
       Discovery

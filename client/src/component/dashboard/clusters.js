@@ -7,8 +7,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import fasChartArea from '@fortawesome/fontawesome-free-solid/faChartArea';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartArea } from '@fortawesome/free-solid-svg-icons';
 
 import { FetchButton } from '../datafetch';
 import { fetchData } from '../datafetch';
@@ -67,7 +67,7 @@ export class InnerClusters extends React.Component<Props> {
   renderNoData() {
     return (
       <div className="card-body text-center">
-        <p className="card-text large-icon"><FontAwesomeIcon icon={fasChartArea} /></p>
+        <p className="card-text large-icon"><FontAwesomeIcon icon={faChartArea} /></p>
         <p className="card-text">No data available</p>
       </div>
     );

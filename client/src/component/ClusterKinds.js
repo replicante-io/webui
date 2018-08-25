@@ -4,12 +4,12 @@
 import { Component } from 'react';
 import React from 'react';
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import fasDatabase from '@fortawesome/fontawesome-free-solid/faDatabase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 
 
 /** Map known DB kinds to the correct icons. */
-const GENERIC_ICON = (key, kind) => <FontAwesomeIcon key={key} icon={fasDatabase} title={kind} />;
+const GENERIC_ICON = (key, kind) => <FontAwesomeIcon key={key} icon={faDatabase} title={kind} />;
 const KNOWN_ICONS = {
   'MongoDB': (key, _) => <span key={key} className="db-icon mongodb" title="MongoDB" />,
 };

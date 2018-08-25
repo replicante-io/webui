@@ -3,9 +3,9 @@
 
 import React from 'react';
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import fasDatabase from '@fortawesome/fontawesome-free-solid/faDatabase';
-import fasQuestion from '@fortawesome/fontawesome-free-solid/faQuestion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 
 export class NoDataIcon extends React.Component<{}> {
@@ -13,8 +13,8 @@ export class NoDataIcon extends React.Component<{}> {
     return (
       <p className="large-icon nodata">
         <span className="fa-layers fa-fw">
-          <FontAwesomeIcon icon={fasDatabase} />
-          <FontAwesomeIcon icon={fasQuestion} className="overlay" />
+          <FontAwesomeIcon icon={faDatabase} />
+          <FontAwesomeIcon icon={faQuestion} className="overlay" />
         </span>
       </p>
     );
