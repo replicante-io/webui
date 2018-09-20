@@ -9,9 +9,15 @@ import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 
 
 /** Map known DB kinds to the correct icons. */
-const GENERIC_ICON = (key, kind) => <FontAwesomeIcon key={key} icon={faDatabase} title={kind} />;
+const GENERIC_ICON = (key, kind) => (
+  <span key={key} className="db-icon" title={kind}>
+    <FontAwesomeIcon icon={faDatabase} />
+  </span>
+);
 const KNOWN_ICONS = {
+  'Kafka': (key, _) => <span key={key} className="db-icon kafka" title="Kafka" />,
   'MongoDB': (key, _) => <span key={key} className="db-icon mongodb" title="MongoDB" />,
+  'Zookeeper': (key, _) => <span key={key} className="db-icon zookeeper" title="Zookeeper" />,
 };
 
 

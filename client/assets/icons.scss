@@ -17,11 +17,26 @@ span.db-icon {
   width: 32px;
   height: 32px;
 
+  &.kafka {
+    /**
+     * Kafka icon from https://www.vectorlogo.zone/logos/apache_kafka/index.html
+     * (exact link: https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-icon.svg)
+     */
+    background-image: url('./kafka.svg');
+  }
+
   &.mongodb {
     /**
      * MongoDB icon from https://github.com/mongodb-js/leaf
      * (exact link: https://mongodb-js.github.io/leaf/mongodb-leaf_32x32@2x.png)
      */
     background-image: url('./mongodb-leaf.png');
+  }
+
+  &.zookeeper {
+    /**
+     * Zookeeper icon from https://zookeeper.apache.org/doc/r3.1.2/images/zookeeper_small.gif
+     */
+    background-image: url('./zookeeper.gif');
   }
 }

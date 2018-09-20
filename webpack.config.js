@@ -64,7 +64,7 @@ const style_rule = {
 
 // Configure the url rule to process images.
 const url_rule = {
-  test: /\.(png)$/,
+  test: /\.(gif)|(png)|(svg)$/,
   use: {
     loader: 'url-loader',
   }
