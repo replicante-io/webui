@@ -28,6 +28,7 @@ type Props = {
 
 class ClusterKinds extends Component<Props> {
   render() {
+    // $FlowFixMe: can't correctly detect return type.
     return this.props.kinds.map((kind, idx) => {
       const icon = KNOWN_ICONS[kind] || GENERIC_ICON;
       return icon(idx, kind);

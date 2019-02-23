@@ -1,5 +1,6 @@
 'use strict';
 
+import '@babel/polyfill';
 import { call, put } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga/effects';
 

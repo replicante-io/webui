@@ -1,8 +1,7 @@
 'use strict';
 //@flow
 
-import { call, put } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
+import { call, delay, put } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga/effects';
 
 import { FETCH_COMPLETE } from './action';
@@ -29,7 +28,7 @@ export function* fetchData(action: FetchData): any {
     yield put({type: FETCH_ERROR, id: action.id, error: error});
 
   } finally {
-    yield call(delay, 1500);
+    yield delay(1500);
     yield put({type: FETCH_COMPLETE, id: action.id});
   }
 }

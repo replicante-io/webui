@@ -91,6 +91,7 @@ type PartialState = {
 }
 export function mapStateToProps(state: PartialState) {
   return {
+    // $FlowFixMe: events not detectd as array.
     events: state.events.events.slice(0, 5),
   };
 }

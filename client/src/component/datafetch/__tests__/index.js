@@ -1,3 +1,6 @@
+'use strict';
+
+import '@babel/polyfill';
 import { defaultState } from '../store';
 import { mapStateToProps } from '../index';
 
