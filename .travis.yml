@@ -1,0 +1,30 @@
+# Build master branch and versions tags (on top of PRs).
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+\.\d+$/
+
+
+# Use latest available ubuntu (16.04).
+dist: xenial
+
+
+# Configure the build jobs.
+language: node_js
+cache: npm
+node_js:
+  - '10'  # Target nodejs version.
+  - node  # Latest nodejs version.
+
+env:
+  - TASK=test
+  - TASK=audit
+
+install: ci/travis.sh install "${TASK}"
+script: ci/travis.sh script "${TASK}"
+
+matrix:
+  allow_failures:
+    - node_js: node
+    - env: TASK=audit
+  fast_finish: true
