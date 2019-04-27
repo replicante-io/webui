@@ -46,3 +46,8 @@ The image can then be used with:
 ```bash
 docker run --rm -it -e 'REPLI_BACKEND_ROOT=http://replicante.api:16016' replicanteio/webui:v0.2
 ```
+
+
+## Pending security fixes
+
+  * `node-sass`: blocked on `node-gyp`, manually patched as https://github.com/sass/node-sass/issues/2625#issuecomment-482519446 until a fix is released.
