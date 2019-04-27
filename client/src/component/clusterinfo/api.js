@@ -6,7 +6,7 @@ import type { ClusterDiscovery } from './action';
 
 
 export function fetchDiscovery(cluster: string): Promise<ClusterDiscovery> {
-  let url = `/webui/cluster/${cluster}/discovery`;
+  let url = `/api/cluster/${cluster}/discovery`;
   return fetch(url).then((response) => {
     return response.json().then((body) => {
       if (!response.ok) {
@@ -19,7 +19,7 @@ export function fetchDiscovery(cluster: string): Promise<ClusterDiscovery> {
 
 
 export function fetchMeta(cluster: string): Promise<ClusterMeta> {
-  let url = `/webui/cluster/${cluster}/meta`;
+  let url = `/api/cluster/${cluster}/meta`;
   return fetch(url).then((response) => {
     return response.json().then((body) => {
       if (!response.ok) {

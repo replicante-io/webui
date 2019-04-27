@@ -27,7 +27,7 @@ const FETCH_ID: string = "top-clusters";
 
 export function fetchClusters(dispatch: any): () => Promise<void> {
   return () => {
-    return fetch('/webui/clusters/top').then((response) => {
+    return fetch('/api/clusters/top').then((response) => {
       return response.json().then((body) => {
         if (!response.ok) {
           throw Error('Fetch error: ' + body.error);

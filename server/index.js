@@ -13,7 +13,7 @@ const STATIC_ROOT = path.join(DIST_ROOT, 'static');
 
 const app = express();
 
-app.use('/webui', proxy);
+app.use('/api', proxy);
 app.use('/static', express.static(STATIC_ROOT));
 app.use((_, res) => res.sendFile(path.join(DIST_ROOT, 'index.html')));
 

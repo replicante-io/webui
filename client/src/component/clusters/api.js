@@ -5,7 +5,7 @@ import type { ClusterMeta } from '../dashboard/action';
 
 
 export function searchClusters(search: string): Promise<Array<ClusterMeta>> {
-  let url = '/webui/clusters/search';
+  let url = '/api/clusters/search';
   let options = {
     headers: {
       'Accept': 'application/json',
