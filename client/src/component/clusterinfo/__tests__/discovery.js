@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
@@ -40,7 +41,7 @@ describe('ClusterInfo', () => {
     test('renders with data', () => {
       store = mockStore({ clusterinfo: { discovery: {
         'test': {
-          cluster: 'test',
+          cluster_id: 'test',
           nodes: [
             'http://node1',
             'http://node2'

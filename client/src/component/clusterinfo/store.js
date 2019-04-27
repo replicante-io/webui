@@ -41,7 +41,7 @@ function storeDiscovery(state: ClusterInfoStore, action: ClusterStoreDiscoveryAc
     ...state,
     discovery: {...state.discovery},
   };
-  newState.discovery[action.discovery.cluster] = action.discovery;
+  newState.discovery[action.discovery.cluster_id] = action.discovery;
   return newState;
 }
 

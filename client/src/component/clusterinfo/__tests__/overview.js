@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';

@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import '@babel/polyfill';
 import { BrowserRouter } from 'react-router-dom';

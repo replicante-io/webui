@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import { CLUSTER_STORE_DISCOVERY } from '../action';
 import { CLUSTER_STORE_META } from '../action';
@@ -8,7 +9,8 @@ import { reducer } from '../store';
 
 
 const DISCOVERY = {
-  cluster: 'test',
+  cluster_id: 'test',
+  display_name: null,
   nodes: [
     'http://node1/',
     'http://node2/'
@@ -49,7 +51,7 @@ describe('Clusters', () => {
     });
 
     test('other transition', () => {
-      let action = {type: 'OTHER'};
+      let action = {type: 'FLOW_CATCH_ALL'};
       let state = reducer(undefined, action);
       expect(state).toEqual(defaultState);
     });

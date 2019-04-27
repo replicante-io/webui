@@ -21,7 +21,7 @@ import type { ClusterFetchMetaAction } from './action';
  * Fetches a cluster discovery and stores it in redux.
  */
 export function* fetchDiscovery(action: ClusterFetchDiscoveryAction): any {
-  let discovery = yield call(fetchDiscoveryApi, action.cluster);
+  let discovery = yield call(fetchDiscoveryApi, action.cluster_id);
   yield put({type: CLUSTER_STORE_DISCOVERY, discovery: discovery});
 }
 
@@ -29,7 +29,7 @@ export function* fetchDiscovery(action: ClusterFetchDiscoveryAction): any {
  * Fetches a cluster metadata and stores it in redux.
  */
 export function* fetchMeta(action: ClusterFetchMetaAction): any {
-  let meta = yield call(fetchMetaApi, action.cluster);
+  let meta = yield call(fetchMetaApi, action.cluster_id);
   yield put({type: CLUSTER_STORE_META, meta: meta});
 }
 

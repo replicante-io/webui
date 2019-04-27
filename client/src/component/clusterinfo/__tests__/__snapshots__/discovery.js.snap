@@ -59,7 +59,7 @@ exports[`ClusterInfo discovery renders with data 1`] = `
   >
     <code>
       {
-    "cluster": "test",
+    "cluster_id": "test",
     "nodes": [
         "http://node1",
         "http://node2"

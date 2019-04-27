@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import fetch from 'jest-fetch-mock';
 global.fetch = fetch;
@@ -8,7 +9,8 @@ import { fetchMeta } from '../api';
 
 
 const DISCOVERY = {
-  cluster: 'test',
+  cluster_id: 'test',
+  display_name: null,
   nodes: [
     'http://node1/',
     'http://node2/'

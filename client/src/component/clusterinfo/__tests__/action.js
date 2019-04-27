@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import { CLUSTER_FETCH_DISCOVERY } from '../action';
 import { CLUSTER_FETCH_META } from '../action';
@@ -14,7 +15,7 @@ describe('ClusterInfo', () => {
       let action = fetchDiscovery('test');
       expect(action).toEqual({
         type: CLUSTER_FETCH_DISCOVERY,
-        cluster: 'test'
+        cluster_id: 'test'
       });
     });
 
@@ -22,7 +23,7 @@ describe('ClusterInfo', () => {
       let action = fetchMeta('test');
       expect(action).toEqual({
         type: CLUSTER_FETCH_META,
-        cluster: 'test'
+        cluster_id: 'test'
       });
     });
 

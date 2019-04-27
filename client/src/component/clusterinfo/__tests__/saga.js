@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import '@babel/polyfill';
 import { all } from 'redux-saga/effects';
@@ -19,7 +20,7 @@ import { saga } from '../saga';
 
 
 const DISCOVERY = {
-  cluster: 'test',
+  cluster_id: 'test',
   nodes: [
     'http://node1/',
     'http://node2/'
@@ -45,7 +46,7 @@ describe('Clusters', () => {
 
     describe('fetchDiscovery', () => {
       test('calls the fetch function', () => {
-        const action = {type: CLUSTER_FETCH_DISCOVERY, cluster: 'test'};
+        const action = {type: CLUSTER_FETCH_DISCOVERY, cluster_id: 'test'};
         const run = fetchDiscovery(action);
         expect(run.next().value).toEqual(
           call(fetchDiscoveryApi, 'test')
@@ -53,7 +54,7 @@ describe('Clusters', () => {
       });
 
       test('emits CLUSTER_STORE_DISCOVERY action', () => { 
-        const action = {type: CLUSTER_FETCH_DISCOVERY, cluster: 'test'};
+        const action = {type: CLUSTER_FETCH_DISCOVERY, cluster_id: 'test'};
         const run = fetchDiscovery(action);
         run.next();  // Skip call to fetch
         expect(run.next(DISCOVERY).value).toEqual(
@@ -64,7 +65,7 @@ describe('Clusters', () => {
 
     describe('fetchMeta', () => {
       test('calls the fetch function', () => {
-        const action = {type: CLUSTER_FETCH_META, cluster: 'test'};
+        const action = {type: CLUSTER_FETCH_META, cluster_id: 'test'};
         const run = fetchMeta(action);
         expect(run.next().value).toEqual(
           call(fetchMetaApi, 'test')
@@ -72,7 +73,7 @@ describe('Clusters', () => {
       });
 
       test('emits CLUSTER_STORE_META action', () => {
-        const action = {type: CLUSTER_FETCH_META, cluster: 'test'};
+        const action = {type: CLUSTER_FETCH_META, cluster_id: 'test'};
         const run = fetchMeta(action);
         run.next();  // Skip call to fetch
         expect(run.next(META).value).toEqual(

@@ -5,8 +5,8 @@ import type { ClusterMeta } from '../dashboard/action';
 import type { ClusterDiscovery } from './action';
 
 
-export function fetchDiscovery(cluster: string): Promise<ClusterDiscovery> {
-  let url = `/api/cluster/${cluster}/discovery`;
+export function fetchDiscovery(cluster_id: string): Promise<ClusterDiscovery> {
+  let url = `/api/cluster/${cluster_id}/discovery`;
   return fetch(url).then((response) => {
     return response.json().then((body) => {
       if (!response.ok) {
@@ -18,8 +18,8 @@ export function fetchDiscovery(cluster: string): Promise<ClusterDiscovery> {
 }
 
 
-export function fetchMeta(cluster: string): Promise<ClusterMeta> {
-  let url = `/api/cluster/${cluster}/meta`;
+export function fetchMeta(cluster_id: string): Promise<ClusterMeta> {
+  let url = `/api/cluster/${cluster_id}/meta`;
   return fetch(url).then((response) => {
     return response.json().then((body) => {
       if (!response.ok) {

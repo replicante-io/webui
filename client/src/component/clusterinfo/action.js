@@ -5,7 +5,8 @@ import type { ClusterMeta } from '../dashboard/action';
 
 
 export type ClusterDiscovery = {
-  cluster: string,
+  cluster_id: string,
+  display_name: ?string,
   nodes: Array<string>,
 }
 
@@ -20,12 +21,12 @@ export const CLUSTER_STORE_META = 'CLUSTER_STORE_META';
 /** Type enum of all possible fetch actions. */
 export type ClusterFetchDiscoveryAction = {
   +type: typeof CLUSTER_FETCH_DISCOVERY,
-  +cluster: string,
+  +cluster_id: string,
 };
 
 export type ClusterFetchMetaAction = {
   +type: typeof CLUSTER_FETCH_META,
-  +cluster: string,
+  +cluster_id: string,
 };
 
 export type ClusterStoreDiscoveryAction = {
@@ -49,13 +50,13 @@ export type ClusterInfoAction =
 export function fetchDiscovery(cluster: string): ClusterFetchDiscoveryAction {
   return {
     type: CLUSTER_FETCH_DISCOVERY,
-    cluster: cluster,
+    cluster_id: cluster,
   };
 }
 
 export function fetchMeta(cluster: string): ClusterFetchMetaAction {
   return {
     type: CLUSTER_FETCH_META,
-    cluster: cluster,
+    cluster_id: cluster,
   };
 }
