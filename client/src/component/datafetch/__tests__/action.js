@@ -1,3 +1,6 @@
+'use strict';
+//@flow
+
 import { FETCH_DATA } from '../action';
 import { fetchData } from '../action';
 

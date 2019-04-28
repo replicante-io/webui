@@ -21,15 +21,21 @@ import { saga } from '../saga';
 
 const DISCOVERY = {
   cluster_id: 'test',
+  cluster_display_name: null,
   nodes: [
     'http://node1/',
     'http://node2/'
   ]
 };
 const META = {
-  name: 'test',
+  agents_down: 0,
+  cluster_display_name: 'test',
+  cluster_id: 'test',
+  kinds: [],
   nodes: 3,
-  kinds: []
+  nodes_down: 1,
+  shards_count: 2,
+  shards_primaries: 1,
 };
 
 

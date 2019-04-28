@@ -50,6 +50,6 @@ function storeMeta(state: ClusterInfoStore, action: ClusterStoreMetaAction) {
     ...state,
     meta: {...state.meta},
   };
-  newState.meta[action.meta.name] = action.meta;
+  newState.meta[action.meta.cluster_id] = action.meta;
   return newState;
 }

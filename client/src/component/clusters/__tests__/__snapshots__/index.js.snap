@@ -106,6 +106,16 @@ exports[`Clusters index renders with clusters 1`] = `
             className="col"
           >
             <p>
+              0
+            </p>
+            <small>
+              Shards
+            </small>
+          </div>
+          <div
+            className="col"
+          >
+            <p>
               1
             </p>
             <small>
@@ -142,6 +152,16 @@ exports[`Clusters index renders with clusters 1`] = `
             </p>
             <small>
               Name
+            </small>
+          </div>
+          <div
+            className="col"
+          >
+            <p>
+              7
+            </p>
+            <small>
+              Shards
             </small>
           </div>
           <div

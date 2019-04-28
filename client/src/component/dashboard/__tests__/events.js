@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import '@babel/polyfill';
 import fetch from 'jest-fetch-mock';
@@ -41,8 +42,8 @@ describe('Dashboard', () => {
         event: "AGENT_DOWN",
         timestamp: "2018-04-28T17:57:24.540480643Z"
       }, {
-          data: "SOME DATA",
-          event: "AGENT_RECOVER",
+        data: "SOME DATA",
+        event: "AGENT_RECOVER",
         timestamp: "2018-04-28T17:50:15.170187929Z"
       }];
       let store = mockStore({

@@ -1,3 +1,6 @@
+'use strict';
+//@flow
+
 import { EVENTS_FETCH } from '../action';
 import { fetchEvents } from '../action';
 

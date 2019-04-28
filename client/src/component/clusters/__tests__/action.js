@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import { CLUSTERS_SEARCH } from '../action';
 import { searchClusters } from '../action';

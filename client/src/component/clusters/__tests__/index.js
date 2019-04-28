@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import '@babel/polyfill';
 import { BrowserRouter } from 'react-router-dom';
@@ -17,13 +18,23 @@ import Clusters from '../index';
 
 const mockStore = configureStore([]);
 const CLUSTERS = [{
+  agents_down: 1,
+  cluster_display_name: 'test1',
+  cluster_id: 'test1',
   kinds: ['MongoDB'],
-  name: 'test1',
-  nodes: 1
+  nodes: 1,
+  nodes_down: 0,
+  shards_count: 0,
+  shards_primaries: 0,
 }, {
+  agents_down: 1,
+  cluster_display_name: 'test2',
+  cluster_id: 'test2',
   kinds: ['Kafka'],
-  name: 'test2',
-  nodes: 4
+  nodes: 4,
+  nodes_down: 1,
+  shards_count: 7,
+  shards_primaries: 7,
 }];
 
 
@@ -71,6 +82,7 @@ describe('Clusters', () => {
       let component = ReactTestUtils.renderIntoDocument(
         <InnerClusters clusters={[]} dispatch={store.dispatch} search={''} />
       );
+      // $FlowFixMe: flow looks at `React.Compoment` instead of the exact component.
       let node = component.input;
       node.value = 'test';
       ReactTestUtils.Simulate.change(node);
@@ -91,6 +103,7 @@ describe('Clusters', () => {
       let component = ReactTestUtils.renderIntoDocument(
         <InnerClusters clusters={[]} dispatch={store.dispatch} search={''} />
       );
+      // $FlowFixMe: flow looks at `React.Compoment` instead of the exact component.
       let node = component.input;
       node.value = 'te';
       ReactTestUtils.Simulate.change(node);

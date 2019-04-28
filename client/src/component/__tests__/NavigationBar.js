@@ -1,3 +1,6 @@
+'use strict';
+//@flow
+
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import renderer from 'react-test-renderer';

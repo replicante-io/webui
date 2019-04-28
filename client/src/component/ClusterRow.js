@@ -10,12 +10,16 @@ import type { ClusterMeta } from './dashboard/action';
 
 class ClusterRow extends React.Component<ClusterMeta> {
   render() {
-    const link = `/clusters/${this.props.name}`;
+    const link = `/clusters/${this.props.cluster_id}`;
     return (
       <div className="row cluster-item">
         <div className="col">
-          <p><Link to={link}>{this.props.name}</Link></p>
+          <p><Link to={link}>{this.props.cluster_display_name}</Link></p>
           <small>Name</small>
+        </div>
+        <div className="col">
+          <p>{this.props.shards_count}</p>
+          <small>Shards</small>
         </div>
         <div className="col">
           <p>{this.props.nodes}</p>

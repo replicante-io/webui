@@ -1,4 +1,5 @@
 'use strict';
+//@flow
 
 import '@babel/polyfill';
 import { call, put } from 'redux-saga/effects';

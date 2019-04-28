@@ -42,6 +42,7 @@ describe('ClusterInfo', () => {
       store = mockStore({ clusterinfo: { discovery: {
         'test': {
           cluster_id: 'test',
+          display_name: null,
           nodes: [
             'http://node1',
             'http://node2'

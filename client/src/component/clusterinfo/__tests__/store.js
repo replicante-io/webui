@@ -17,9 +17,14 @@ const DISCOVERY = {
   ]
 };
 const META = {
-  name: 'test',
+  agents_down: 0,
+  cluster_display_name: 'test',
+  cluster_id: 'test',
+  kinds: [],
   nodes: 3,
-  kinds: []
+  nodes_down: 1,
+  shards_count: 2,
+  shards_primaries: 1,
 };
 
 

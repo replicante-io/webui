@@ -8,9 +8,14 @@ export const DASHBOARD_CLUSTERS_SET = 'DASHBOARD_CLUSTERS_SET';
 
 /** Types used by actions. */
 export type ClusterMeta = {
+  agents_down: number,
+  cluster_display_name: string,
+  cluster_id: string,
   kinds: Array<string>,
-  name: string,
   nodes: number,
+  nodes_down: number,
+  shards_count: number,
+  shards_primaries: number,
 };
 
 

@@ -1,3 +1,6 @@
+'use strict';
+//@flow
+
 import { FETCH_COMPLETE } from '../action';
 import { FETCH_ERROR } from '../action';
 import { FETCH_START } from '../action';
@@ -15,7 +18,7 @@ describe('datafetch', () => {
     });
 
     test('unsupported actions do nothing', () => {
-      let action = {type: 'some other action'};
+      let action = {type: 'FLOW_CATCH_ALL'};
       let state = reducer(undefined, action);
       expect(state).toBe(defaultState);
     });

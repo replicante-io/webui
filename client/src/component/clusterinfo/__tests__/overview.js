@@ -41,9 +41,14 @@ describe('ClusterInfo', () => {
     test('renders with data', () => {
       store = mockStore({ clusterinfo: { meta: {
         'test': {
-          name: 'test',
+          agents_down: 0,
+          cluster_display_name: 'test',
+          cluster_id: 'test',
+          kinds: ['Kafka'],
           nodes: 3,
-          kinds: ['Kafka']
+          nodes_down: 1,
+          shards_count: 2,
+          shards_primaries: 1,
         }
       } } });
       const tree = renderer.create(

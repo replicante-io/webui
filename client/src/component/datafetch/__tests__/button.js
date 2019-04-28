@@ -1,55 +1,71 @@
+'use strict';
+//@flow
+
 import React from 'react';
 import renderer from 'react-test-renderer';
 
 import ReactTestUtils from 'react-dom/test-utils';
+import configureStore from 'redux-mock-store';
 
+import type { FetchStore } from '../store';
 import Button from '../button';
+
+
+const mockStore = configureStore([]);
 
 
 describe('datafetch', () => {
   describe('Button', () => {
+    const request = () => new Promise(() => {});
+    let dispatch;
+    let store: FetchStore;
+
+    beforeEach(() => {
+      dispatch = jest.fn();
+      store = new Map();
+    });
 
     test('renders correctly', () => {
       const tree = renderer.create(
-        <Button id="test" store={new Map()} />
+        <Button id="test" dispatch={dispatch}
+                store={store} request={request} />
       ).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     test('renders error', () => {
-      let store = new Map();
-      store.set('test', {id: 'test', active: true, error: 'error'});
+      store.set('test', {id: 'test', active: true, error: 'error', success: false});
       const tree = renderer.create(
-        <Button id="test" store={store} />
+        <Button id="test" dispatch={dispatch}
+                store={store} request={request} />
       ).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     test('renders fetching', () => {
-      let store = new Map();
-      store.set('test', {id: 'test', active: true});
+      store.set('test', {id: 'test', active: true, error: null, success: false});
       const tree = renderer.create(
-        <Button id="test" store={store} />
+        <Button id="test" dispatch={dispatch}
+                store={store} request={request} />
       ).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     test('renders success', () => {
-      let store = new Map();
-      store.set('test', {id: 'test', active: true, success: true});
+      store.set('test', {id: 'test', active: true, error: null, success: true});
       const tree = renderer.create(
-        <Button id="test" store={store} />
+        <Button id="test" dispatch={dispatch}
+                store={store} request={request} />
       ).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     test('request on click', () => {
-      const dispatch = jest.fn();
-      const request = () => new Promise(() => {});
       const component = ReactTestUtils.renderIntoDocument(
         <Button id="test" dispatch={dispatch}
-                store={new Map()} request={request} />
+                store={store} request={request} />
       );
+      // $FlowFixMe: flow mistakes this for a generic `React.Compoment`.
       ReactTestUtils.Simulate.click(component.button);
       expect(dispatch.mock.calls.length).toBe(1);
     });
