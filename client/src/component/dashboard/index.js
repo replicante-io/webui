@@ -15,8 +15,8 @@ class Dashboard extends React.Component<{}> {
   render() {
     return (
       <div className="overview-container">
-        <Events />
         <Clusters />
+        <Events />
       </div>
     );
   }

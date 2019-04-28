@@ -2,7 +2,7 @@
 
 exports[`Dashboard clusters renders with clusters 1`] = `
 <div
-  className="row"
+  className="row space-below"
 >
   <div
     className="col"
@@ -158,7 +158,7 @@ exports[`Dashboard clusters renders with clusters 1`] = `
 
 exports[`Dashboard clusters renders with no clusters 1`] = `
 <div
-  className="row"
+  className="row space-below"
 >
   <div
     className="col"

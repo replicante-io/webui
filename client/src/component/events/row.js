@@ -2,6 +2,7 @@
 //@flow
 
 import React from 'react';
+import ReactJson from 'react-json-view';
 import { Link } from 'react-router-dom';
 
 import type { Event } from './action';
@@ -9,19 +10,20 @@ import type { Event } from './action';
 
 class EventRow extends React.Component<Event> {
   render() {
-    let payload = JSON.stringify(this.props.data);
     return (
       <div className="row event-item">
-        <div className="col">
+        <div className="col timestamp">
           {this.props.timestamp}
         </div>
-        <div className="col">
+        <div className="col event">
           {this.props.event}
         </div>
-        <div className="col-6">
-          <pre className="verbatim">
-            <code>{payload}</code>
-          </pre>
+        <div className="col-6 payload codeblock">
+          <ReactJson
+              collapsed={1}
+              name={false}
+              src={this.props.data}
+          />
         </div>
       </div>
     );

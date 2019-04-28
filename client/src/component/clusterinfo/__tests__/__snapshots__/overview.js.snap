@@ -55,15 +55,29 @@ exports[`ClusterInfo overview renders no data 1`] = `
 exports[`ClusterInfo overview renders with data 1`] = `
 <div>
   <div>
-    Cluster nodes: 
-    3
-  </div>
-  <div>
     Cluster type: 
     <span
       className="db-icon kafka"
       title="Kafka"
     />
+  </div>
+  <div>
+    Total number of shards in the cluster: 
+    2
+  </div>
+  <div>
+    Total number of nodes in the cluster: 
+    3
+    <ul>
+      <li>
+        Of which have an agent down: 
+        0
+      </li>
+      <li>
+        Of which are down: 
+        1
+      </li>
+    </ul>
   </div>
 </div>
 `;

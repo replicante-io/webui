@@ -6,7 +6,16 @@ body div#app div.container {
   margin-top: 2em;
 }
 
+.codeblock {
+  background: rgb(247, 247, 249);
+  border-radius: 1em;
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  text-align: left;
+}
 
-@import "./overview";
 @import "./cluster";
+@import "./events";
 @import "./icons";
+@import "./overview";

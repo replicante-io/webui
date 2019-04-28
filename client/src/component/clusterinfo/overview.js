@@ -28,9 +28,16 @@ export class InnerOverview extends React.Component<Props> {
   renderData() {
     return (
         <div>
-          <div>Cluster nodes: {this.props.cluster.nodes}</div>
           <div>
             Cluster type: <ClusterKinds kinds={this.props.cluster.kinds} />
+          </div>
+          <div>Total number of shards in the cluster: {this.props.cluster.shards_count}</div>
+          <div>
+            Total number of nodes in the cluster: {this.props.cluster.nodes}
+            <ul>
+              <li>Of which have an agent down: {this.props.cluster.agents_down}</li>
+              <li>Of which are down: {this.props.cluster.nodes_down}</li>
+            </ul>
           </div>
         </div>
     );

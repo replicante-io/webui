@@ -76,7 +76,7 @@ export class InnerClusters extends React.Component<Props> {
   render() {
     const body = this.props.clusters.length ? this.renderClusters() : this.renderNoData();
     return (
-      <div className="row">
+      <div className="row space-below">
         <div className="col">
           <div className="card">
             <div className="card-header">

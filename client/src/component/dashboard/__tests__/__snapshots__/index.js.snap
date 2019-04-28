@@ -16,7 +16,7 @@ exports[`Dashboard index renders correctly 1`] = `
         <div
           className="card-header"
         >
-          Latest events
+          Largest clusters
           <button
             className="btn btn-outline-secondary fetch-button"
             disabled={false}
@@ -76,7 +76,7 @@ exports[`Dashboard index renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="row"
+    className="row space-below"
   >
     <div
       className="col"
@@ -87,7 +87,7 @@ exports[`Dashboard index renders correctly 1`] = `
         <div
           className="card-header"
         >
-          Largest clusters
+          Latest events
           <button
             className="btn btn-outline-secondary fetch-button"
             disabled={false}

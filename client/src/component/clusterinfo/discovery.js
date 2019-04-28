@@ -2,6 +2,7 @@
 //@flow
 
 import React from 'react';
+import ReactJson from 'react-json-view';
 import { connect } from 'react-redux';
 
 import { NoDataIcon } from '../icons';
@@ -25,12 +26,13 @@ export class InnerDiscovery extends React.Component<Props> {
   }
 
   renderData() {
-    const blob = JSON.stringify(this.props.discovery, null, 4);
     return (
-        <div>
-          <pre className="verbatim">
-            <code>{blob}</code>
-          </pre>
+        <div className="codeblock">
+          <ReactJson
+              collapsed={false}
+              name={false}
+              src={this.props.discovery}
+          />
         </div>
     );
   }
