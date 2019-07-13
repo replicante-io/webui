@@ -7,8 +7,6 @@ import { connect } from 'react-redux';
 import ClusterKinds from '../ClusterKinds';
 import { NoDataIcon } from '../icons';
 
-import { fetchMeta } from './action';
-
 import type { ClusterMeta } from '../dashboard/action';
 import type { ClusterInfoStore } from './store';
 
@@ -19,13 +17,7 @@ type Props = {
   id: string,
 };
 export class InnerOverview extends React.Component<Props> {
-  componentDidMount() {
-    if (!this.props.cluster) {
-      this.props.dispatch(fetchMeta(this.props.id));
-    }
-  }
-
-  renderData() {
+  render() {
     return (
         <div>
           <div>
@@ -42,30 +34,21 @@ export class InnerOverview extends React.Component<Props> {
         </div>
     );
   }
-
-  render() {
-    if (this.props.cluster) {
-      return this.renderData();
-    }
-    return (
-      <div className="text-center">
-        <NoDataIcon />
-        No information available. <br />
-        If nothing shows up the cluster may not exist.
-      </div>
-    );
-  }
 }
 
 
 /** Map the redux state to properties passed to Button. */
+type PartialProps = {
+  cluster: ClusterMeta,
+  match: any,
+}
 type PartialState = {
   clusterinfo: ClusterInfoStore,
 }
-export function mapStateToProps(state: PartialState, props: {match: any}) {
+export function mapStateToProps(state: PartialState, props: PartialProps) {
   const id = props.match.params.name;
   return {
-    cluster: state.clusterinfo.meta[id] || null,
+    cluster: props.cluster,
     id: id,
   };
 }

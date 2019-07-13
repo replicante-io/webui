@@ -18,8 +18,8 @@ import ClusterInfo from '../index';
 const mockStore = configureStore([]);
 const MATCH = {
   params: {name: 'test'},
-  path: 'about:black/clusters/test/',
-  url: 'about:black/clusters/:name/',
+  path: 'about:blank/clusters/test/',
+  url: 'about:blank/clusters/:name/',
 };
 
 
@@ -30,12 +30,27 @@ describe('ClusterInfo', () => {
     beforeEach(() => {
       store = mockStore({
         clusterinfo: {
-          discovery: {}
+          discovery: {},
+          meta: {}
         }
       });
     });
 
     test('renders index', () => {
+      store = mockStore({ clusterinfo: { meta: {
+        'test': {}
+      } } });
+      const tree = renderer.create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ClusterInfo match={MATCH} />
+          </Provider>
+        </BrowserRouter>
+      ).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    test('renders index loading', () => {
       const tree = renderer.create(
         <BrowserRouter>
           <Provider store={store}>
