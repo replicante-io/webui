@@ -1,6 +1,7 @@
 'use strict';
 //@flow
 
+import { CLUSTER_STORE_AGENTS } from '../action';
 import { CLUSTER_STORE_DISCOVERY } from '../action';
 import { CLUSTER_STORE_EVENTS } from '../action';
 import { CLUSTER_STORE_META } from '../action';
@@ -9,6 +10,13 @@ import { defaultState } from '../store';
 import { reducer } from '../store';
 
 
+const AGENTS = [{
+  host: 'http://host1:1234',
+  status: { code: 'UP' },
+  version_checkout: null,
+  version_number: 'abc',
+  version_taint: null,
+}];
 const DISCOVERY = {
   cluster_id: 'test',
   display_name: null,
@@ -37,6 +45,21 @@ const META = {
 describe('Clusters', () => {
   describe('store', () => {
 
+    test('CLUSTER_STORE_AGENTS', () => {
+      let action = {
+        type: CLUSTER_STORE_AGENTS,
+        cluster_id: 'test',
+        agents: AGENTS,
+      };
+      let state = reducer(defaultState, action);
+      expect(state).toEqual({
+        agents: {'test': AGENTS},
+        discovery: {},
+        events: {},
+        meta: {},
+      });
+    });
+
     test('CLUSTER_STORE_DISCOVERY', () => {
       let action = {
         type: CLUSTER_STORE_DISCOVERY,
@@ -44,6 +67,7 @@ describe('Clusters', () => {
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
+        agents: {},
         discovery: {'test': DISCOVERY},
         events: {},
         meta: {},
@@ -58,6 +82,7 @@ describe('Clusters', () => {
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
+        agents: {},
         discovery: {},
         events: {'test': EVENTS},
         meta: {},
@@ -71,6 +96,7 @@ describe('Clusters', () => {
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
+        agents: {},
         discovery:{},
         events: {},
         meta: {'test': META},

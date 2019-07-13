@@ -8,14 +8,25 @@ const API_UNSTABLE_ROOT = `${BACKEND_ROOT}/api/unstable`;
 const API_UNSTABLE_WEBUI = `${API_UNSTABLE_ROOT}/webui`;
 
 
+proxy.get('/cluster/:cluster/agents', (req, res) => {
+  let cluster = req.params.cluster;
+  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/agents`).then((response) => {
+    res.json(JSON.parse(response));
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster agents: %s", error);
+    res.status(500).json({error: "failed to fetch cluster agents"});
+  });
+});
+
 proxy.get('/cluster/:cluster/discovery', (req, res) => {
   let cluster = req.params.cluster;
   request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/discovery`).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
-    console.log("[ERROR] Failed to fetch cluster meta: %s", error);
-    res.status(500).json({error: "failed to fetch cluster meta"});
+    console.log("[ERROR] Failed to fetch cluster discovery: %s", error);
+    res.status(500).json({error: "failed to fetch cluster discovery"});
   });
 });
 

@@ -122,59 +122,7 @@ exports[`Dashboard events renders with events 1`] = `
                               </svg>
                             </span>
                           </div>
-                          <span
-                            style={
-                              Object {
-                                ":hover": Object {
-                                  "opacity": "1",
-                                },
-                                "color": "#002b36",
-                                "display": "inline-block",
-                                "fontStyle": "none",
-                                "letterSpacing": "0.5px",
-                                "opacity": "0.85",
-                                "verticalAlign": "top",
-                              }
-                            }
-                          >
-                            <span
-                              className="object-key"
-                            >
-                              <span
-                                style={
-                                  Object {
-                                    "verticalAlign": "top",
-                                  }
-                                }
-                              >
-                                "
-                              </span>
-                              <span>
-                                ERROR
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "verticalAlign": "top",
-                                  }
-                                }
-                              >
-                                "
-                              </span>
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#002b36",
-                                  "display": "inline-block",
-                                  "margin": "0px 5px",
-                                  "verticalAlign": "top",
-                                }
-                              }
-                            >
-                              :
-                            </span>
-                          </span>
+                          <span />
                           <span
                             style={
                               Object {
@@ -315,7 +263,7 @@ exports[`Dashboard events renders with events 1`] = `
                                     }
                                   }
                                 >
-                                  message
+                                  SOME
                                 </span>
                                 <span
                                   style={
@@ -382,7 +330,7 @@ exports[`Dashboard events renders with events 1`] = `
                                   }
                                 >
                                   "
-                                  src property must be a valid json object
+                                  DATA
                                   "
                                 </span>
                               </div>
@@ -529,59 +477,7 @@ exports[`Dashboard events renders with events 1`] = `
                               </svg>
                             </span>
                           </div>
-                          <span
-                            style={
-                              Object {
-                                ":hover": Object {
-                                  "opacity": "1",
-                                },
-                                "color": "#002b36",
-                                "display": "inline-block",
-                                "fontStyle": "none",
-                                "letterSpacing": "0.5px",
-                                "opacity": "0.85",
-                                "verticalAlign": "top",
-                              }
-                            }
-                          >
-                            <span
-                              className="object-key"
-                            >
-                              <span
-                                style={
-                                  Object {
-                                    "verticalAlign": "top",
-                                  }
-                                }
-                              >
-                                "
-                              </span>
-                              <span>
-                                ERROR
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "verticalAlign": "top",
-                                  }
-                                }
-                              >
-                                "
-                              </span>
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#002b36",
-                                  "display": "inline-block",
-                                  "margin": "0px 5px",
-                                  "verticalAlign": "top",
-                                }
-                              }
-                            >
-                              :
-                            </span>
-                          </span>
+                          <span />
                           <span
                             style={
                               Object {
@@ -722,7 +618,7 @@ exports[`Dashboard events renders with events 1`] = `
                                     }
                                   }
                                 >
-                                  message
+                                  SOME
                                 </span>
                                 <span
                                   style={
@@ -789,7 +685,7 @@ exports[`Dashboard events renders with events 1`] = `
                                   }
                                 >
                                   "
-                                  src property must be a valid json object
+                                  DATA
                                   "
                                 </span>
                               </div>

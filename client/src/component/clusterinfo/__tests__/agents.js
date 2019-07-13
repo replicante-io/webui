@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
-import Events from '../events';
+import Agents from '../agents';
 
 
 const mockStore = configureStore([]);
@@ -18,13 +18,13 @@ const MATCH = {
 
 
 describe('ClusterInfo', () => {
-  describe('events', () => {
+  describe('agents', () => {
     let store;
 
     beforeEach(() => {
       store = mockStore({
         clusterinfo: {
-          events: {}
+          agents: {}
         }
       });
     });
@@ -32,23 +32,25 @@ describe('ClusterInfo', () => {
     test('renders no data', () => {
       const tree = renderer.create(
         <Provider store={store}>
-          <Events match={MATCH} />
+          <Agents match={MATCH} />
         </Provider>
       ).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     test('renders with data', () => {
-      store = mockStore({ clusterinfo: { events: {
+      store = mockStore({ clusterinfo: { agents: {
         'test': [{
-          data: {"SOME": "DATA"},
-          event: "AGENT_DOWN",
-          timestamp: "2018-04-28T17:57:24.540480643Z"
+          host: 'http://host1:1234',
+          status: { code: 'UP' },
+          version_checkout: null,
+          version_number: 'abc',
+          version_taint: null,
         }]
       } } });
       const tree = renderer.create(
         <Provider store={store}>
-          <Events match={MATCH} />
+          <Agents match={MATCH} />
         </Provider>
       ).toJSON();
       expect(tree).toMatchSnapshot();

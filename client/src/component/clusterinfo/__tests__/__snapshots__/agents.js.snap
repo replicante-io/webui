@@ -1,49 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ClusterInfo index renders index 1`] = `
-<div>
-  <h1 />
-  <div
-    className="cluster-tabs"
-  >
-    <a
-      aria-current={null}
-      className="tab"
-      href="/about:blank/clusters/:name/overview"
-      onClick={[Function]}
-    >
-      Overview
-    </a>
-    <a
-      aria-current={null}
-      className="tab"
-      href="/about:blank/clusters/:name/discovery"
-      onClick={[Function]}
-    >
-      Discovery
-    </a>
-    <a
-      aria-current={null}
-      className="tab"
-      href="/about:blank/clusters/:name/agents"
-      onClick={[Function]}
-    >
-      Agents
-    </a>
-    <a
-      aria-current={null}
-      className="tab"
-      href="/about:blank/clusters/:name/events"
-      onClick={[Function]}
-    >
-      Events
-    </a>
-  </div>
-  <div />
-</div>
-`;
-
-exports[`ClusterInfo index renders index loading 1`] = `
+exports[`ClusterInfo agents renders no data 1`] = `
 <div
   className="text-center"
 >
@@ -95,4 +52,39 @@ exports[`ClusterInfo index renders index loading 1`] = `
 </div>
 `;
 
-exports[`ClusterInfo index renders redirect 1`] = `null`;
+exports[`ClusterInfo agents renders with data 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr>
+      <th>
+        Address
+      </th>
+      <th>
+        Status
+      </th>
+      <th>
+        Version
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        http://host1:1234
+      </td>
+      <td>
+        UP
+        <br />
+      </td>
+      <td>
+        <div>
+          SemVer: 
+          abc
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

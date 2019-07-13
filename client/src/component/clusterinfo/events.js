@@ -2,7 +2,6 @@
 //@flow
 
 import React from 'react';
-import ReactJson from 'react-json-view';
 import { connect } from 'react-redux';
 
 import { fetchEvents } from './action';

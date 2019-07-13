@@ -6,23 +6,34 @@ import { all } from 'redux-saga/effects';
 import { call, put } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga/effects';
 
+import { CLUSTER_FETCH_AGENTS } from '../action';
 import { CLUSTER_FETCH_DISCOVERY } from '../action';
 import { CLUSTER_FETCH_EVENTS } from '../action';
 import { CLUSTER_FETCH_META } from '../action';
+import { CLUSTER_STORE_AGENTS } from '../action';
 import { CLUSTER_STORE_DISCOVERY } from '../action';
 import { CLUSTER_STORE_EVENTS } from '../action';
 import { CLUSTER_STORE_META } from '../action';
 
+import { fetchAgents as fetchAgentsApi } from '../api';
 import { fetchDiscovery as fetchDiscoveryApi } from '../api';
 import { fetchEvents as fetchEventsApi } from '../api';
 import { fetchMeta as fetchMetaApi } from '../api';
 
+import { fetchAgents } from '../saga';
 import { fetchDiscovery } from '../saga';
 import { fetchEvents } from '../saga';
 import { fetchMeta } from '../saga';
 import { saga } from '../saga';
 
 
+const AGENTS = [{
+  host: 'http://host1:1234',
+  status: { code: 'UP' },
+  version_checkout: null,
+  version_number: 'abc',
+  version_taint: null,
+}];
 const DISCOVERY = {
   cluster_id: 'test',
   cluster_display_name: null,
@@ -54,10 +65,30 @@ describe('Clusters', () => {
     test('saga takes every', () => {
       const run = saga();
       expect(run.next().value).toEqual(all([
+        takeEvery(CLUSTER_FETCH_AGENTS, fetchAgents),
         takeEvery(CLUSTER_FETCH_DISCOVERY, fetchDiscovery),
         takeEvery(CLUSTER_FETCH_EVENTS, fetchEvents),
         takeEvery(CLUSTER_FETCH_META, fetchMeta)
       ]));
+    });
+
+    describe('fetchAgents', () => {
+      test('calls the fetch function', () => {
+        const action = {type: CLUSTER_FETCH_AGENTS, cluster_id: 'test'};
+        const run = fetchAgents(action);
+        expect(run.next().value).toEqual(
+          call(fetchAgentsApi, 'test')
+        );
+      });
+
+      test('emits CLUSTER_STORE_AGENTS action', () => { 
+        const action = {type: CLUSTER_FETCH_AGENTS, cluster_id: 'test'};
+        const run = fetchAgents(action);
+        run.next();  // Skip call to fetch
+        expect(run.next(AGENTS).value).toEqual(
+          put({type: CLUSTER_STORE_AGENTS, cluster_id: 'test', agents: AGENTS})
+        );
+      });
     });
 
     describe('fetchDiscovery', () => {

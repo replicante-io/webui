@@ -3,12 +3,15 @@
 
 import type { ClusterMeta } from '../dashboard/action';
 
+import { CLUSTER_STORE_AGENTS } from './action';
 import { CLUSTER_STORE_DISCOVERY } from './action';
 import { CLUSTER_STORE_EVENTS } from './action';
 import { CLUSTER_STORE_META } from './action';
 
+import type { AgentDetails } from './action';
 import type { ClusterDiscovery } from './action';
 import type { ClusterInfoAction } from './action';
+import type { ClusterStoreAgentsAction } from './action';
 import type { ClusterStoreDiscoveryAction } from './action';
 import type { ClusterStoreEventsAction } from './action';
 import type { ClusterStoreMetaAction } from './action';
@@ -16,6 +19,7 @@ import type { Event } from '../events/action';
 
 
 export type ClusterInfoStore = {
+  agents: {[string]: Array<AgentDetails>},
   discovery: {[string]: ClusterDiscovery},
   events: {[string]: Array<Event>},
   meta: {[string]: ClusterMeta},
@@ -23,6 +27,7 @@ export type ClusterInfoStore = {
 
 
 export const defaultState: ClusterInfoStore = {
+  agents: {},
   discovery: {},
   events: {},
   meta: {},
@@ -31,6 +36,7 @@ export const defaultState: ClusterInfoStore = {
 
 export function reducer(state: ClusterInfoStore = defaultState, action: ClusterInfoAction) {
   switch (action.type) {
+    case CLUSTER_STORE_AGENTS: return storeAgents(state, action);
     case CLUSTER_STORE_DISCOVERY: return storeDiscovery(state, action);
     case CLUSTER_STORE_EVENTS: return storeEvents(state, action);
     case CLUSTER_STORE_META: return storeMeta(state, action);
@@ -38,6 +44,16 @@ export function reducer(state: ClusterInfoStore = defaultState, action: ClusterI
     default:
       return state;
   }
+}
+
+
+function storeAgents(state: ClusterInfoStore, action: ClusterStoreAgentsAction) {
+  let newState: ClusterInfoStore = {
+    ...state,
+    agents: {...state.agents},
+  };
+  newState.agents[action.cluster_id] = action.agents;
+  return newState;
 }
 
 

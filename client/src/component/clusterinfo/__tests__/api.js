@@ -4,11 +4,19 @@
 import fetch from 'jest-fetch-mock';
 global.fetch = fetch;
 
+import { fetchAgents } from '../api';
 import { fetchDiscovery } from '../api';
 import { fetchEvents } from '../api';
 import { fetchMeta } from '../api';
 
 
+const AGENTS = [{
+  host: 'http://host1:1234',
+  status: { code: 'UP' },
+  version_checkout: null,
+  version_number: 'abc',
+  version_taint: null,
+}];
 const DISCOVERY = {
   cluster_id: 'test',
   display_name: null,
@@ -38,6 +46,23 @@ describe('ClusterInfo', () => {
   describe('api', () => {
     beforeEach(() => {
       fetch.resetMocks()
+    });
+
+    describe('fetchAgents', () => {
+      test('fulfill', () => {
+        fetch.mockResponse(JSON.stringify(AGENTS));
+        return fetchAgents('test').then((agents) => {
+          expect(agents).toEqual(AGENTS);
+        });
+      });
+
+      test('fullfill with error', () => {
+        fetch.mockResponse(JSON.stringify({error: 'test'}), {status: 500});
+        return fetchAgents('test').then(
+          () => { throw Error('Expected error') },
+          () => { }
+        );
+      });
     });
 
     describe('fetchDiscovery', () => {
