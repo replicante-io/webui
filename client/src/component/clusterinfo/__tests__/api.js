@@ -8,6 +8,7 @@ import { fetchAgents } from '../api';
 import { fetchDiscovery } from '../api';
 import { fetchEvents } from '../api';
 import { fetchMeta } from '../api';
+import { fetchNodes } from '../api';
 
 
 const AGENTS = [{
@@ -40,6 +41,12 @@ const META = {
   shards_count: 2,
   shards_primaries: 1,
 };
+const NODES = [{
+  cluster_id: "replistore",
+  kind: "MongoDB",
+  node_id: "localhost:27017",
+  version: "4.0.10",
+}];
 
 
 describe('ClusterInfo', () => {
@@ -110,6 +117,23 @@ describe('ClusterInfo', () => {
       test('fullfill with error', () => {
         fetch.mockResponse(JSON.stringify({error: 'test'}), {status: 500});
         return fetchMeta('test').then(
+          () => { throw Error('Expected error') },
+          () => { }
+        );
+      });
+    });
+
+    describe('fetchNodes', () => {
+      test('fulfill', () => {
+        fetch.mockResponse(JSON.stringify(NODES));
+        return fetchNodes('test').then((nodes) => {
+          expect(nodes).toEqual(NODES);
+        });
+      });
+
+      test('fullfill with error', () => {
+        fetch.mockResponse(JSON.stringify({error: 'test'}), {status: 500});
+        return fetchNodes('test').then(
           () => { throw Error('Expected error') },
           () => { }
         );

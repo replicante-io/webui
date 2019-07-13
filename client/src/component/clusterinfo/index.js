@@ -19,6 +19,7 @@ import Agents from './agents';
 import Discovery from './discovery';
 import Events from './events';
 import Overview from './overview';
+import Nodes from './nodes';
 
 
 export class OverviewRedirect extends React.Component<{match: any}> {
@@ -65,12 +66,14 @@ export class InnerCluster extends React.Component<Props> {
     const discovery = `${root}/discovery`;
     const events = `${root}/events`;
     const overview = `${root}/overview`;
+    const nodes = `${root}/nodes`;
     return (
       <div>
         <Route exact path={root} component={OverviewRedirect} />
         <Route path={overview} render={props => <Overview cluster={meta} {...props} />} />
         <Route path={discovery} component={Discovery} />
         <Route path={agents} component={Agents} />
+        <Route path={nodes} component={Nodes} />
         <Route path={events} component={Events} />
       </div>
     );
@@ -85,11 +88,13 @@ export class InnerCluster extends React.Component<Props> {
     const discovery = `${root}/discovery`;
     const events = `${root}/events`;
     const overview = `${root}/overview`;
+    const nodes = `${root}/nodes`;
     return (
       <div className="cluster-tabs">
         <NavLink className="tab" to={overview}>Overview</NavLink>
         <NavLink className="tab" to={discovery}>Discovery</NavLink>
         <NavLink className="tab" to={agents}>Agents</NavLink>
+        <NavLink className="tab" to={nodes}>Nodes</NavLink>
         <NavLink className="tab" to={events}>Events</NavLink>
       </div>
     );

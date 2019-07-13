@@ -9,20 +9,24 @@ import { CLUSTER_FETCH_AGENTS } from './action';
 import { CLUSTER_FETCH_DISCOVERY } from './action';
 import { CLUSTER_FETCH_EVENTS } from './action';
 import { CLUSTER_FETCH_META } from './action';
+import { CLUSTER_FETCH_NODES } from './action';
 import { CLUSTER_STORE_AGENTS } from './action';
 import { CLUSTER_STORE_DISCOVERY } from './action';
 import { CLUSTER_STORE_EVENTS } from './action';
 import { CLUSTER_STORE_META } from './action';
+import { CLUSTER_STORE_NODES } from './action';
 
 import { fetchAgents as fetchAgentsApi } from './api';
 import { fetchDiscovery as fetchDiscoveryApi } from './api';
 import { fetchEvents as fetchEventsApi } from './api';
 import { fetchMeta as fetchMetaApi } from './api';
+import { fetchNodes as fetchNodesApi } from './api';
 
 import type { ClusterFetchAgentsAction } from './action';
 import type { ClusterFetchDiscoveryAction } from './action';
 import type { ClusterFetchEventsAction } from './action';
 import type { ClusterFetchMetaAction } from './action';
+import type { ClusterFetchNodesAction } from './action';
 
 
 /**
@@ -57,12 +61,21 @@ export function* fetchMeta(action: ClusterFetchMetaAction): any {
   yield put({type: CLUSTER_STORE_META, meta: meta});
 }
 
+/**
+ * Fetches a cluster's nodes and stores them in redux.
+ */
+export function* fetchNodes(action: ClusterFetchNodesAction): any {
+  let nodes = yield call(fetchNodesApi, action.cluster_id);
+  yield put({type: CLUSTER_STORE_NODES, cluster_id: action.cluster_id, nodes: nodes});
+}
+
 /** Main saga for the datafetch component. */
 export function* saga(): any {
   yield all([
     takeEvery(CLUSTER_FETCH_AGENTS, fetchAgents),
     takeEvery(CLUSTER_FETCH_DISCOVERY, fetchDiscovery),
     takeEvery(CLUSTER_FETCH_EVENTS, fetchEvents),
-    takeEvery(CLUSTER_FETCH_META, fetchMeta)
+    takeEvery(CLUSTER_FETCH_META, fetchMeta),
+    takeEvery(CLUSTER_FETCH_NODES, fetchNodes),
   ]);
 }

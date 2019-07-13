@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
-import Agents from '../agents';
+import Nodes from '../nodes';
 
 
 const mockStore = configureStore([]);
@@ -18,13 +18,13 @@ const MATCH = {
 
 
 describe('ClusterInfo', () => {
-  describe('agents', () => {
+  describe('nodes', () => {
     let store;
 
     beforeEach(() => {
       store = mockStore({
         clusterinfo: {
-          agents: {}
+          nodes: {}
         }
       });
     });
@@ -32,34 +32,24 @@ describe('ClusterInfo', () => {
     test('renders no data', () => {
       const tree = renderer.create(
         <Provider store={store}>
-          <Agents match={MATCH} />
+          <Nodes match={MATCH} />
         </Provider>
       ).toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     test('renders with data', () => {
-      store = mockStore({ clusterinfo: { agents: {
+      store = mockStore({ clusterinfo: { nodes: {
         'test': [{
-          host: 'http://host1:1234',
-          status: { code: 'UP' },
-          version_checkout: null,
-          version_number: 'abc',
-          version_taint: null,
-        }, {
-          host: 'http://host1:1234',
-          status: {
-            code: 'DOWN',
-            data: "some reason"
-          },
-          version_checkout: 'def',
-          version_number: null,
-          version_taint: 'yes',
+          cluster_id: "replistore",
+          kind: "MongoDB",
+          node_id: "localhost:27017",
+          version: "4.0.10",
         }]
       } } });
       const tree = renderer.create(
         <Provider store={store}>
-          <Agents match={MATCH} />
+          <Nodes match={MATCH} />
         </Provider>
       ).toJSON();
       expect(tree).toMatchSnapshot();

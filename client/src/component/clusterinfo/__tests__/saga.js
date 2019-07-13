@@ -10,20 +10,24 @@ import { CLUSTER_FETCH_AGENTS } from '../action';
 import { CLUSTER_FETCH_DISCOVERY } from '../action';
 import { CLUSTER_FETCH_EVENTS } from '../action';
 import { CLUSTER_FETCH_META } from '../action';
+import { CLUSTER_FETCH_NODES } from '../action';
 import { CLUSTER_STORE_AGENTS } from '../action';
 import { CLUSTER_STORE_DISCOVERY } from '../action';
 import { CLUSTER_STORE_EVENTS } from '../action';
 import { CLUSTER_STORE_META } from '../action';
+import { CLUSTER_STORE_NODES } from '../action';
 
 import { fetchAgents as fetchAgentsApi } from '../api';
 import { fetchDiscovery as fetchDiscoveryApi } from '../api';
 import { fetchEvents as fetchEventsApi } from '../api';
 import { fetchMeta as fetchMetaApi } from '../api';
+import { fetchNodes as fetchNodesApi } from '../api';
 
 import { fetchAgents } from '../saga';
 import { fetchDiscovery } from '../saga';
 import { fetchEvents } from '../saga';
 import { fetchMeta } from '../saga';
+import { fetchNodes } from '../saga';
 import { saga } from '../saga';
 
 
@@ -57,6 +61,12 @@ const META = {
   shards_count: 2,
   shards_primaries: 1,
 };
+const NODES = [{
+  cluster_id: "replistore",
+  kind: "MongoDB",
+  node_id: "localhost:27017",
+  version: "4.0.10",
+}];
 
 
 describe('Clusters', () => {
@@ -68,7 +78,8 @@ describe('Clusters', () => {
         takeEvery(CLUSTER_FETCH_AGENTS, fetchAgents),
         takeEvery(CLUSTER_FETCH_DISCOVERY, fetchDiscovery),
         takeEvery(CLUSTER_FETCH_EVENTS, fetchEvents),
-        takeEvery(CLUSTER_FETCH_META, fetchMeta)
+        takeEvery(CLUSTER_FETCH_META, fetchMeta),
+        takeEvery(CLUSTER_FETCH_NODES, fetchNodes),
       ]));
     });
 
@@ -144,6 +155,25 @@ describe('Clusters', () => {
         run.next();  // Skip call to fetch
         expect(run.next(META).value).toEqual(
           put({type: CLUSTER_STORE_META, meta: META})
+        );
+      });
+    });
+
+    describe('fetchNodes', () => {
+      test('calls the fetch function', () => {
+        const action = {type: CLUSTER_FETCH_NODES, cluster_id: 'test'};
+        const run = fetchNodes(action);
+        expect(run.next().value).toEqual(
+          call(fetchNodesApi, 'test')
+        );
+      });
+
+      test('emits CLUSTER_STORE_NODES action', () => {
+        const action = {type: CLUSTER_FETCH_NODES, cluster_id: 'test'};
+        const run = fetchNodes(action);
+        run.next();  // Skip call to fetch
+        expect(run.next(NODES).value).toEqual(
+          put({type: CLUSTER_STORE_NODES, cluster_id: 'test', nodes: NODES})
         );
       });
     });

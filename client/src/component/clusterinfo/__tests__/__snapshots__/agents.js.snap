@@ -85,6 +85,28 @@ exports[`ClusterInfo agents renders with data 1`] = `
         </div>
       </td>
     </tr>
+    <tr>
+      <td>
+        http://host1:1234
+      </td>
+      <td>
+        DOWN
+        <br />
+        <small>
+          some reason
+        </small>
+      </td>
+      <td>
+        <div>
+          Git SHA: 
+          def
+        </div>
+        <div>
+          Git taint indicator: 
+          yes
+        </div>
+      </td>
+    </tr>
   </tbody>
 </table>
 `;

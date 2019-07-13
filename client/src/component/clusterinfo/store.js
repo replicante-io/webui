@@ -7,6 +7,7 @@ import { CLUSTER_STORE_AGENTS } from './action';
 import { CLUSTER_STORE_DISCOVERY } from './action';
 import { CLUSTER_STORE_EVENTS } from './action';
 import { CLUSTER_STORE_META } from './action';
+import { CLUSTER_STORE_NODES } from './action';
 
 import type { AgentDetails } from './action';
 import type { ClusterDiscovery } from './action';
@@ -15,7 +16,9 @@ import type { ClusterStoreAgentsAction } from './action';
 import type { ClusterStoreDiscoveryAction } from './action';
 import type { ClusterStoreEventsAction } from './action';
 import type { ClusterStoreMetaAction } from './action';
+import type { ClusterStoreNodesAction } from './action';
 import type { Event } from '../events/action';
+import type { NodeInfo } from './action';
 
 
 export type ClusterInfoStore = {
@@ -23,6 +26,7 @@ export type ClusterInfoStore = {
   discovery: {[string]: ClusterDiscovery},
   events: {[string]: Array<Event>},
   meta: {[string]: ClusterMeta},
+  nodes: {[string]: Array<NodeInfo>},
 };
 
 
@@ -31,6 +35,7 @@ export const defaultState: ClusterInfoStore = {
   discovery: {},
   events: {},
   meta: {},
+  nodes: {},
 };
 
 
@@ -40,6 +45,7 @@ export function reducer(state: ClusterInfoStore = defaultState, action: ClusterI
     case CLUSTER_STORE_DISCOVERY: return storeDiscovery(state, action);
     case CLUSTER_STORE_EVENTS: return storeEvents(state, action);
     case CLUSTER_STORE_META: return storeMeta(state, action);
+    case CLUSTER_STORE_NODES: return storeNodes(state, action);
 
     default:
       return state;
@@ -81,5 +87,14 @@ function storeMeta(state: ClusterInfoStore, action: ClusterStoreMetaAction) {
     meta: {...state.meta},
   };
   newState.meta[action.meta.cluster_id] = action.meta;
+  return newState;
+}
+
+function storeNodes(state: ClusterInfoStore, action: ClusterStoreNodesAction) {
+  let newState: ClusterInfoStore = {
+    ...state,
+    nodes: {...state.nodes},
+  };
+  newState.nodes[action.cluster_id] = action.nodes;
   return newState;
 }

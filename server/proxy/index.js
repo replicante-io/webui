@@ -52,6 +52,17 @@ proxy.get('/cluster/:cluster/meta', (req, res) => {
   });
 });
 
+proxy.get('/cluster/:cluster/nodes', (req, res) => {
+  let cluster = req.params.cluster;
+  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/nodes`).then((response) => {
+    res.json(JSON.parse(response));
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster nodes: %s", error);
+    res.status(500).json({error: "failed to fetch cluster nodes"});
+  });
+});
+
 
 proxy.post('/clusters/search', express.json(), (req, res) => {
   let search = req.body.search || '';

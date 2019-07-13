@@ -5,6 +5,7 @@ import { CLUSTER_STORE_AGENTS } from '../action';
 import { CLUSTER_STORE_DISCOVERY } from '../action';
 import { CLUSTER_STORE_EVENTS } from '../action';
 import { CLUSTER_STORE_META } from '../action';
+import { CLUSTER_STORE_NODES } from '../action';
 
 import { defaultState } from '../store';
 import { reducer } from '../store';
@@ -40,6 +41,12 @@ const META = {
   shards_count: 2,
   shards_primaries: 1,
 };
+const NODES = [{
+  cluster_id: "replistore",
+  kind: "MongoDB",
+  node_id: "localhost:27017",
+  version: "4.0.10",
+}];
 
 
 describe('Clusters', () => {
@@ -57,13 +64,14 @@ describe('Clusters', () => {
         discovery: {},
         events: {},
         meta: {},
+        nodes: {},
       });
     });
 
     test('CLUSTER_STORE_DISCOVERY', () => {
       let action = {
         type: CLUSTER_STORE_DISCOVERY,
-        discovery: DISCOVERY
+        discovery: DISCOVERY,
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
@@ -71,6 +79,7 @@ describe('Clusters', () => {
         discovery: {'test': DISCOVERY},
         events: {},
         meta: {},
+        nodes: {},
       });
     });
 
@@ -86,13 +95,14 @@ describe('Clusters', () => {
         discovery: {},
         events: {'test': EVENTS},
         meta: {},
+        nodes: {},
       });
     });
 
     test('CLUSTER_STORE_META', () => {
       let action = {
         type: CLUSTER_STORE_META,
-        meta: META
+        meta: META,
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
@@ -100,6 +110,23 @@ describe('Clusters', () => {
         discovery:{},
         events: {},
         meta: {'test': META},
+        nodes: {},
+      });
+    });
+
+    test('CLUSTER_STORE_NODES', () => {
+      let action = {
+        type: CLUSTER_STORE_NODES,
+        cluster_id: 'test',
+        nodes: NODES,
+      };
+      let state = reducer(defaultState, action);
+      expect(state).toEqual({
+        agents: {},
+        discovery:{},
+        events: {},
+        meta: {},
+        nodes: {'test': NODES},
       });
     });
 

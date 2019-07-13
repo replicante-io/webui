@@ -24,16 +24,25 @@ export type ClusterDiscovery = {
   nodes: Array<string>,
 }
 
+export type NodeInfo = {
+  cluster_id: string,
+  kind: string,
+  node_id: string,
+  version: string,
+}
+
 
 /** Name actions for type checking. */
 export const CLUSTER_FETCH_AGENTS = 'CLUSTER_FETCH_AGENTS';
 export const CLUSTER_FETCH_DISCOVERY = 'CLUSTER_FETCH_DISCOVERY';
 export const CLUSTER_FETCH_EVENTS = 'CLUSTER_FETCH_EVENTS';
 export const CLUSTER_FETCH_META = 'CLUSTER_FETCH_META';
+export const CLUSTER_FETCH_NODES = 'CLUSTER_FETCH_NODES';
 export const CLUSTER_STORE_AGENTS = 'CLUSTER_STORE_AGENTS';
 export const CLUSTER_STORE_DISCOVERY = 'CLUSTER_STORE_DISCOVERY';
 export const CLUSTER_STORE_EVENTS = 'CLUSTER_STORE_EVENTS';
 export const CLUSTER_STORE_META = 'CLUSTER_STORE_META';
+export const CLUSTER_STORE_NODES = 'CLUSTER_STORE_NODES';
 
 
 /** Type enum of all possible fetch actions. */
@@ -53,6 +62,11 @@ export type ClusterFetchEventsAction = {
 
 export type ClusterFetchMetaAction = {
   +type: typeof CLUSTER_FETCH_META,
+  +cluster_id: string,
+};
+
+export type ClusterFetchNodesAction = {
+  +type: typeof CLUSTER_FETCH_NODES,
   +cluster_id: string,
 };
 
@@ -78,15 +92,23 @@ export type ClusterStoreMetaAction = {
   +meta: ClusterMeta,
 };
 
+export type ClusterStoreNodesAction = {
+  +type: typeof CLUSTER_STORE_NODES,
+  +cluster_id: string,
+  +nodes: Array<NodeInfo>,
+};
+
 export type ClusterInfoAction =
   ClusterFetchAgentsAction |
   ClusterFetchDiscoveryAction |
   ClusterFetchEventsAction |
   ClusterFetchMetaAction |
+  ClusterFetchNodesAction |
   ClusterStoreAgentsAction |
   ClusterStoreDiscoveryAction |
   ClusterStoreEventsAction |
   ClusterStoreMetaAction |
+  ClusterStoreNodesAction |
   {type: 'FLOW_CATCH_ALL'};
 
 
@@ -114,6 +136,13 @@ export function fetchEvents(cluster: string): ClusterFetchEventsAction {
 export function fetchMeta(cluster: string): ClusterFetchMetaAction {
   return {
     type: CLUSTER_FETCH_META,
+    cluster_id: cluster,
+  };
+}
+
+export function fetchNodes(cluster: string): ClusterFetchNodesAction {
+  return {
+    type: CLUSTER_FETCH_NODES,
     cluster_id: cluster,
   };
 }
