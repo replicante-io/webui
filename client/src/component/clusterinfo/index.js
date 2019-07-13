@@ -16,6 +16,7 @@ import type { ClusterInfoStore } from './store';
 import { fetchMeta } from './action';
 import { NoDataIcon } from '../icons';
 import Discovery from './discovery';
+import Events from './events';
 import Overview from './overview';
 
 
@@ -45,12 +46,6 @@ export class InnerCluster extends React.Component<Props> {
   }
 
   renderComponent(meta: ClusterMeta) {
-    let root = `${this.props.match.url}`;
-    if (root.endsWith('/')) {
-      root = root.substring(0, root.length - 1);
-    }
-    const discovery = `${root}/discovery`;
-    const overview = `${root}/overview`;
     return (
       <div>
         <h1>{meta.cluster_display_name}</h1>
@@ -66,12 +61,14 @@ export class InnerCluster extends React.Component<Props> {
       root = root.substring(0, root.length - 1);
     }
     const discovery = `${root}/discovery`;
+    const events = `${root}/events`;
     const overview = `${root}/overview`;
     return (
       <div>
         <Route exact path={root} component={OverviewRedirect} />
         <Route path={overview} render={props => <Overview cluster={meta} {...props} />} />
         <Route path={discovery} component={Discovery} />
+        <Route path={events} component={Events} />
       </div>
     );
   }
@@ -82,11 +79,13 @@ export class InnerCluster extends React.Component<Props> {
       root = root.substring(0, root.length - 1);
     }
     const discovery = `${root}/discovery`;
+    const events = `${root}/events`;
     const overview = `${root}/overview`;
     return (
       <div className="cluster-tabs">
         <NavLink className="tab" to={overview}>Overview</NavLink>
         <NavLink className="tab" to={discovery}>Discovery</NavLink>
+        <NavLink className="tab" to={events}>Events</NavLink>
       </div>
     );
   }

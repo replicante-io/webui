@@ -1,0 +1,463 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClusterInfo events renders no data 1`] = `
+<div
+  className="text-center"
+>
+  <p
+    className="large-icon nodata"
+  >
+    <span
+      className="fa-layers fa-fw"
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-database fa-w-14 "
+        data-icon="database"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 448 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M448 73.143v45.714C448 159.143 347.667 192 224 192S0 159.143 0 118.857V73.143C0 32.857 100.333 0 224 0s224 32.857 224 73.143zM448 176v102.857C448 319.143 347.667 352 224 352S0 319.143 0 278.857V176c48.125 33.143 136.208 48.572 224 48.572S399.874 209.143 448 176zm0 160v102.857C448 479.143 347.667 512 224 512S0 479.143 0 438.857V336c48.125 33.143 136.208 48.572 224 48.572S399.874 369.143 448 336z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-question fa-w-12 overlay"
+        data-icon="question"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 384 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+    </span>
+  </p>
+  No information available. 
+  <br />
+  If nothing shows up the cluster may not exist.
+</div>
+`;
+
+exports[`ClusterInfo events renders with data 1`] = `
+<div
+  className="row event-item"
+>
+  <div
+    className="col timestamp"
+  >
+    2018-04-28T17:57:24.540480643Z
+  </div>
+  <div
+    className="col event"
+  >
+    AGENT_DOWN
+  </div>
+  <div
+    className="col-6 payload codeblock"
+  >
+    <div
+      className="react-json-view"
+      style={
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "cursor": "default",
+          "fontFamily": "monospace",
+          "position": "relative",
+        }
+      }
+    >
+      <div
+        className="pretty-json-container object-container"
+      >
+        <div
+          className="object-content"
+        >
+          <div
+            className="object-key-val"
+          >
+            <span>
+              <span
+                onClick={[Function]}
+                style={
+                  Object {
+                    "cursor": "pointer",
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <div
+                  className="icon-container"
+                  style={
+                    Object {
+                      "display": "inline-block",
+                      "width": "17px",
+                    }
+                  }
+                >
+                  <span
+                    className="expanded-icon"
+                  >
+                    <svg
+                      fill="currentColor"
+                      style={
+                        Object {
+                          "color": "#586e75",
+                          "height": "1em",
+                          "paddingLeft": "2px",
+                          "verticalAlign": "top",
+                          "width": "1em",
+                        }
+                      }
+                      viewBox="0 0 15 15"
+                    >
+                      <path
+                        d="M0 5l6 6 6-6z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <span
+                  style={
+                    Object {
+                      ":hover": Object {
+                        "opacity": "1",
+                      },
+                      "color": "#002b36",
+                      "display": "inline-block",
+                      "fontStyle": "none",
+                      "letterSpacing": "0.5px",
+                      "opacity": "0.85",
+                      "verticalAlign": "top",
+                    }
+                  }
+                >
+                  <span
+                    className="object-key"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "verticalAlign": "top",
+                        }
+                      }
+                    >
+                      "
+                    </span>
+                    <span>
+                      ERROR
+                    </span>
+                    <span
+                      style={
+                        Object {
+                          "verticalAlign": "top",
+                        }
+                      }
+                    >
+                      "
+                    </span>
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#002b36",
+                        "display": "inline-block",
+                        "margin": "0px 5px",
+                        "verticalAlign": "top",
+                      }
+                    }
+                  >
+                    :
+                  </span>
+                </span>
+                <span
+                  style={
+                    Object {
+                      "color": "#002b36",
+                      "cursor": "pointer",
+                      "display": "inline-block",
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  {
+                </span>
+              </span>
+              <div
+                className="object-meta-data"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "display": "inline-block",
+                    "padding": "0px 0px 0px 10px",
+                  }
+                }
+              >
+                <span
+                  className="object-size"
+                  style={
+                    Object {
+                      "borderRadius": "3px",
+                      "color": "rgba(0, 0, 0, 0.3)",
+                      "cursor": "default",
+                      "fontStyle": "italic",
+                      "margin": "0px 6px 0px 0px",
+                    }
+                  }
+                >
+                  1
+                   item
+                  
+                </span>
+                <span
+                  className="copy-to-clipboard-container"
+                >
+                  <span
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "cursor": "pointer",
+                        "display": "inline",
+                      }
+                    }
+                  >
+                    <span
+                      className="copy-icon"
+                    >
+                      <svg
+                        fill="currentColor"
+                        preserveAspectRatio="xMidYMid meet"
+                        style={
+                          Object {
+                            "color": "#268bd2",
+                            "fontSize": "15px",
+                            "height": "1em",
+                            "marginRight": "3px",
+                            "verticalAlign": "top",
+                            "width": "1em",
+                          }
+                        }
+                        viewBox="0 0 40 40"
+                      >
+                        <g>
+                          <path
+                            d="m30 35h-25v-22.5h25v7.5h2.5v-12.5c0-1.4-1.1-2.5-2.5-2.5h-7.5c0-2.8-2.2-5-5-5s-5 2.2-5 5h-7.5c-1.4 0-2.5 1.1-2.5 2.5v27.5c0 1.4 1.1 2.5 2.5 2.5h25c1.4 0 2.5-1.1 2.5-2.5v-5h-2.5v5z m-20-27.5h2.5s2.5-1.1 2.5-2.5 1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5 1.3 2.5 2.5 2.5h2.5s2.5 1.1 2.5 2.5h-20c0-1.5 1.1-2.5 2.5-2.5z m-2.5 20h5v-2.5h-5v2.5z m17.5-5v-5l-10 7.5 10 7.5v-5h12.5v-5h-12.5z m-17.5 10h7.5v-2.5h-7.5v2.5z m12.5-17.5h-12.5v2.5h12.5v-2.5z m-7.5 5h-5v2.5h5v-2.5z"
+                          />
+                        </g>
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </span>
+            <div
+              className="pushed-content object-container"
+            >
+              <div
+                className="object-content"
+                style={
+                  Object {
+                    "marginLeft": "6px",
+                  }
+                }
+              >
+                <div
+                  className="variable-row"
+                  style={
+                    Object {
+                      ":hover": Object {
+                        "borderLeft": "2px solid rgb(235, 235, 235)",
+                        "paddingLeft": "19px",
+                      },
+                      "borderLeft": "1px solid rgb(235, 235, 235)",
+                      "paddingBottom": "3px",
+                      "paddingLeft": 20,
+                      "paddingRight": "5px",
+                      "paddingTop": "3px",
+                    }
+                  }
+                >
+                  <span>
+                    <span
+                      className="object-key"
+                      style={
+                        Object {
+                          ":hover": Object {
+                            "opacity": "1",
+                          },
+                          "color": "#002b36",
+                          "display": "inline-block",
+                          "fontStyle": "none",
+                          "letterSpacing": "0.5px",
+                          "opacity": "0.85",
+                          "verticalAlign": "top",
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "verticalAlign": "top",
+                          }
+                        }
+                      >
+                        "
+                      </span>
+                      <span
+                        style={
+                          Object {
+                            "display": "inline-block",
+                          }
+                        }
+                      >
+                        message
+                      </span>
+                      <span
+                        style={
+                          Object {
+                            "verticalAlign": "top",
+                          }
+                        }
+                      >
+                        "
+                      </span>
+                    </span>
+                    <span
+                      style={
+                        Object {
+                          "color": "#002b36",
+                          "display": "inline-block",
+                          "margin": "0px 5px",
+                          "verticalAlign": "top",
+                        }
+                      }
+                    >
+                      :
+                    </span>
+                  </span>
+                  <div
+                    className="variable-value"
+                    onClick={null}
+                    style={
+                      Object {
+                        "cursor": "default",
+                        "display": "inline-block",
+                        "paddingRight": "6px",
+                        "position": "relative",
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "color": "#cb4b16",
+                          "display": "inline-block",
+                        }
+                      }
+                    >
+                      <span
+                        className="data-type-label"
+                        style={
+                          Object {
+                            "fontSize": "11px",
+                            "marginRight": "4px",
+                            "opacity": "0.8",
+                          }
+                        }
+                      >
+                        string
+                      </span>
+                      <span
+                        className="string-value"
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "cursor": "default",
+                          }
+                        }
+                      >
+                        "
+                        src property must be a valid json object
+                        "
+                      </span>
+                    </div>
+                  </div>
+                  <span
+                    className="copy-to-clipboard-container"
+                  >
+                    <span
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "cursor": "pointer",
+                          "display": "inline",
+                        }
+                      }
+                    >
+                      <span
+                        className="copy-icon"
+                      >
+                        <svg
+                          fill="currentColor"
+                          preserveAspectRatio="xMidYMid meet"
+                          style={
+                            Object {
+                              "color": "#268bd2",
+                              "fontSize": "15px",
+                              "height": "1em",
+                              "marginRight": "3px",
+                              "verticalAlign": "top",
+                              "width": "1em",
+                            }
+                          }
+                          viewBox="0 0 40 40"
+                        >
+                          <g>
+                            <path
+                              d="m30 35h-25v-22.5h25v7.5h2.5v-12.5c0-1.4-1.1-2.5-2.5-2.5h-7.5c0-2.8-2.2-5-5-5s-5 2.2-5 5h-7.5c-1.4 0-2.5 1.1-2.5 2.5v27.5c0 1.4 1.1 2.5 2.5 2.5h25c1.4 0 2.5-1.1 2.5-2.5v-5h-2.5v5z m-20-27.5h2.5s2.5-1.1 2.5-2.5 1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5 1.3 2.5 2.5 2.5h2.5s2.5 1.1 2.5 2.5h-20c0-1.5 1.1-2.5 2.5-2.5z m-2.5 20h5v-2.5h-5v2.5z m17.5-5v-5l-10 7.5 10 7.5v-5h12.5v-5h-12.5z m-17.5 10h7.5v-2.5h-7.5v2.5z m12.5-17.5h-12.5v2.5h12.5v-2.5z m-7.5 5h-5v2.5h5v-2.5z"
+                            />
+                          </g>
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <span
+              className="brace-row"
+            >
+              <span
+                style={
+                  Object {
+                    "color": "#002b36",
+                    "cursor": "pointer",
+                    "display": "inline-block",
+                    "fontWeight": "bold",
+                    "paddingLeft": "3px",
+                  }
+                }
+              >
+                }
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

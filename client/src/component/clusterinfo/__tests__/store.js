@@ -2,6 +2,7 @@
 //@flow
 
 import { CLUSTER_STORE_DISCOVERY } from '../action';
+import { CLUSTER_STORE_EVENTS } from '../action';
 import { CLUSTER_STORE_META } from '../action';
 
 import { defaultState } from '../store';
@@ -16,6 +17,11 @@ const DISCOVERY = {
     'http://node2/'
   ]
 };
+const EVENTS = [{
+  data: "SOME DATA",
+  event: "AGENT_DOWN",
+  timestamp: "2018-04-28T17:57:24.540480643Z"
+}];
 const META = {
   agents_down: 0,
   cluster_display_name: 'test',
@@ -39,6 +45,21 @@ describe('Clusters', () => {
       let state = reducer(defaultState, action);
       expect(state).toEqual({
         discovery: {'test': DISCOVERY},
+        events: {},
+        meta: {},
+      });
+    });
+
+    test('CLUSTER_STORE_EVENTS', () => {
+      let action = {
+        type: CLUSTER_STORE_EVENTS,
+        cluster_id: 'test',
+        events: EVENTS,
+      };
+      let state = reducer(defaultState, action);
+      expect(state).toEqual({
+        discovery: {},
+        events: {'test': EVENTS},
         meta: {},
       });
     });
@@ -51,6 +72,7 @@ describe('Clusters', () => {
       let state = reducer(defaultState, action);
       expect(state).toEqual({
         discovery:{},
+        events: {},
         meta: {'test': META},
       });
     });

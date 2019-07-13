@@ -6,14 +6,18 @@ import { call, put } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga/effects';
 
 import { CLUSTER_FETCH_DISCOVERY } from './action';
+import { CLUSTER_FETCH_EVENTS } from './action';
 import { CLUSTER_FETCH_META } from './action';
 import { CLUSTER_STORE_DISCOVERY } from './action';
+import { CLUSTER_STORE_EVENTS } from './action';
 import { CLUSTER_STORE_META } from './action';
 
 import { fetchDiscovery as fetchDiscoveryApi } from './api';
+import { fetchEvents as fetchEventsApi } from './api';
 import { fetchMeta as fetchMetaApi } from './api';
 
 import type { ClusterFetchDiscoveryAction } from './action';
+import type { ClusterFetchEventsAction } from './action';
 import type { ClusterFetchMetaAction } from './action';
 
 
@@ -23,6 +27,14 @@ import type { ClusterFetchMetaAction } from './action';
 export function* fetchDiscovery(action: ClusterFetchDiscoveryAction): any {
   let discovery = yield call(fetchDiscoveryApi, action.cluster_id);
   yield put({type: CLUSTER_STORE_DISCOVERY, discovery: discovery});
+}
+
+/**
+ * Fetches a cluster events and stores it in redux.
+ */
+export function* fetchEvents(action: ClusterFetchEventsAction): any {
+  let events = yield call(fetchEventsApi, action.cluster_id);
+  yield put({type: CLUSTER_STORE_EVENTS, cluster_id: action.cluster_id, events: events});
 }
 
 /**
@@ -37,6 +49,7 @@ export function* fetchMeta(action: ClusterFetchMetaAction): any {
 export function* saga(): any {
   yield all([
     takeEvery(CLUSTER_FETCH_DISCOVERY, fetchDiscovery),
+    takeEvery(CLUSTER_FETCH_EVENTS, fetchEvents),
     takeEvery(CLUSTER_FETCH_META, fetchMeta)
   ]);
 }

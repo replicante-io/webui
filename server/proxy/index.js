@@ -19,6 +19,17 @@ proxy.get('/cluster/:cluster/discovery', (req, res) => {
   });
 });
 
+proxy.get('/cluster/:cluster/events', (req, res) => {
+  let cluster = req.params.cluster;
+  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/events`).then((response) => {
+    res.json(JSON.parse(response));
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster events: %s", error);
+    res.status(500).json({error: "failed to fetch cluster events"});
+  });
+});
+
 proxy.get('/cluster/:cluster/meta', (req, res) => {
   let cluster = req.params.cluster;
   request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/meta`).then((response) => {

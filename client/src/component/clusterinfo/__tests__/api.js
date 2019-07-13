@@ -5,6 +5,7 @@ import fetch from 'jest-fetch-mock';
 global.fetch = fetch;
 
 import { fetchDiscovery } from '../api';
+import { fetchEvents } from '../api';
 import { fetchMeta } from '../api';
 
 
@@ -16,6 +17,11 @@ const DISCOVERY = {
     'http://node2/'
   ]
 };
+const EVENTS = [{
+  data: "SOME DATA",
+  event: "AGENT_DOWN",
+  timestamp: "2018-04-28T17:57:24.540480643Z"
+}];
 const META = {
   agents_down: 0,
   cluster_display_name: 'test',
@@ -45,6 +51,23 @@ describe('ClusterInfo', () => {
       test('fullfill with error', () => {
         fetch.mockResponse(JSON.stringify({error: 'test'}), {status: 500});
         return fetchDiscovery('test').then(
+          () => { throw Error('Expected error') },
+          () => { }
+        );
+      });
+    });
+
+    describe('fetchEvents', () => {
+      test('fulfill', () => {
+        fetch.mockResponse(JSON.stringify(EVENTS));
+        return fetchEvents('test').then((events) => {
+          expect(events).toEqual(EVENTS);
+        });
+      });
+
+      test('fullfill with error', () => {
+        fetch.mockResponse(JSON.stringify({error: 'test'}), {status: 500});
+        return fetchEvents('test').then(
           () => { throw Error('Expected error') },
           () => { }
         );
