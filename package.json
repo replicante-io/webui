@@ -1,6 +1,6 @@
 {
   "name": "replicante-webui",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Replicante WebUI package",
   "private": true,
   "scripts": {
@@ -57,7 +57,7 @@
     "style-loader": "^0.23.1",
     "url-loader": "^2.0.1",
     "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.4"
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "express": "^4.17.1",
