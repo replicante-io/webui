@@ -15,6 +15,7 @@ import type { ClusterMeta } from '../dashboard/action';
 import type { ClusterInfoStore } from './store';
 import { fetchMeta } from './action';
 import { NoDataIcon } from '../icons';
+import Actions from './actions';
 import Agents from './agents';
 import Discovery from './discovery';
 import Events from './events';
@@ -62,6 +63,7 @@ export class InnerCluster extends React.Component<Props> {
     if (root.endsWith('/')) {
       root = root.substring(0, root.length - 1);
     }
+    const actions = `${root}/actions`;
     const agents = `${root}/agents`;
     const discovery = `${root}/discovery`;
     const events = `${root}/events`;
@@ -75,6 +77,7 @@ export class InnerCluster extends React.Component<Props> {
         <Route path={agents} component={Agents} />
         <Route path={nodes} component={Nodes} />
         <Route path={events} component={Events} />
+        <Route path={actions} component={Actions} />
       </div>
     );
   }
@@ -84,6 +87,7 @@ export class InnerCluster extends React.Component<Props> {
     if (root.endsWith('/')) {
       root = root.substring(0, root.length - 1);
     }
+    const actions = `${root}/actions`;
     const agents = `${root}/agents`;
     const discovery = `${root}/discovery`;
     const events = `${root}/events`;
@@ -96,6 +100,7 @@ export class InnerCluster extends React.Component<Props> {
         <NavLink className="tab" to={agents}>Agents</NavLink>
         <NavLink className="tab" to={nodes}>Nodes</NavLink>
         <NavLink className="tab" to={events}>Events</NavLink>
+        <NavLink className="tab" to={actions}>Actions</NavLink>
       </div>
     );
   }

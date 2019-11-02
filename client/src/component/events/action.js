@@ -3,8 +3,8 @@
 
 
 export type Event = {
-  data: any,
   event: string,
+  payload: any,
   timestamp: string,
 };
 

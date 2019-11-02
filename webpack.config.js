@@ -40,7 +40,7 @@ const style_plugin = new ExtractTextPlugin({
 // Configure SASS extraction as described by bootsrap 4:
 //    https://getbootstrap.com/docs/4.0/getting-started/webpack/#importing-precompiled-sass
 const style_rule = {
-  test: /\.(scss)$/,
+  test: /\.(scss)|(css)$/,
   use: style_plugin.extract({
     fallback: 'style-loader',
     use: [{

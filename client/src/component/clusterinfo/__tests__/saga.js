@@ -6,6 +6,8 @@ import { all } from 'redux-saga/effects';
 import { call, put } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga/effects';
 
+import { CLUSTER_ACTIONS_SEARCH } from '../action';
+import { CLUSTER_FETCH_ACTION } from '../action';
 import { CLUSTER_FETCH_AGENTS } from '../action';
 import { CLUSTER_FETCH_DISCOVERY } from '../action';
 import { CLUSTER_FETCH_EVENTS } from '../action';
@@ -23,11 +25,13 @@ import { fetchEvents as fetchEventsApi } from '../api';
 import { fetchMeta as fetchMetaApi } from '../api';
 import { fetchNodes as fetchNodesApi } from '../api';
 
+import { fetchAction } from '../saga';
 import { fetchAgents } from '../saga';
 import { fetchDiscovery } from '../saga';
 import { fetchEvents } from '../saga';
 import { fetchMeta } from '../saga';
 import { fetchNodes } from '../saga';
+import { searchActions } from '../saga';
 import { saga } from '../saga';
 
 
@@ -75,6 +79,8 @@ describe('Clusters', () => {
     test('saga takes every', () => {
       const run = saga();
       expect(run.next().value).toEqual(all([
+        takeEvery(CLUSTER_ACTIONS_SEARCH, searchActions),
+        takeEvery(CLUSTER_FETCH_ACTION, fetchAction),
         takeEvery(CLUSTER_FETCH_AGENTS, fetchAgents),
         takeEvery(CLUSTER_FETCH_DISCOVERY, fetchDiscovery),
         takeEvery(CLUSTER_FETCH_EVENTS, fetchEvents),

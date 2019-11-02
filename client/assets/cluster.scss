@@ -39,3 +39,46 @@ div.cluster-tabs {
     }
   }
 }
+
+div.actions-container {
+  div.actions-list {
+    height: 45vh;
+
+    div.actions-search {
+      .pad-left {
+        margin-left: 1em;
+      }
+
+      .search-btn {
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+        text-align: right;
+      }
+
+      .search-fields {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    td.no-actions {
+      color: gray;
+      font-style: italic;
+      text-align: center;
+    }
+  }
+
+  div.timeline-container {
+    border-top: 1px solid #dee2e6;
+    padding-top: 1em;
+
+    .space-above {
+      margin-top: 1em;
+    }
+  }
+
+  span.placeholder {
+    color: gray;
+    font-style: italic;
+  }
+}

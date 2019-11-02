@@ -20,9 +20,9 @@ class EventRow extends React.Component<Event> {
         </div>
         <div className="col-6 payload codeblock">
           <ReactJson
-              collapsed={1}
+              collapsed={0}
               name={false}
-              src={this.props.data}
+              src={this.props.payload}
           />
         </div>
       </div>

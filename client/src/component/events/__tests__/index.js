@@ -16,12 +16,12 @@ import Events from '../index';
 
 const mockStore = configureStore([]);
 const EVENTS = [{
-  data: {"SOME": "DATA"},
   event: "AGENT_DOWN",
+  payload: {"SOME": "DATA"},
   timestamp: "2018-04-28T17:57:24.540480643Z"
 }, {
-  data: {"SOME": "DATA"},
   event: "AGENT_RECOVER",
+  payload: {"SOME": "DATA"},
   timestamp: "2018-04-28T17:50:15.170187929Z"
 }];
 

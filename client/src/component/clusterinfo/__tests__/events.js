@@ -41,8 +41,8 @@ describe('ClusterInfo', () => {
     test('renders with data', () => {
       store = mockStore({ clusterinfo: { events: {
         'test': [{
-          data: {"SOME": "DATA"},
           event: "AGENT_DOWN",
+          payload: {"SOME": "DATA"},
           timestamp: "2018-04-28T17:57:24.540480643Z"
         }]
       } } });

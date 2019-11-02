@@ -46,6 +46,14 @@ exports[`ClusterInfo index renders index 1`] = `
     >
       Events
     </a>
+    <a
+      aria-current={null}
+      className="tab"
+      href="/about:blank/clusters/:name/actions"
+      onClick={[Function]}
+    >
+      Actions
+    </a>
   </div>
   <div />
 </div>

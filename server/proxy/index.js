@@ -8,6 +8,36 @@ const API_UNSTABLE_ROOT = `${BACKEND_ROOT}/api/unstable`;
 const API_UNSTABLE_WEBUI = `${API_UNSTABLE_ROOT}/webui`;
 
 
+proxy.get('/cluster/:cluster/action/:action', (req, res) => {
+  let action = req.params.action;
+  let cluster = req.params.cluster;
+  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/action/${action}`).then((response) => {
+    res.json(JSON.parse(response));
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster action: %s", error);
+    res.status(500).json({error: "failed to fetch cluster action"});
+  });
+});
+
+proxy.post('/cluster/:cluster/actions', express.json())
+proxy.post('/cluster/:cluster/actions', (req, res) => {
+  let cluster = req.params.cluster;
+  let options = {
+    method: 'POST',
+    uri: `${API_UNSTABLE_WEBUI}/cluster/${cluster}/actions`,
+    body: req.body,
+    json: true,
+  };
+  request(options).then((response) => {
+    res.json(response);
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster actions: %s", error);
+    res.status(500).json({error: "failed to fetch cluster actions"});
+  });
+});
+
 proxy.get('/cluster/:cluster/agents', (req, res) => {
   let cluster = req.params.cluster;
   request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/agents`).then((response) => {

@@ -60,6 +60,7 @@ describe('Clusters', () => {
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
+        actions: {},
         agents: {'test': AGENTS},
         discovery: {},
         events: {},
@@ -75,6 +76,7 @@ describe('Clusters', () => {
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
+        actions: {},
         agents: {},
         discovery: {'test': DISCOVERY},
         events: {},
@@ -91,6 +93,7 @@ describe('Clusters', () => {
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
+        actions: {},
         agents: {},
         discovery: {},
         events: {'test': EVENTS},
@@ -106,6 +109,7 @@ describe('Clusters', () => {
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
+        actions: {},
         agents: {},
         discovery:{},
         events: {},
@@ -122,6 +126,7 @@ describe('Clusters', () => {
       };
       let state = reducer(defaultState, action);
       expect(state).toEqual({
+        actions: {},
         agents: {},
         discovery:{},
         events: {},
