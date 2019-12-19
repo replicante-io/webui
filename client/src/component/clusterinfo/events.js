@@ -30,7 +30,7 @@ export class InnerEvents extends React.Component<Props> {
     if (this.props.events) {
       // $FlowFixMe: flow can't cope with the return type of the map.
       return this.props.events.map((event, idx) => {
-        return <EventRow key={idx} {...event} />;
+        return <EventRow key={idx} event={event} />;
       });
     }
     return (

@@ -46,7 +46,7 @@ export class InnerEvents extends React.Component<Props> {
 
   renderEvents() {
     let rows = this.props.events.map((event, idx) => {
-      return <EventRow key={idx} {...event} />;
+      return <EventRow key={idx} event={event} />;
     });
     return (
       <div className="card-body text-center">

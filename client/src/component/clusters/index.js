@@ -65,7 +65,7 @@ export class InnerClusters extends React.Component<Props, State> {
 
   renderList() {
     let rows = this.props.clusters.map((cluster) => {
-      return <ClusterRow key={cluster.cluster_id} {...cluster} />;
+      return <ClusterRow key={cluster.cluster_id} meta={cluster} />;
     });
     return (
       <div className="card-body text-center">

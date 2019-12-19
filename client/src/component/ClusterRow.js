@@ -8,26 +8,29 @@ import ClusterKinds from './ClusterKinds';
 import type { ClusterMeta } from './dashboard/action';
 
 
-class ClusterRow extends React.Component<ClusterMeta> {
+type Props = {
+  meta: ClusterMeta,
+};
+class ClusterRow extends React.Component<Props> {
   render() {
-    const link = `/clusters/${this.props.cluster_id}`;
+    const link = `/clusters/${this.props.meta.cluster_id}`;
     return (
       <div className="row cluster-item">
         <div className="col">
-          <p><Link to={link}>{this.props.cluster_display_name}</Link></p>
+          <p><Link to={link}>{this.props.meta.cluster_display_name}</Link></p>
           <small>Name</small>
         </div>
         <div className="col">
-          <p>{this.props.shards_count}</p>
+          <p>{this.props.meta.shards_count}</p>
           <small>Shards</small>
         </div>
         <div className="col">
-          <p>{this.props.nodes}</p>
+          <p>{this.props.meta.nodes}</p>
           <small>Nodes</small>
         </div>
         <div className="col">
-          <p><ClusterKinds kinds={this.props.kinds} /></p>
-          <small>{this.props.kinds.join(', ')}</small>
+          <p><ClusterKinds kinds={this.props.meta.kinds} /></p>
+          <small>{this.props.meta.kinds.join(', ')}</small>
         </div>
       </div>
     );
