@@ -21,12 +21,6 @@ ARG REPLI_UNAME=replicante
 RUN addgroup --gid $REPLI_GID $REPLI_GNAME \
     && adduser --disabled-login --disabled-password --system --uid $REPLI_UID --gid $REPLI_GID $REPLI_UNAME
 
-# Install tini supervisor
-ARG TINI_VERSION=v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--"]
-
 # Copy node app from builder to smaller image.
 COPY --from=builder /code/dist /opt/replicante/webui/dist
 COPY --from=builder /code/server /opt/replicante/webui/server
