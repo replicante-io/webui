@@ -13,7 +13,7 @@ dist: xenial
 language: node_js
 cache: npm
 node_js:
-  - '10'  # Target nodejs version.
+  - '12'  # Target nodejs version.
   - node  # Latest nodejs version.
 
 env:
