@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Update dependencies
+- Update dependencies.
+- `jest --coverage` breaks snapshot tests for now.
 
 ## [0.3.2] - 2020-03-07
 ### Added

@@ -1,10 +1,9 @@
 'use strict';
-
 const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const DIST_ROOT = path.resolve(__dirname, 'dist');
 
@@ -32,7 +31,7 @@ const babel_rule = {
 //
 //   * The extraction plugin (here) to wrtie extracted chunks to a file.
 //   * A loader rule (below) to collect all chunks for the plugin.
-const style_plugin = new ExtractTextPlugin({
+const style_plugin = new MiniCssExtractPlugin({
   allChunks: true,
   filename: 'static/styles.[chunkhash].css'
 });
@@ -41,24 +40,23 @@ const style_plugin = new ExtractTextPlugin({
 //    https://getbootstrap.com/docs/4.0/getting-started/webpack/#importing-precompiled-sass
 const style_rule = {
   test: /\.(scss)|(css)$/,
-  use: style_plugin.extract({
-    fallback: 'style-loader',
-    use: [{
-      loader: 'css-loader'
-    }, {
-      loader: 'postcss-loader',
-      options: {
-        plugins: function () {
-          return [
-            require('precss'),
-            require('autoprefixer')
-          ];
-        }
+  use: [{
+    loader: MiniCssExtractPlugin.loader
+  }, {
+    loader: 'css-loader'
+  }, {
+    loader: 'postcss-loader',
+    options: {
+      plugins: function () {
+        return [
+          require('precss'),
+          require('autoprefixer')
+        ];
       }
-    }, {
-      loader: 'sass-loader'
-    }]
-  })
+    }
+  }, {
+    loader: 'sass-loader'
+  }]
 };
 
 
