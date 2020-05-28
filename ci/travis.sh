@@ -7,7 +7,7 @@ case "$1" in
   install)
     case "$2" in
       audit) ;;
-      test) ;;
+      build) ;;
 
       *)
         echo "Unsupported install task '$2' received"
@@ -18,7 +18,7 @@ case "$1" in
   script)
     case "$2" in
       audit) ci/travis/audit-script.sh;;
-      test) ci/travis/test-script.sh;;
+      build) ci/travis/build-script.sh;;
 
       *)
         echo "Unsupported script task '$2' received"

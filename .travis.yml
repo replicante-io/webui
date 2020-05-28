@@ -17,7 +17,7 @@ node_js:
   - node  # Latest nodejs version.
 
 env:
-  - TASK=test
+  - TASK=build
   - TASK=audit
 
 install: ci/travis.sh install "${TASK}"

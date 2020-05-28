@@ -1,14 +1,29 @@
-Releasing Replicante WebUI
-==========================
+# Releasing Replicante WebUI
+All replicante projects must be released using the `replidev release` commands.
+These commands will guide the you through release tasks,
+automating the repetitive parts and performing checks along the way.
 
-- Manual steps 1:
-  - [ ] Bump the version number if needed
-  - [ ] Update changelog with version and date
-- [ ] Scripted steps 1: `ci/release/prep.sh vX.Y.Z`
-  - Ensure dependencies are up to date
-  - Ensure tests and CI checks pass
-  - Ensure docker image builds correctly
-- Manual steps 2:
-  - [ ] Git commit and tag release
-- [ ] Scripted steps 2: `ci/release/artefacts.sh vX.Y.Z`
-  - Build and publish docker image
+```bash
+# Prepare the repository for release.
+# This command will guide you to update changelogs and versions.
+$ replidev release prep
+
+# Commit any changes done during the prep phase.
+$ git commit .
+
+# Run checks to ensure the release is ready.
+$ replidev release check
+
+# Make sure you are logged into docker hub so the push can suceed:
+$ podman login registry-1.docker.io
+
+# Once all changes are committed and the checks pass publish the release.
+# This will also publish any crate/docker image in the project and tag the current commit.
+$ replidev release publish
+
+# Push the release commit (if needed) and the release tag.
+$ git push
+$ git push --tags
+
+# Create the new release in GitHub and attach the collected binaries to it.
+```

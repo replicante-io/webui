@@ -1,0 +1,16 @@
+project: webui
+
+images:
+  - name: webui
+    repo: webui
+    version:
+      from: npm
+      path: package.json
+
+npm:
+  workspaces:
+    - '.'
+
+release_tag:
+  from: npm
+  path: package.json
