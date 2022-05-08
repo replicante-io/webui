@@ -3,7 +3,7 @@ const request = require('request-promise-native');
 
 const proxy = express.Router();
 
-const BACKEND_ROOT = process.env.REPLI_BACKEND_ROOT || 'http://localhost:16016';
+const BACKEND_ROOT = process.env.REPLI_BACKEND_ROOT || 'http://127.0.0.1:16016';
 const API_UNSTABLE_ROOT = `${BACKEND_ROOT}/api/unstable`;
 const API_UNSTABLE_WEBUI = `${API_UNSTABLE_ROOT}/webui`;
 

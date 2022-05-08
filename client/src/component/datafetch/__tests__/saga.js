@@ -1,7 +1,9 @@
 'use strict';
 //@flow
 
-import '@babel/polyfill';
+// NOTE: This is required for generators at runtime.
+import 'regenerator-runtime/runtime.js';
+
 import { call, put } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga/effects';
 

@@ -1,7 +1,9 @@
 'use strict';
 //@flow
 
-import '@babel/polyfill';
+// NOTE: This is required for generators at runtime.
+import 'regenerator-runtime/runtime.js';
+
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 

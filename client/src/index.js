@@ -1,7 +1,9 @@
 'use strict';
 //@flow
 
-import '@babel/polyfill';
+// NOTE: This is required for generators at runtime.
+import 'regenerator-runtime/runtime.js';
+
 import 'bootstrap';
 import '../assets/fontawesome-all';
 import '../assets/main.scss';

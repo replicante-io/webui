@@ -1,99 +1,54 @@
 'use strict';
 const path = require('path');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const DIST_ROOT = path.resolve(__dirname, 'dist');
+const DISTRIBUTION_ROOT = path.resolve(__dirname, 'dist');
+const STATIC_ROOT = path.resolve(DISTRIBUTION_ROOT, 'static');
+const INDEX_PATH = path.resolve(DISTRIBUTION_ROOT, 'index.html');
 
-
-// Configure the generation of `index.html`.
-const index = new HtmlWebpackPlugin({
-  filename: 'index.html',
-  template: 'ejs-loader!client/index.ejs',
-  title: 'Replicante WebUI'
-});
-
-
-// Configure babel rule for ES6 in JavaScript.
-const babel_rule = {
-  test: /\.jsx?$/,
+const RULES_BABEL = {
+  test: /\.m?jsx?$/,
   exclude: /node_modules/,
-  use: {
-    loader: "babel-loader"
-  }
+  use: [
+    'babel-loader',
+  ],
+};
+const RULES_CSS = {
+  test: /\.(sa|sc|c)ss$/i,
+  use: [
+    MiniCssExtractPlugin.loader,
+    'css-loader',
+    'postcss-loader',
+    'sass-loader',
+  ],
 };
 
-
-// Process styles to create a (versioned) CSS bundle.
-// This has two parts:
-//
-//   * The extraction plugin (here) to wrtie extracted chunks to a file.
-//   * A loader rule (below) to collect all chunks for the plugin.
-const style_plugin = new MiniCssExtractPlugin({
-  allChunks: true,
-  filename: 'static/styles.[chunkhash].css'
-});
-
-// Configure SASS extraction as described by bootsrap 4:
-//    https://getbootstrap.com/docs/4.0/getting-started/webpack/#importing-precompiled-sass
-const style_rule = {
-  test: /\.(scss)|(css)$/,
-  use: [{
-    loader: MiniCssExtractPlugin.loader
-  }, {
-    loader: 'css-loader'
-  }, {
-    loader: 'postcss-loader',
-    options: {
-      plugins: function () {
-        return [
-          require('precss'),
-          require('autoprefixer')
-        ];
-      }
-    }
-  }, {
-    loader: 'sass-loader'
-  }]
-};
-
-
-// Configure the url rule to process images.
-const url_rule = {
-  test: /\.(gif)|(png)|(svg)$/,
-  use: {
-    loader: 'url-loader',
-  }
-};
-
-
-// Configure the generation of `bundle.js`.
 module.exports = {
-  context: path.resolve(__dirname, 'client', 'src'),
-  devtool: 'source-map',
   entry: {
-    bundle: './index.js',
+    index: './client/src/index.js',
   },
   module: {
     rules: [
-      babel_rule,
-      url_rule,
-      style_rule,
-    ]
+      RULES_BABEL,
+      RULES_CSS,
+    ],
   },
   output: {
-    filename: 'static/[name].[chunkhash].js',
-    path: DIST_ROOT,
-    publicPath: '/'
+    clean: true,
+    filename: '[name].[chunkhash].js',
+    path: STATIC_ROOT,
+    publicPath: '/static/',
   },
   plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/*'],
-      verbose: true
+    new HtmlWebpackPlugin({
+      filename: INDEX_PATH,
+      template: 'client/index.ejs',
+      title: 'Replicante WebUI',
     }),
-    style_plugin,
-    index
-  ]
-};
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash].css',
+    }),
+  ],
+}

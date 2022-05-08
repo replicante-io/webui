@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Update dependencies and development tools.
 
 ## [0.3.3] - 2020-05-28
 ### Changed
@@ -47,7 +49,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - List largest clusters.
 - Main navigation.
 - UI data fetching component.
-
 
 [Unreleased]: https://github.com/replicante-io/replicante/compare/v0.3.3...HEAD
 [0.3.3]: https://github.com/replicante-io/replicante/compare/v0.3.2...v0.3.3

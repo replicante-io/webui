@@ -6,9 +6,9 @@ const express = require('express');
 const proxy = require('./proxy');
 
 
-const DIST_ROOT = path.join(__dirname, '..', 'dist');
+const DISTRIBUTION_ROOT = path.join(__dirname, '..', 'dist');
 const LISTEN_PORT = process.env.REPLI_PORT || 3000;
-const STATIC_ROOT = path.join(DIST_ROOT, 'static');
+const STATIC_ROOT = path.join(DISTRIBUTION_ROOT, 'static');
 
 
 const app = express();
@@ -25,7 +25,7 @@ app.use('/api', notFound);
 app.use('/static', notFound);
 
 // For everything else serve the index page which will use the URL to route itself.
-app.use((_, res) => res.sendFile(path.join(DIST_ROOT, 'index.html')));
+app.use((_, res) => res.sendFile(path.join(DISTRIBUTION_ROOT, 'index.html')));
 
 
 app.listen(LISTEN_PORT, () => {
