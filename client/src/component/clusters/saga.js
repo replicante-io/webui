@@ -15,8 +15,12 @@ import type { SearchClustersAction } from './action';
  * Searches for clusters matching the given name.
  */
 export function* searchClusters(action: SearchClustersAction): any {
-  let clusters = yield call(searchClustersApi, action.search);
-  yield put({type: CLUSTERS_LIST, clusters: clusters});
+  try {
+    let clusters = yield call(searchClustersApi, action.search);
+    yield put({type: CLUSTERS_LIST, clusters: clusters});
+  } catch(error) {
+    console.error("Failed to search for clusters", error);
+  }
 }
 
 /** Main saga for the datafetch component. */

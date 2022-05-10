@@ -16,8 +16,12 @@ import type { EventsFetchAction } from './action';
  * Fetches the list of recent events.
  */
 export function* fetchEvents(action: EventsFetchAction): any {
-  let events = yield call(fetchEventsApi);
-  yield put({type: EVENTS_STORE, events: events});
+  try {
+    let events = yield call(fetchEventsApi);
+    yield put({type: EVENTS_STORE, events: events});
+  } catch(error) {
+    console.error("Failed to fetch recent events", error);
+  }
 }
 
 /** Main saga for the datafetch component. */
