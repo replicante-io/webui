@@ -18,12 +18,21 @@ exports[`NavigationBar renders correctly 1`] = `
     />
   </button>
   <div
-    className="collapse navbar-collapse justify-content-center"
+    className="collapse navbar-collapse"
     id="navbarNavAltMarkup"
   >
     <div
       className="navbar-nav"
     >
+      <a
+        aria-current="page"
+        className="nav-item nav-link active"
+        href="/"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Overview
+      </a>
       <a
         aria-current={null}
         className="nav-item nav-link"
@@ -39,15 +48,6 @@ exports[`NavigationBar renders correctly 1`] = `
         onClick={[Function]}
       >
         Events
-      </a>
-      <a
-        aria-current="page"
-        className="nav-item nav-link active"
-        href="/"
-        onClick={[Function]}
-        style={Object {}}
-      >
-        Overview
       </a>
       <a
         aria-current={null}

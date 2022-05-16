@@ -13,13 +13,11 @@ const NAVBAR_TOGGLE_TAG = 'navbarNavAltMarkup';
 class NavigationBar extends Component<{}> {
   renderItems() {
     return (
-      <div className="collapse navbar-collapse justify-content-center" id={NAVBAR_TOGGLE_TAG}>
+      <div className="collapse navbar-collapse" id={NAVBAR_TOGGLE_TAG}>
         <div className="navbar-nav">
+          <NavLink className="nav-item nav-link" to="/" exact={true}>Overview</NavLink>
           <NavLink className="nav-item nav-link" to="/clusters">Clusters</NavLink>
           <NavLink className="nav-item nav-link" to="/events">Events</NavLink>
-
-          <NavLink className="nav-item nav-link" to="/" exact={true}>Overview</NavLink>
-
           <NavLink className="nav-item nav-link" to="/automations">Automations</NavLink>
           <NavLink className="nav-item nav-link" to="/admin">Admin</NavLink>
         </div>

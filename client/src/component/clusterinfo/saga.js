@@ -14,6 +14,7 @@ import { CLUSTER_FETCH_DISCOVERY } from './action';
 import { CLUSTER_FETCH_EVENTS } from './action';
 import { CLUSTER_FETCH_META } from './action';
 import { CLUSTER_FETCH_NODES } from './action';
+import { CLUSTER_FETCH_ORCHESTRATE_REPORT } from './action';
 import { CLUSTER_STORE_ACTION } from './action';
 import { CLUSTER_STORE_ACTIONS } from './action';
 import { CLUSTER_STORE_AGENTS } from './action';
@@ -21,6 +22,7 @@ import { CLUSTER_STORE_DISCOVERY } from './action';
 import { CLUSTER_STORE_EVENTS } from './action';
 import { CLUSTER_STORE_META } from './action';
 import { CLUSTER_STORE_NODES } from './action';
+import { CLUSTER_STORE_ORCHESTRATE_REPORT } from './action';
 
 import { fetchAction as fetchActionApi } from './api';
 import { fetchActions as fetchActionsApi } from './api';
@@ -29,6 +31,7 @@ import { fetchDiscovery as fetchDiscoveryApi } from './api';
 import { fetchEvents as fetchEventsApi } from './api';
 import { fetchMeta as fetchMetaApi } from './api';
 import { fetchNodes as fetchNodesApi } from './api';
+import { fetchOrchestrateReport as fetchOrchestrateReportApi } from './api';
 
 import type { ClusterActionsSearchAction } from './action';
 import type { ClusterFetchActionAction } from './action';
@@ -37,6 +40,7 @@ import type { ClusterFetchDiscoveryAction } from './action';
 import type { ClusterFetchEventsAction } from './action';
 import type { ClusterFetchMetaAction } from './action';
 import type { ClusterFetchNodesAction } from './action';
+import type { ClusterFetchOrchestrateReportAction } from './action';
 
 
 /**
@@ -91,6 +95,18 @@ export function* fetchNodes(action: ClusterFetchNodesAction): any {
   yield put({type: CLUSTER_STORE_NODES, cluster_id: action.cluster_id, nodes: nodes});
 }
 
+/**
+ * Fetches a cluster's orchestrate report and stores them in redux.
+ */
+ export function* fetchOrchestrateReport(action: ClusterFetchOrchestrateReportAction): any {
+  let report = yield call(fetchOrchestrateReportApi, action.cluster_id);
+  yield put({
+    type: CLUSTER_STORE_ORCHESTRATE_REPORT,
+    cluster_id: action.cluster_id,
+    report: report
+  });
+}
+
 /** Execute an actions search. */
 export function* searchActions(action: ClusterActionsSearchAction): any {
   yield put({type: CLUSTER_ACTIONS_SEARCH_STATE, cluster_id: action.cluster_id, state: true});
@@ -114,5 +130,6 @@ export function* saga(): any {
     takeEvery(CLUSTER_FETCH_EVENTS, fetchEvents),
     takeEvery(CLUSTER_FETCH_META, fetchMeta),
     takeEvery(CLUSTER_FETCH_NODES, fetchNodes),
+    takeEvery(CLUSTER_FETCH_ORCHESTRATE_REPORT, fetchOrchestrateReport),
   ]);
 }

@@ -93,6 +93,17 @@ proxy.get('/cluster/:cluster/nodes', (req, res) => {
   });
 });
 
+proxy.get('/cluster/:cluster/orchestrate_report', (req, res) => {
+  let cluster = req.params.cluster;
+  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/orchestrate_report`).then((response) => {
+    res.json(JSON.parse(response));
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster orchestrate report: %s", error);
+    res.status(500).json({error: "failed to fetch cluster orchestrate report"});
+  });
+});
+
 
 proxy.post('/clusters/search', express.json(), (req, res) => {
   let search = req.body.search || '';

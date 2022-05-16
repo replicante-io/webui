@@ -12,6 +12,7 @@ import { CLUSTER_STORE_DISCOVERY } from './action';
 import { CLUSTER_STORE_EVENTS } from './action';
 import { CLUSTER_STORE_META } from './action';
 import { CLUSTER_STORE_NODES } from './action';
+import { CLUSTER_STORE_ORCHESTRATE_REPORT } from './action';
 
 import type { Action } from './action';
 import type { ActionDetails } from './action';
@@ -27,6 +28,7 @@ import type { ClusterStoreDiscoveryAction } from './action';
 import type { ClusterStoreEventsAction } from './action';
 import type { ClusterStoreMetaAction } from './action';
 import type { ClusterStoreNodesAction } from './action';
+import type { ClusterStoreOrchestrateReportAction } from './action';
 import type { Event } from '../events/action';
 import type { NodeInfo } from './action';
 
@@ -53,6 +55,7 @@ export type ClusterInfoStore = {
   events: {[string]: Array<Event>},
   meta: {[string]: ClusterMeta},
   nodes: {[string]: Array<NodeInfo>},
+  orchestrate_reports: {[string]: Object},
 };
 
 
@@ -63,6 +66,7 @@ export const defaultState: ClusterInfoStore = {
   events: {},
   meta: {},
   nodes: {},
+  orchestrate_reports: {},
 };
 
 
@@ -94,6 +98,7 @@ export function reducer(state: ClusterInfoStore = defaultState, action: ClusterI
     case CLUSTER_STORE_EVENTS: return storeEvents(state, action);
     case CLUSTER_STORE_META: return storeMeta(state, action);
     case CLUSTER_STORE_NODES: return storeNodes(state, action);
+    case CLUSTER_STORE_ORCHESTRATE_REPORT: return storeOrchestrateReport(state, action);
 
     default:
       return state;
@@ -199,5 +204,14 @@ function storeNodes(state: ClusterInfoStore, action: ClusterStoreNodesAction) {
     nodes: {...state.nodes},
   };
   newState.nodes[action.cluster_id] = action.nodes;
+  return newState;
+}
+
+function storeOrchestrateReport(state: ClusterInfoStore, action: ClusterStoreOrchestrateReportAction) {
+  let newState: ClusterInfoStore = {
+    ...state,
+    orchestrate_reports: {...state.orchestrate_reports},
+  };
+  newState.orchestrate_reports[action.cluster_id] = action.report;
   return newState;
 }

@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD022 MD024 MD032 -->
 # Changelog
 All notable changes to this project will be documented in this file.
 
@@ -6,8 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Update dependencies and development tools.
+- Left align navigation bar entries.
 - Replace Travis CI with GitHub Actions.
+- Update dependencies and development tools.
+
+### Fixed
+- Catch errors while fetching recent events to preserve UI functionality.
+- Catch errors while searching for clusters to preserve UI functionality.
 
 ## [0.3.3] - 2020-05-28
 ### Changed
