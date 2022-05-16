@@ -19,6 +19,7 @@ import Actions from './actions';
 import Agents from './agents';
 import Discovery from './discovery';
 import Events from './events';
+import OrchestrateReport from './orchestrate-report';
 import Overview from './overview';
 import Nodes from './nodes';
 
@@ -67,6 +68,7 @@ export class InnerCluster extends React.Component<Props> {
     const agents = `${root}/agents`;
     const discovery = `${root}/discovery`;
     const events = `${root}/events`;
+    const orchestrate_report = `${root}/orchestrate_report`;
     const overview = `${root}/overview`;
     const nodes = `${root}/nodes`;
     return (
@@ -78,6 +80,7 @@ export class InnerCluster extends React.Component<Props> {
         <Route path={nodes} component={Nodes} />
         <Route path={events} component={Events} />
         <Route path={actions} component={Actions} />
+        <Route path={orchestrate_report} component={OrchestrateReport} />
       </div>
     );
   }
@@ -91,6 +94,7 @@ export class InnerCluster extends React.Component<Props> {
     const agents = `${root}/agents`;
     const discovery = `${root}/discovery`;
     const events = `${root}/events`;
+    const orchestrate_report = `${root}/orchestrate_report`;
     const overview = `${root}/overview`;
     const nodes = `${root}/nodes`;
     return (
@@ -101,6 +105,7 @@ export class InnerCluster extends React.Component<Props> {
         <NavLink className="tab" to={nodes}>Nodes</NavLink>
         <NavLink className="tab" to={events}>Events</NavLink>
         <NavLink className="tab" to={actions}>Actions</NavLink>
+        <NavLink className="tab" to={orchestrate_report}>Orchestrate Report</NavLink>
       </div>
     );
   }

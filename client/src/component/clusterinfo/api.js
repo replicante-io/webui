@@ -114,3 +114,15 @@ export function fetchNodes(cluster_id: string): Promise<Array<NodeInfo>> {
     });
   });
 }
+
+export function fetchOrchestrateReport(cluster_id: string): Promise<Object> {
+  let url = `/api/cluster/${cluster_id}/orchestrate_report`;
+  return fetch(url).then((response) => {
+    return response.json().then((body) => {
+      if (!response.ok) {
+        throw Error('Fetch error: ' + body.error);
+      }
+      return body;
+    });
+  });
+}

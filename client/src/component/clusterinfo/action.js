@@ -65,6 +65,7 @@ export const CLUSTER_FETCH_DISCOVERY = 'CLUSTER_FETCH_DISCOVERY';
 export const CLUSTER_FETCH_EVENTS = 'CLUSTER_FETCH_EVENTS';
 export const CLUSTER_FETCH_META = 'CLUSTER_FETCH_META';
 export const CLUSTER_FETCH_NODES = 'CLUSTER_FETCH_NODES';
+export const CLUSTER_FETCH_ORCHESTRATE_REPORT = 'CLUSTER_FETCH_ORCHESTRATE_REPORT';
 export const CLUSTER_STORE_ACTION = 'CLUSTER_STORE_ACTION';
 export const CLUSTER_STORE_ACTIONS = 'CLUSTER_STORE_ACTIONS';
 export const CLUSTER_STORE_AGENTS = 'CLUSTER_STORE_AGENTS';
@@ -72,6 +73,7 @@ export const CLUSTER_STORE_DISCOVERY = 'CLUSTER_STORE_DISCOVERY';
 export const CLUSTER_STORE_EVENTS = 'CLUSTER_STORE_EVENTS';
 export const CLUSTER_STORE_META = 'CLUSTER_STORE_META';
 export const CLUSTER_STORE_NODES = 'CLUSTER_STORE_NODES';
+export const CLUSTER_STORE_ORCHESTRATE_REPORT = 'CLUSTER_STORE_ORCHESTRATE_REPORT';
 
 
 /** Type enum of all possible fetch actions. */
@@ -124,6 +126,11 @@ export type ClusterFetchNodesAction = {
   +cluster_id: string,
 };
 
+export type ClusterFetchOrchestrateReportAction = {
+  +type: typeof CLUSTER_FETCH_ORCHESTRATE_REPORT,
+  +cluster_id: string,
+};
+
 export type ClusterStoreActionAction = {
   +type: typeof CLUSTER_STORE_ACTION,
   +action: ActionDetails,
@@ -164,6 +171,12 @@ export type ClusterStoreNodesAction = {
   +nodes: Array<NodeInfo>,
 };
 
+export type ClusterStoreOrchestrateReportAction = {
+  +type: typeof CLUSTER_STORE_ORCHESTRATE_REPORT,
+  +cluster_id: string,
+  +report: Object,
+};
+
 export type ClusterInfoAction =
   ClusterActionsSearchAction |
   ClusterActionsSearchFiltersAction |
@@ -174,6 +187,7 @@ export type ClusterInfoAction =
   ClusterFetchEventsAction |
   ClusterFetchMetaAction |
   ClusterFetchNodesAction |
+  ClusterFetchOrchestrateReportAction |
   ClusterStoreActionAction |
   ClusterStoreActionsAction |
   ClusterStoreAgentsAction |
@@ -181,6 +195,7 @@ export type ClusterInfoAction =
   ClusterStoreEventsAction |
   ClusterStoreMetaAction |
   ClusterStoreNodesAction |
+  ClusterStoreOrchestrateReportAction |
   {type: 'FLOW_CATCH_ALL'};
 
 
@@ -223,6 +238,13 @@ export function fetchMeta(cluster: string): ClusterFetchMetaAction {
 export function fetchNodes(cluster: string): ClusterFetchNodesAction {
   return {
     type: CLUSTER_FETCH_NODES,
+    cluster_id: cluster,
+  };
+}
+
+export function fetchOrchestrateReport(cluster: string): ClusterFetchOrchestrateReportAction {
+  return {
+    type: CLUSTER_FETCH_ORCHESTRATE_REPORT,
     cluster_id: cluster,
   };
 }
