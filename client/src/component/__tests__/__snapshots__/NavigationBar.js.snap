@@ -29,7 +29,7 @@ exports[`NavigationBar renders correctly 1`] = `
         className="nav-item nav-link active"
         href="/"
         onClick={[Function]}
-        style={Object {}}
+        style={{}}
       >
         Overview
       </a>
