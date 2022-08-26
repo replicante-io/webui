@@ -1,6 +1,8 @@
 const express = require('express');
 const request = require('request-promise-native');
 
+const proxyOptions = require("./config").proxyOptions;
+
 const proxy = express.Router();
 
 const BACKEND_ROOT = process.env.REPLI_BACKEND_ROOT || 'http://127.0.0.1:16016';
@@ -11,7 +13,9 @@ const API_UNSTABLE_WEBUI = `${API_UNSTABLE_ROOT}/webui`;
 proxy.get('/cluster/:cluster/action/:action', (req, res) => {
   let action = req.params.action;
   let cluster = req.params.cluster;
-  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/action/${action}`).then((response) => {
+  let url = `${API_UNSTABLE_WEBUI}/cluster/${cluster}/action/${action}`;
+  let options = proxyOptions(url);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -25,9 +29,9 @@ proxy.post('/cluster/:cluster/actions', (req, res) => {
   let cluster = req.params.cluster;
   let options = {
     method: 'POST',
-    uri: `${API_UNSTABLE_WEBUI}/cluster/${cluster}/actions`,
     body: req.body,
     json: true,
+    ...proxyOptions(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/actions`),
   };
   request(options).then((response) => {
     res.json(response);
@@ -40,7 +44,8 @@ proxy.post('/cluster/:cluster/actions', (req, res) => {
 
 proxy.get('/cluster/:cluster/agents', (req, res) => {
   let cluster = req.params.cluster;
-  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/agents`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/agents`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -51,7 +56,8 @@ proxy.get('/cluster/:cluster/agents', (req, res) => {
 
 proxy.get('/cluster/:cluster/discovery', (req, res) => {
   let cluster = req.params.cluster;
-  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/discovery`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/discovery`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -62,7 +68,8 @@ proxy.get('/cluster/:cluster/discovery', (req, res) => {
 
 proxy.get('/cluster/:cluster/events', (req, res) => {
   let cluster = req.params.cluster;
-  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/events`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/events`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -73,7 +80,8 @@ proxy.get('/cluster/:cluster/events', (req, res) => {
 
 proxy.get('/cluster/:cluster/meta', (req, res) => {
   let cluster = req.params.cluster;
-  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/meta`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/meta`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -84,7 +92,8 @@ proxy.get('/cluster/:cluster/meta', (req, res) => {
 
 proxy.get('/cluster/:cluster/nodes', (req, res) => {
   let cluster = req.params.cluster;
-  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/nodes`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/nodes`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -95,7 +104,8 @@ proxy.get('/cluster/:cluster/nodes', (req, res) => {
 
 proxy.get('/cluster/:cluster/orchestrate_report', (req, res) => {
   let cluster = req.params.cluster;
-  request.get(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/orchestrate_report`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/orchestrate_report`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -111,7 +121,8 @@ proxy.post('/clusters/search', express.json(), (req, res) => {
     search = '/' + search;
   }
 
-  request.get(`${API_UNSTABLE_WEBUI}/clusters/find${search}`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/clusters/find${search}`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -121,7 +132,8 @@ proxy.post('/clusters/search', express.json(), (req, res) => {
 });
 
 proxy.get('/clusters/top', (req, res) => {
-  request.get(`${API_UNSTABLE_WEBUI}/clusters/top`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/clusters/top`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
@@ -132,7 +144,8 @@ proxy.get('/clusters/top', (req, res) => {
 
 
 proxy.get('/events', (req, res) => {
-  request.get(`${API_UNSTABLE_WEBUI}/events`).then((response) => {
+  let options = proxyOptions(`${API_UNSTABLE_WEBUI}/events`);
+  request.get(options).then((response) => {
     res.json(JSON.parse(response));
 
   }).catch((error) => {
