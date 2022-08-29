@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- Cluster specific orchestrator actions tab.
 - Support for HTTPS Certificate Authorities (`REPLI_CLIENT_CA_PATH`).
 - Support for HTTPS Peer Certificates (`REPLI_CLIENT_CERT_PATH` and `REPLI_CLIENT_KEY_PATH`).
 

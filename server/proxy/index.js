@@ -114,6 +114,38 @@ proxy.get('/cluster/:cluster/orchestrate_report', (req, res) => {
   });
 });
 
+proxy.get('/cluster/:cluster/orchestrator-action/:action', (req, res) => {
+  let action = req.params.action;
+  let cluster = req.params.cluster;
+  let url = `${API_UNSTABLE_WEBUI}/cluster/${cluster}/orchestrator-action/${action}`;
+  let options = proxyOptions(url);
+  request.get(options).then((response) => {
+    res.json(JSON.parse(response));
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster orchestrator action: %s", error);
+    res.status(500).json({error: "failed to fetch cluster orchestrator action"});
+  });
+});
+
+proxy.post('/cluster/:cluster/orchestrator-actions', express.json())
+proxy.post('/cluster/:cluster/orchestrator-actions', (req, res) => {
+  let cluster = req.params.cluster;
+  let options = {
+    method: 'POST',
+    body: req.body,
+    json: true,
+    ...proxyOptions(`${API_UNSTABLE_WEBUI}/cluster/${cluster}/orchestrator-actions`),
+  };
+  request(options).then((response) => {
+    res.json(response);
+
+  }).catch((error) => {
+    console.log("[ERROR] Failed to fetch cluster orchestrator actions: %s", error);
+    res.status(500).json({error: "failed to fetch cluster orchestrator actions"});
+  });
+});
+
 
 proxy.post('/clusters/search', express.json(), (req, res) => {
   let search = req.body.search || '';

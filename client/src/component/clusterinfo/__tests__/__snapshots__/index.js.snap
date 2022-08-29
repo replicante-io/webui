@@ -57,7 +57,15 @@ exports[`ClusterInfo index renders index 1`] = `
     <a
       aria-current={null}
       className="tab"
-      href="/about:blank/clusters/:name/orchestrate_report"
+      href="/about:blank/clusters/:name/orchestrators-actions"
+      onClick={[Function]}
+    >
+      Orchestrator Actions
+    </a>
+    <a
+      aria-current={null}
+      className="tab"
+      href="/about:blank/clusters/:name/orchestrate-report"
       onClick={[Function]}
     >
       Orchestrate Report

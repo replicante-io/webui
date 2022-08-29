@@ -5,6 +5,8 @@ import type { ClusterMeta } from '../dashboard/action';
 
 import { CLUSTER_ACTIONS_SEARCH_FILTERS } from './action';
 import { CLUSTER_ACTIONS_SEARCH_STATE } from './action';
+import { CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_FILTERS } from './action';
+import { CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_STATE } from './action';
 import { CLUSTER_STORE_ACTION } from './action';
 import { CLUSTER_STORE_ACTIONS } from './action';
 import { CLUSTER_STORE_AGENTS } from './action';
@@ -13,6 +15,8 @@ import { CLUSTER_STORE_EVENTS } from './action';
 import { CLUSTER_STORE_META } from './action';
 import { CLUSTER_STORE_NODES } from './action';
 import { CLUSTER_STORE_ORCHESTRATE_REPORT } from './action';
+import { CLUSTER_STORE_ORCHESTRATOR_ACTION } from './action';
+import { CLUSTER_STORE_ORCHESTRATOR_ACTIONS } from './action';
 
 import type { Action } from './action';
 import type { ActionDetails } from './action';
@@ -58,6 +62,14 @@ export type ClusterInfoStore = {
   orchestrate_reports: {[string]: Object},
 };
 
+export type OrchestratorActionsSearchStore = {
+  action_kind: string,
+  action_state: string,
+  from: Date,
+  searching: boolean,
+  until: Date,
+};
+
 
 export const defaultState: ClusterInfoStore = {
   actions: {},
@@ -67,6 +79,7 @@ export const defaultState: ClusterInfoStore = {
   meta: {},
   nodes: {},
   orchestrate_reports: {},
+  orchestrator_actions: {},
 };
 
 
@@ -87,10 +100,28 @@ export function defaultActionsStore() {
   };
 }
 
+export function defaultOrchestratorActionsStore() {
+  let now = new Date();
+  let from = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+  return {
+    actions: [],
+    details: null,
+    search: {
+      action_kind: '',
+      action_state: '',
+      from,
+      searching: false,
+      until: now,
+    },
+  };
+}
+
 export function reducer(state: ClusterInfoStore = defaultState, action: ClusterInfoAction) {
   switch (action.type) {
     case CLUSTER_ACTIONS_SEARCH_FILTERS: return storeActionsFilters(state, action);
     case CLUSTER_ACTIONS_SEARCH_STATE: return storeActionsSearching(state, action);
+    case CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_FILTERS: return storeOrchestratorActionsFilters(state, action);
+    case CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_STATE: return storeOrchestratorActionsSearching(state, action);
     case CLUSTER_STORE_ACTION: return storeAction(state, action);
     case CLUSTER_STORE_ACTIONS: return storeActions(state, action);
     case CLUSTER_STORE_AGENTS: return storeAgents(state, action);
@@ -99,6 +130,8 @@ export function reducer(state: ClusterInfoStore = defaultState, action: ClusterI
     case CLUSTER_STORE_META: return storeMeta(state, action);
     case CLUSTER_STORE_NODES: return storeNodes(state, action);
     case CLUSTER_STORE_ORCHESTRATE_REPORT: return storeOrchestrateReport(state, action);
+    case CLUSTER_STORE_ORCHESTRATOR_ACTION: return storeOrchestratorAction(state, action);
+    case CLUSTER_STORE_ORCHESTRATOR_ACTIONS: return storeOrchestratorActions(state, action);
 
     default:
       return state;
@@ -213,5 +246,60 @@ function storeOrchestrateReport(state: ClusterInfoStore, action: ClusterStoreOrc
     orchestrate_reports: {...state.orchestrate_reports},
   };
   newState.orchestrate_reports[action.cluster_id] = action.report;
+  return newState;
+}
+
+
+function storeOrchestratorAction(state: ClusterInfoStore, action) {
+  let newState: ClusterInfoStore = {
+    ...state,
+    orchestrator_actions: {...state.orchestrator_actions},
+  };
+  let actions = newState.orchestrator_actions[action.cluster_id] || defaultOrchestratorActionsStore();
+  actions = {...actions};
+  actions.details = action.action;
+  newState.orchestrator_actions[action.cluster_id] = actions;
+  return newState;
+}
+
+
+function storeOrchestratorActions(state: ClusterInfoStore, action) {
+  let newState: ClusterInfoStore = {
+    ...state,
+    orchestrator_actions: {...state.orchestrator_actions},
+  };
+  let actions = newState.orchestrator_actions[action.cluster_id] || defaultOrchestratorActionsStore();
+  actions = {...actions};
+  actions.actions = action.actions;
+  newState.orchestrator_actions[action.cluster_id] = actions;
+  return newState;
+}
+
+
+function storeOrchestratorActionsFilters(state: ClusterInfoStore, action: ClusterOrchestratorActionsSearchFiltersAction) {
+  let newState: ClusterInfoStore = {
+    ...state,
+    orchestrator_actions: {...state.orchestrator_actions},
+  };
+  let actions = newState.orchestrator_actions[action.cluster_id] || defaultOrchestratorActionsStore();
+  actions = {
+    ...actions,
+    search: action.search,
+  };
+  newState.orchestrator_actions[action.cluster_id] = actions;
+  return newState;
+}
+
+
+function storeOrchestratorActionsSearching(state: ClusterInfoStore, action: ClusterOrchestratorActionsSearchFiltersAction) {
+  let newState: ClusterInfoStore = {
+    ...state,
+    orchestrator_actions: {...state.orchestrator_actions},
+  };
+  let actions = newState.orchestrator_actions[action.cluster_id] || defaultActionsStore();
+  actions = {...actions};
+  actions.search = {...actions.search};
+  actions.search.searching = action.state;
+  newState.orchestrator_actions[action.cluster_id] = actions;
   return newState;
 }

@@ -16,6 +16,8 @@ import { CLUSTER_FETCH_EVENTS } from '../action';
 import { CLUSTER_FETCH_META } from '../action';
 import { CLUSTER_FETCH_NODES } from '../action';
 import { CLUSTER_FETCH_ORCHESTRATE_REPORT } from '../action';
+import { CLUSTER_FETCH_ORCHESTRATOR_ACTION } from '../action';
+import { CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH } from '../action';
 import { CLUSTER_STORE_AGENTS } from '../action';
 import { CLUSTER_STORE_DISCOVERY } from '../action';
 import { CLUSTER_STORE_EVENTS } from '../action';
@@ -35,7 +37,9 @@ import { fetchEvents } from '../saga';
 import { fetchMeta } from '../saga';
 import { fetchNodes } from '../saga';
 import { fetchOrchestrateReport } from '../saga';
+import { fetchOrchestratorAction } from '../saga';
 import { searchActions } from '../saga';
+import { searchOrchestratorActions } from '../saga';
 import { saga } from '../saga';
 
 
@@ -91,6 +95,8 @@ describe('Clusters', () => {
         takeEvery(CLUSTER_FETCH_META, fetchMeta),
         takeEvery(CLUSTER_FETCH_NODES, fetchNodes),
         takeEvery(CLUSTER_FETCH_ORCHESTRATE_REPORT, fetchOrchestrateReport),
+        takeEvery(CLUSTER_FETCH_ORCHESTRATOR_ACTION, fetchOrchestratorAction),
+        takeEvery(CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH, searchOrchestratorActions),
       ]));
     });
 

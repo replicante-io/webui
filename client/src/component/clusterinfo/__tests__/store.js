@@ -67,6 +67,7 @@ describe('Clusters', () => {
         meta: {},
         nodes: {},
         orchestrate_reports: {},
+        orchestrator_actions: {},
       });
     });
 
@@ -84,6 +85,7 @@ describe('Clusters', () => {
         meta: {},
         nodes: {},
         orchestrate_reports: {},
+        orchestrator_actions: {},
       });
     });
 
@@ -102,6 +104,7 @@ describe('Clusters', () => {
         meta: {},
         nodes: {},
         orchestrate_reports: {},
+        orchestrator_actions: {},
       });
     });
 
@@ -119,6 +122,7 @@ describe('Clusters', () => {
         meta: {'test': META},
         nodes: {},
         orchestrate_reports: {},
+        orchestrator_actions: {},
       });
     });
 
@@ -137,6 +141,7 @@ describe('Clusters', () => {
         meta: {},
         nodes: {'test': NODES},
         orchestrate_reports: {},
+        orchestrator_actions: {},
       });
     });
 

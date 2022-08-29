@@ -15,6 +15,9 @@ import { CLUSTER_FETCH_EVENTS } from './action';
 import { CLUSTER_FETCH_META } from './action';
 import { CLUSTER_FETCH_NODES } from './action';
 import { CLUSTER_FETCH_ORCHESTRATE_REPORT } from './action';
+import { CLUSTER_FETCH_ORCHESTRATOR_ACTION } from './action';
+import { CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH } from './action';
+import { CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_STATE } from './action';
 import { CLUSTER_STORE_ACTION } from './action';
 import { CLUSTER_STORE_ACTIONS } from './action';
 import { CLUSTER_STORE_AGENTS } from './action';
@@ -23,6 +26,8 @@ import { CLUSTER_STORE_EVENTS } from './action';
 import { CLUSTER_STORE_META } from './action';
 import { CLUSTER_STORE_NODES } from './action';
 import { CLUSTER_STORE_ORCHESTRATE_REPORT } from './action';
+import { CLUSTER_STORE_ORCHESTRATOR_ACTION } from './action';
+import { CLUSTER_STORE_ORCHESTRATOR_ACTIONS } from './action';
 
 import { fetchAction as fetchActionApi } from './api';
 import { fetchActions as fetchActionsApi } from './api';
@@ -32,6 +37,8 @@ import { fetchEvents as fetchEventsApi } from './api';
 import { fetchMeta as fetchMetaApi } from './api';
 import { fetchNodes as fetchNodesApi } from './api';
 import { fetchOrchestrateReport as fetchOrchestrateReportApi } from './api';
+import { fetchOrchestratorAction as fetchOrchestratorActionApi } from './api';
+import { fetchOrchestratorActions as fetchOrchestratorActionsApi } from './api';
 
 import type { ClusterActionsSearchAction } from './action';
 import type { ClusterFetchActionAction } from './action';
@@ -107,6 +114,18 @@ export function* fetchNodes(action: ClusterFetchNodesAction): any {
   });
 }
 
+/**
+ * Fetches a cluster's orchestrator action and stores it in redux.
+ */
+ export function* fetchOrchestratorAction(action): any {
+  let details = yield call(fetchOrchestratorActionApi, action.cluster_id, action.action_id);
+  yield put({
+    type: CLUSTER_STORE_ORCHESTRATOR_ACTION,
+    cluster_id: action.cluster_id,
+    action: details,
+  });
+}
+
 /** Execute an actions search. */
 export function* searchActions(action: ClusterActionsSearchAction): any {
   yield put({type: CLUSTER_ACTIONS_SEARCH_STATE, cluster_id: action.cluster_id, state: true});
@@ -117,6 +136,27 @@ export function* searchActions(action: ClusterActionsSearchAction): any {
     console.error("Failed to search for actions", error);
   } finally {
     yield put({type: CLUSTER_ACTIONS_SEARCH_STATE, cluster_id: action.cluster_id, state: false});
+  }
+}
+
+/** Execute an orchestrator actions search. */
+export function* searchOrchestratorActions(action: ClusterActionsSearchAction): any {
+  yield put({
+    type: CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_STATE,
+    cluster_id: action.cluster_id,
+    state: true,
+  });
+  try {
+    let actions = yield call(fetchOrchestratorActionsApi, action.cluster_id, action.search);
+    yield put({type: CLUSTER_STORE_ORCHESTRATOR_ACTIONS, cluster_id: action.cluster_id, actions})
+  } catch (error) {
+    console.error("Failed to search for orchestrator actions", error);
+  } finally {
+    yield put({
+      type: CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_STATE,
+      cluster_id: action.cluster_id,
+      state: false,
+    });
   }
 }
 
@@ -131,5 +171,7 @@ export function* saga(): any {
     takeEvery(CLUSTER_FETCH_META, fetchMeta),
     takeEvery(CLUSTER_FETCH_NODES, fetchNodes),
     takeEvery(CLUSTER_FETCH_ORCHESTRATE_REPORT, fetchOrchestrateReport),
+    takeEvery(CLUSTER_FETCH_ORCHESTRATOR_ACTION, fetchOrchestratorAction),
+    takeEvery(CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH, searchOrchestratorActions),
   ]);
 }

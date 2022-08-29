@@ -1,13 +1,15 @@
 'use strict';
 //@flow
 
-import type { AgentDetails } from './action';
-import type { ClusterMeta } from '../dashboard/action';
-import type { ClusterDiscovery } from './action';
-import type { Event } from '../events/action';
 import type { Action } from './action';
 import type { ActionsSearchStore } from './store';
+import type { AgentDetails } from './action';
+import type { ClusterDiscovery } from './action';
+import type { ClusterMeta } from '../dashboard/action';
+import type { Event } from '../events/action';
 import type { NodeInfo } from './action';
+import type { OrchestratorAction } from './action';
+import type { OrchestratorActionsSearchStore } from './store';
 
 
 export function fetchAction(cluster_id: string, action_id: string): Promise<Action> {
@@ -118,6 +120,47 @@ export function fetchNodes(cluster_id: string): Promise<Array<NodeInfo>> {
 export function fetchOrchestrateReport(cluster_id: string): Promise<Object> {
   let url = `/api/cluster/${cluster_id}/orchestrate_report`;
   return fetch(url).then((response) => {
+    return response.json().then((body) => {
+      if (!response.ok) {
+        throw Error('Fetch error: ' + body.error);
+      }
+      return body;
+    });
+  });
+}
+
+export function fetchOrchestratorAction(cluster_id: string, action_id: string): Promise<OrchestratorAction> {
+  let url = `/api/cluster/${cluster_id}/orchestrator-action/${action_id}`;
+  return fetch(url).then((response) => {
+    return response.json().then((body) => {
+      if (!response.ok) {
+        throw Error('Fetch error: ' + body.error);
+      }
+      return body;
+    });
+  });
+}
+
+export function fetchOrchestratorActions(
+  cluster_id: string,
+  search: OrchestratorActionsSearchStore,
+): Promise<Array<OrchestratorAction>> {
+  let payload = {
+    action_kind: search.action_kind,
+    action_state: search.action_state,
+    from: search.from.toISOString(),
+    until: search.until.toISOString(),
+  };
+  let url = `/api/cluster/${cluster_id}/orchestrator-actions`;
+  let options = {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(payload),
+  };
+  return fetch(url, options).then((response) => {
     return response.json().then((body) => {
       if (!response.ok) {
         throw Error('Fetch error: ' + body.error);
