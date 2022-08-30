@@ -54,8 +54,18 @@ docker run --rm -it -e 'REPLI_BACKEND_ROOT=http://replicante.api:16016' replican
 ## Roadmap
 
 The main roadmap topics are determined by the Replicante project.
-Here are a few items that are specific to this WebIU project:
+Here are a few items that are specific to this WebIU project.
 
-* Migrate to TypeScript (this includes removing all flow annotations and using TS instead).
-* Bootstrap 5 upgrade.
-* [Maybe?] Replace `react` with `vue.js`.
+NOTE: I am not a big UI person so functionality will be limited and focused on read-only views.
+
+### UPCOMING REWRITE
+
+This WebUI will eventually be rewritten from scratch for a few reasons:
+
+* I don't like React and want to try Vue.js.
+* I want a Rust backend providing endpoints for a TypeScript WebUI.
+* Upcoming features in Core (namespaces, auth*) will force a complete architecture due over.
+* Bootstrap 5 upgrade will likely need lots of changes to the existing version anyway.
+
+What this means mainly is that React Router and React will NOT be upgraded to later versions
+(can't be bothered updating to React Router 6 if I'm dropping it and that blocks React 18).

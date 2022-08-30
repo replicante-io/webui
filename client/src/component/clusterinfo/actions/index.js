@@ -17,7 +17,6 @@ import type { ClusterInfoStore } from '../store';
 import { defaultActionsStore } from '../store';
 import { saveActionsFilters } from '../action';
 import { searchActions } from '../action';
-import { NoDataIcon } from '../../icons';
 import Timeline from './timeline';
 
 

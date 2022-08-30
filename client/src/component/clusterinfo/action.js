@@ -54,6 +54,16 @@ export type NodeInfo = {
   version: string,
 };
 
+export type OrchestratorAction = {
+  action_id: string,
+  created_ts: string,
+  finished_ts: string,
+  kind: string,
+  state: string,
+  state_payload: ?Object,
+  state_payload_error: ?Object,
+};
+
 
 /** Name actions for type checking. */
 export const CLUSTER_ACTIONS_SEARCH = 'CLUSTER_ACTIONS_SEARCH';
@@ -66,6 +76,10 @@ export const CLUSTER_FETCH_EVENTS = 'CLUSTER_FETCH_EVENTS';
 export const CLUSTER_FETCH_META = 'CLUSTER_FETCH_META';
 export const CLUSTER_FETCH_NODES = 'CLUSTER_FETCH_NODES';
 export const CLUSTER_FETCH_ORCHESTRATE_REPORT = 'CLUSTER_FETCH_ORCHESTRATE_REPORT';
+export const CLUSTER_FETCH_ORCHESTRATOR_ACTION = 'CLUSTER_FETCH_ORCHESTRATOR_ACTION';
+export const CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH = 'CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH';
+export const CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_FILTERS = 'CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_FILTERS';
+export const CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_STATE = 'CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_STATE';
 export const CLUSTER_STORE_ACTION = 'CLUSTER_STORE_ACTION';
 export const CLUSTER_STORE_ACTIONS = 'CLUSTER_STORE_ACTIONS';
 export const CLUSTER_STORE_AGENTS = 'CLUSTER_STORE_AGENTS';
@@ -74,6 +88,8 @@ export const CLUSTER_STORE_EVENTS = 'CLUSTER_STORE_EVENTS';
 export const CLUSTER_STORE_META = 'CLUSTER_STORE_META';
 export const CLUSTER_STORE_NODES = 'CLUSTER_STORE_NODES';
 export const CLUSTER_STORE_ORCHESTRATE_REPORT = 'CLUSTER_STORE_ORCHESTRATE_REPORT';
+export const CLUSTER_STORE_ORCHESTRATOR_ACTION = 'CLUSTER_STORE_ORCHESTRATOR_ACTION';
+export const CLUSTER_STORE_ORCHESTRATOR_ACTIONS = 'CLUSTER_STORE_ORCHESTRATOR_ACTIONS';
 
 
 /** Type enum of all possible fetch actions. */
@@ -249,6 +265,14 @@ export function fetchOrchestrateReport(cluster: string): ClusterFetchOrchestrate
   };
 }
 
+export function fetchOrchestratorAction(cluster: string, action: string) {
+  return {
+    type: CLUSTER_FETCH_ORCHESTRATOR_ACTION,
+    cluster_id: cluster,
+    action_id: action,
+  };
+}
+
 export function saveActionsFilters(
   cluster: string,
   search: ActionsSearchStore
@@ -260,12 +284,34 @@ export function saveActionsFilters(
   };
 }
 
+export function saveOrchestratorActionsFilters(
+  cluster: string,
+  search: OrchestratorActionsSearchStore
+) {
+  return {
+    type: CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH_FILTERS,
+    cluster_id: cluster,
+    search,
+  };
+}
+
 export function searchActions(
   cluster: string,
   search: ActionsSearchStore
 ): ClusterActionsSearchAction {
   return {
     type: CLUSTER_ACTIONS_SEARCH,
+    cluster_id: cluster,
+    search,
+  };
+}
+
+export function searchOrchestratorActions(
+  cluster: string,
+  search: OrchestratorActionsSearchStore
+) {
+  return {
+    type: CLUSTER_ORCHESTRATOR_ACTIONS_SEARCH,
     cluster_id: cluster,
     search,
   };
