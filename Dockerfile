@@ -1,7 +1,7 @@
 ###############################
 # Build webui app and statics #
 ###############################
-FROM node:12.15.0-slim as builder
+FROM node:16.17.0-slim as builder
 
 # Add the code and compile the app.
 COPY . /code
@@ -11,7 +11,7 @@ RUN cd /code && npm ci && npm run build
 ######################################
 # Package webui into a smaller image #
 ######################################
-FROM node:12.15.0-slim
+FROM node:16.17.0-slim
 
 # Create a replicante user to avoid using root.
 ARG REPLI_GID=1616
