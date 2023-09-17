@@ -1,5 +1,10 @@
 # Replicante WebUI
 
+> :warning:
+>
+> This iterationd of the WebUI is deprecated.
+> I hope at some point to be able to create a new WebUI but until then this repository will be archived.
+
 Bare bones web-based user interface for Replicante.
 Its main purpose is to visualise the current state of your clusters
 and what is happening to them.
